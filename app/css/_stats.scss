@@ -1,23 +1,31 @@
 .stats{
     width: 30%;
 
+    p {
+        text-align: center;
+    }
+
     &__name{
         ul{
+            margin-top: 2px;
+            margin-bottom: 2px;
             padding: 0;
         }
         li{
             text-align: center;
-            align-content: flex-start;
             flex-flow: wrap column;
-            padding: 2px 5px 2px 5px;
+            padding: 2px 7px 2px 7px;
             
             height: fit-content;
-            width: fit-content;
+            width: 80px;
             background-color: $Black;
             color: $White;
             p{
-                margin: 0;
+                margin: 0 auto ;
                 color: $White;
+            }
+            h1{
+                font-weight: 1000;
             }
         }
             
@@ -25,10 +33,91 @@
     
 
     &__value{
-
+        flex-flow: wrap column;
+        ul{
+            margin-top: 2px;
+            margin-bottom: 2px;
+            padding: 0;
+        }
+        li{
+            border: 1px solid $Black;
+            flex-flow: wrap column;
+            margin: 5px;
+            height: 30px;
+            width: 50px;
+            color: $White;
+            p{
+                margin: 0 auto ;
+                color: $White;
+            }
+        }
+    }
+    &__vModifier{
+        flex-flow: wrap column;
+        ul{
+            margin-top: 2px;
+            margin-bottom: 2px;
+            padding: 0;
+        }
+        li{
+            border: 1px solid $Black;
+            flex-flow: wrap column;
+            margin: 5px;
+            height: 30px;
+            width: 50px;
+            color: $White;
+           
+        }
     }
 
-    &temp{
+    &Temp{
+        ul{
+            margin-top: 2px;
+            margin-bottom: 2px;
+            padding: 0;
+        }
+        li{
+            text-align: center;
+            flex-flow: wrap column;
+            padding: 2px 7px 2px 7px;
+            
+            height: fit-content;
+            width: 80px;
+            background-color: $Black;
+            color: $White;
+            p{
+                margin: 0 auto ;
+                color: $White;
+            }
+            h1{
+                font-weight: 1000;
+            }
+        }
+            
+    }
+    &tModifier{
+        ul{
+            margin-top: 2px;
+            margin-bottom: 2px;
+            padding: 0;
+        }
+        li{
+            text-align: center;
+            flex-flow: wrap column;
+            padding: 2px 7px 2px 7px;
+            
+            height: fit-content;
+            width: 80px;
+            background-color: $Gray;
+            color: $White;
+            p{
+                margin: 0 auto ;
+                color: $White;
+            }
+            h1{
+                font-weight: 1000;
+            }
+        }
 
     }
 }
