@@ -98,6 +98,14 @@ a, a:visited, a:hover {text-decoration: none;}
         margin: 0 auto;
         justify-content: center;
     }
+
+    &-column-t {
+        display: flex;
+        flex-flow: wrap column;
+        align-content: center;
+        margin: 0 auto;
+        justify-content: flex-start;
+    }
     &-row {
         display: flex;
         flex-flow: wrap row;
@@ -109,17 +117,18 @@ a, a:visited, a:hover {text-decoration: none;}
     &-row-l {
         display: flex;
         flex-flow: wrap row;
-        align-content: flex-start;
+        align-content: center;
         margin: 0 auto;
         justify-content: flex-start;
     }
 
 }
 
-//
-.name{
+//Boxes
+.Box{
     &__black{
-        text-align: center;
+            margin: 2px;
+            text-align: center;
             padding: 2px 7px 2px 7px;
             height: fit-content;
             width: 80px;
@@ -130,8 +139,39 @@ a, a:visited, a:hover {text-decoration: none;}
                 color: $White;
             }
             h1{
+                font-size: 17px;
                 font-weight: 1000;
             }
+    }
+    &__value{
+            height: 36px;
+            width: 50px;
+            color: $White;
+            margin: 1px;
+            
+            p{
+                background-color: $White;
+                margin: 0 auto;
+                font-size: 15px;
+                text-align: center;
+                border: 1px solid $Black;
+                width: 40px;
+            }
+    }
+    &__input {
+            margin: 1px;
+            height: 36px;
+            width: 50px;
+            color: $White;
+           
+            input{
+                text-align: center;
+                border: 1px solid $Black;
+                height: 25px;
+                width: 40px;
+
+            }
+        
     }
 }
 

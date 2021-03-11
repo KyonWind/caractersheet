@@ -12,21 +12,7 @@
             margin-bottom: 2px;
             padding: 0;
         }
-        li{
-            text-align: center;
-            padding: 2px 7px 2px 7px;
-            height: fit-content;
-            width: 80px;
-            background-color: $Black;
-            color: $White;
-            p{
-                margin: 0 auto ;
-                color: $White;
-            }
-            h1{
-                font-weight: 1000;
-            }
-        }
+       
             
     }
     &__value{
@@ -39,7 +25,8 @@
             padding: 0;
         }
         li{
-            height: 41px;
+            margin: 1px;
+            height: 36px;
             width: 50px;
             color: $White;
            
@@ -61,19 +48,7 @@
             margin-bottom: 2px;
             padding: 0;
         }
-        li{
-            height: 41px;
-            width: 50px;
-            color: $White;
-            p{
-                font-size: 15px;
-                margin: 0 auto;
-                text-align: center;
-                border: 1px solid $Black;
-                width: 40px;
-            }
-            
-        }
+        
     }
     &__Temp{
         p:first-child{
@@ -86,7 +61,7 @@
             padding: 0;
         }
         li{
-            height: 41px;
+            height: 37px;
             width: 50px;
             color: $White;
            
@@ -109,18 +84,8 @@
             margin-bottom: 2px;
             padding: 0;
         }
-        li{
-            height: 41px;
-            width: 50px;
-            color: $White;
-            p{
-                margin: 0 auto;
-                background-color: white;
-                font-size: 15px;
-                text-align: center;
-                width: 40px;
-            }
-         
+        p{
+            border: none;
         }
     }
 }

@@ -26,39 +26,67 @@
         </ul>
         </div>
 
-        <div class="stats__value flex flex-column">
+        <div class="stats__value flex flex-column-t">
             <p class="">ABILITY SCORE</p>
             <ul class="StatValuelist">
             </ul> 
         </div>
 
-        <div class="stats__vModifier flex flex-column">
+        <div class="stats__vModifier flex flex-column-t">
             <p class="Stat">ABILITY MODIFIER</p>
-            <ul class="StatvModifierlist">
-            </ul> 
+                <ul class="StatvModifierlist">
+                </ul> 
         </div>
 
-        <div class="stats__Temp flex flex-column">
+        <div class="stats__Temp flex flex-column-t">
             <p class="Stat">TEMPORARY SCORE</p>
-            <ul class="StatTempValue">
-            </ul> 
+                <ul class="StatTempValue">
+                </ul> 
         </div>
 
-        <div class="stats__tModifier flex flex-column">
+        <div class="stats__tModifier flex flex-column-t">
             <p class="Stat">TEMPORARY MODIFIER</p>
-            <ul class="StatTempModifier">
-            </ul> 
+                <ul class="StatTempModifier">
+                </ul> 
         </div>
 
     </section>
 
     <section class="HpAndArmor debug">
-        <div class="hp debug flex flex-row-l">
-            <div class="hp__name name name__black">
-                <h1>HP</h1>
-                <p>HIT POINTS</p>
-            </div>
-            <div class="hp__value"></div>
+        <div class="hpbar debug flex flex-row-l">
+            
+                <div class="hp__name ">
+                    <div class="HpType flex flex-row" >
+                        <input type="radio" name="hpType" id="" value="PROD">
+                        <p>PROD</p>
+                        <input type="radio" name="hpType" id="">
+                        <p>FULL</p></div>
+                    <ul class="flex flex-column">
+                        <li class="Box__black">
+                            <h1>HP</h1>
+                            <p>HIT POINTS</p>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="hp__value">
+                    <p class="hp">TOTAL</p>
+                    <ul class="flex flex-column">
+                        <li class="Box__value">
+                            <p>30</p>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="hp__extra">
+                    <p class="hp">HP EXTRA</p>
+                    <ul class="flex flex-column">
+                        <li class="Box__input">
+                            <input type="text">
+                        </li>
+                    </ul>
+                </div>
+
 
         </div>
         <div class="acbar debug"></div>
