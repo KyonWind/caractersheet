@@ -39,7 +39,6 @@ a, a:visited, a:hover {text-decoration: none;}
 .container {
     max-width: 1110px;
     margin: 0 auto;
-    // border: 1px solid blue;
     
     &--pall{
         padding-left: 1.5rem;
@@ -92,7 +91,48 @@ a, a:visited, a:hover {text-decoration: none;}
     &-ai-b {
         align-items: flex-end;
     }
+    &-column {
+        display: flex;
+        flex-flow: wrap column;
+        align-content: center;
+        margin: 0 auto;
+        justify-content: center;
+    }
+    &-row {
+        display: flex;
+        flex-flow: wrap row;
+        align-content: center;
+        margin: 0 auto;
+        justify-content: center;
+    }
 
+    &-row-l {
+        display: flex;
+        flex-flow: wrap row;
+        align-content: flex-start;
+        margin: 0 auto;
+        justify-content: flex-start;
+    }
+
+}
+
+//
+.name{
+    &__black{
+        text-align: center;
+            padding: 2px 7px 2px 7px;
+            height: fit-content;
+            width: 80px;
+            background-color: $Black;
+            color: $White;
+            p{
+                margin: 0 auto ;
+                color: $White;
+            }
+            h1{
+                font-weight: 1000;
+            }
+    }
 }
 
 //Buttons

@@ -11,9 +11,13 @@
 
 </head>
 <body class="container container--pall debug"> 
-    <section class="header debug flex-jc-l">
+
+    <section class="header debug">
       <div class="header__logo"></div>
     </section>
+
+    <main class="debug flex flex-row-l">
+
     <section class="stats flex debug">
         
         <div class="stats__name">
@@ -22,30 +26,45 @@
         </ul>
         </div>
 
-        <div class="stats__value flex debug">
+        <div class="stats__value flex flex-column">
             <p class="">ABILITY SCORE</p>
             <ul class="StatValuelist">
             </ul> 
         </div>
 
-        <div class="stats__vModifier flex debug">
+        <div class="stats__vModifier flex flex-column">
             <p class="Stat">ABILITY MODIFIER</p>
             <ul class="StatvModifierlist">
             </ul> 
         </div>
 
-        <div class="stats__Temp flex debug">
+        <div class="stats__Temp flex flex-column">
             <p class="Stat">TEMPORARY SCORE</p>
             <ul class="StatTempValue">
             </ul> 
         </div>
 
-        <div class="stats__tModifier flex debug">
+        <div class="stats__tModifier flex flex-column">
             <p class="Stat">TEMPORARY MODIFIER</p>
             <ul class="StatTempModifier">
             </ul> 
         </div>
 
     </section>
+
+    <section class="HpAndArmor debug">
+        <div class="hp debug flex flex-row-l">
+            <div class="hp__name name name__black">
+                <h1>HP</h1>
+                <p>HIT POINTS</p>
+            </div>
+            <div class="hp__value"></div>
+
+        </div>
+        <div class="acbar debug"></div>
+    </section>
+
+</main>
+
 </body>
 </html>

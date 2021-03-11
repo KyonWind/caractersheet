@@ -53,7 +53,7 @@ const statsMap = (data) =>{
     let query = ``;
     
     data.forEach(element => {
-        query += `<li class=" flex flex-jc-c">
+        query += `<li class=" flex flex-column">
         <h1>${element.STA}</h1>
         <p>${element.Des}</p>
     </li>`
@@ -64,7 +64,7 @@ const statsMap = (data) =>{
 
     data.forEach(element => {
         query += `
-        <li class="flex flex-jc-c">
+        <li class="flex flex-column">
         <input type="number" value="0" class="${element.STA}-Value">
         </li>`
     });
@@ -74,7 +74,7 @@ const statsMap = (data) =>{
 
     data.forEach(element => {
         query += `
-        <li class=" flex flex-jc-c">
+        <li class=" flex flex-column">
         <p class="${element.STA}-Modifier">30</p>
         </li>`
     });
@@ -84,7 +84,7 @@ const statsMap = (data) =>{
 
     data.forEach(element => {
         query += `
-        <li class="flex flex-jc-c">
+        <li class="flex flex-column">
         <input type="number" value="0" class="${element.STA}-TValue">
         </li>`
     });
@@ -94,7 +94,7 @@ const statsMap = (data) =>{
 
     data.forEach(element => {
         query += `
-        <li class=" flex flex-jc-c">
+        <li class=" flex flex-column">
         <p class="${element.STA}-TModifier">30</p>
         </li>`
     });
