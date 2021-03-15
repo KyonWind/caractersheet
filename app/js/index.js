@@ -23,6 +23,7 @@ window.onload = function(e){
     
     headerMap(headerNames);
     statsMap(abName);
+    hpAcMap(abName);
 
 
 };
@@ -102,5 +103,146 @@ const statsMap = (data) =>{
     StatTempModifier.innerHTML += query;
     query = ``;
 };
+const hpAcMap = (data) =>{
+    const HpAcSection = document.querySelector('.HpAndArmor')
+    let query = ``;
+    query = `
+    <div class="hpbar debug flex flex-row-l">
+            
+                <div class="hp__name ">
+                    <div class="HpType flex flex-row" >
+                        <input type="radio" name="hpType" id="" value="PROD">
+                        <p>PROD</p>
+                        <input type="radio" name="hpType" id="">
+                        <p>FULL</p></div>
+                    <ul class="flex flex-column">
+                        <li class="Box__black">
+                            <h1>HP</h1>
+                            <p>HIT POINTS</p>
+                        </li>
+                    </ul>
+                </div>
 
-   
+                <div class="hp__value">
+                    <p class="hp">TOTAL</p>
+                    <ul class="flex flex-column">
+                        <li class="Box__value">
+                            <p>30</p>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="hp__extra">
+                    <p class="hp">HP EXTRA</p>
+                    <ul class="flex flex-column">
+                        <li class="Box__input">
+                            <input type="text">
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="hp__wounds">
+                    <p class="hp">WOUNDS/CURRENT HP</p>
+                    <ul class="flex flex-column flex-ai-c">
+                        <li class="Box__input">
+                            <input type="text">
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="hp__nonlethaldamage">
+                    <p class="hp">NONLETHAL DAMAGE</p>
+                    <ul class="flex flex-column">
+                        <li class="Box__input">
+                            <input type="text">
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="hp__speed">
+                    <p class="hp">SPEED</p>
+                    <ul class="flex flex-column flex-ai-c">
+                        <li class="Box__input">
+                            <input type="text">
+                        </li>
+                    </ul>
+                </div>
+
+        </div>
+
+        <div class="acbar debug flex flex-row-l">
+            <div class="ac__name ">
+                <ul class="flex">
+                    <li class="Box__black">
+                        <h1>AC</h1>
+                        <p>ARMOR CLASS</p>
+                    </li>
+                </ul>
+            </div>
+            <div class="ac__bonus flex flex-row-l">
+                <ul class="flex flex-row">
+                    <li class="Box__value flex flex-row">
+                        <p>30</p>
+                        <p>TOTAL</p>
+                    </li>
+                    <li class="Box__input flex flex-row">
+                        <p>= 10 +</p>
+                    </li>
+                    <li class="Box__input flex flex-row">
+                        <input type="text">
+                        <p>ARMOR BONUS</p>
+                    </li>
+                    <li class="flex flex-ai-c">
+                        <p>+</p>
+                    </li>
+                    <li class="Box__input flex flex-row">
+                        <input type="text">
+                        <p>SHIELD BONUS</p>
+                    </li>
+                    <li class="flex flex-ai-c">
+                        <p>+</p>
+                    </li>
+                    <li class="Box__input flex flex-row">
+                        <input type="text">
+                        <p>DEX MODIFIER</p>
+                    </li>
+                    <li class="flex flex-ai-c">
+                        <p>+</p>
+                    </li>
+                    <li class="Box__input flex flex-row">
+                        <input type="text">
+                        <p>SIZE MODIFIER</p>
+                    </li>
+                    <li class="flex flex-ai-c">
+                        <p>+</p>
+                    </li>
+                    <li class="Box__input flex flex-row">
+                        <input type="text">
+                        <p>NATURAL ARMOR</p>
+                    </li>
+                    <li class="flex flex-ai-c">
+                        <p>+</p>
+                    </li>
+                    <li class="Box__input flex flex-row">
+                        <input type="text">
+                        <p>DEFLECTION MODIFIER</p>
+                    </li>
+                    <li class="flex flex-ai-c">
+                        <p>+</p>
+                    </li>
+                    <li class="Box__input flex flex-row">
+                        <input type="text">
+                        <p>MISC MODIFIER</p>
+                    </li>
+                    <li class="ac__DmgRed Box__input flex flex-row">
+                        <input type="text">
+                        <p>DAMAGE REDUCTION</p>
+                    </li>
+                </ul>
+            </div>
+                
+        </div>
+    `
+    HpAcSection.innerHTML = query;
+}
+

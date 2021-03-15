@@ -187,9 +187,6 @@ a, a:visited, a:hover {
 }
 
 .flex-column {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
       -ms-flex-flow: wrap column;
@@ -203,9 +200,6 @@ a, a:visited, a:hover {
 }
 
 .flex-column-t {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
       -ms-flex-flow: wrap column;
@@ -219,9 +213,6 @@ a, a:visited, a:hover {
 }
 
 .flex-row {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
   -webkit-box-orient: horizontal;
   -webkit-box-direction: normal;
       -ms-flex-flow: wrap row;
@@ -235,9 +226,6 @@ a, a:visited, a:hover {
 }
 
 .flex-row-l {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
   -webkit-box-orient: horizontal;
   -webkit-box-direction: normal;
       -ms-flex-flow: wrap row;
@@ -263,6 +251,7 @@ a, a:visited, a:hover {
 }
 
 .Box__black p {
+  font-size: 8px;
   margin: 0 auto;
   color: white;
 }
@@ -528,14 +517,24 @@ h2 {
   margin-top: 3px;
 }
 
+.HpAndArmor .hp__value p:nth-child(2) {
+  height: 100%;
+  text-align: center;
+  margin-top: 3px;
+}
+
 .HpAndArmor .hp__value ul {
   margin-top: 2px;
   margin-bottom: 2px;
   padding: 0;
 }
 
+.HpAndArmor .hp__value li {
+  height: 25px;
+}
+
 .HpAndArmor .hp__extra p:first-child {
-  height: 20px;
+  height: 10px;
   text-align: center;
   margin-top: 3px;
 }
@@ -550,13 +549,17 @@ h2 {
   width: 50px;
 }
 
+.HpAndArmor .hp__extra li {
+  height: 25px;
+}
+
 .HpAndArmor .hp__wounds {
   margin-left: 20px;
   margin-right: 20px;
 }
 
 .HpAndArmor .hp__wounds p:first-child {
-  height: 20px;
+  height: 10px;
   text-align: center;
   margin-top: 3px;
 }
@@ -580,8 +583,12 @@ h2 {
   width: inherit;
 }
 
+.HpAndArmor .hp__wounds li {
+  height: 25px;
+}
+
 .HpAndArmor .hp__nonlethaldamage p:first-child {
-  height: 20px;
+  height: 10px;
   text-align: center;
   margin-top: 3px;
 }
@@ -596,13 +603,17 @@ h2 {
   width: 50px;
 }
 
+.HpAndArmor .hp__nonlethaldamage li {
+  height: 25px;
+}
+
 .HpAndArmor .hp__speed {
   margin-left: 20px;
   margin-right: 20px;
 }
 
 .HpAndArmor .hp__speed p:first-child {
-  height: 20px;
+  height: 10px;
   text-align: center;
   margin-top: 3px;
 }
@@ -626,6 +637,10 @@ h2 {
   width: inherit;
 }
 
+.HpAndArmor .hp__speed li {
+  height: 25px;
+}
+
 .HpAndArmor .ac__name p:first-child {
   height: 20px;
   text-align: center;
@@ -638,14 +653,46 @@ h2 {
   padding: 0;
 }
 
-.HpAndArmor .ac__value p:nth-child(2) {
-  height: 10px;
-  text-align: center;
+.HpAndArmor .ac__bonus {
+  margin: 0 auto;
 }
 
-.HpAndArmor .ac__value ul {
-  margin-top: 2px;
-  margin-bottom: 2px;
+.HpAndArmor .ac__bonus p:first-child {
+  font-size: 15px;
+}
+
+.HpAndArmor .ac__bonus p:nth-child(1n+2) {
+  font-size: 8px;
+}
+
+.HpAndArmor .ac__bonus :nth-child(2) {
+  border: none;
+}
+
+.HpAndArmor .ac__bonus ul {
+  padding: 0;
+}
+
+.HpAndArmor .ac__bonus p {
+  text-align: center;
+  margin: 1px;
+  font-size: 5px;
+}
+
+.HpAndArmor .ac__DmgRed {
+  width: 80px;
+}
+
+.HpAndArmor .ac__DmgRed input {
+  width: 80px;
+}
+
+.ArmorAndIniciative {
+  width: 30%;
+  height: 50%;
+}
+
+.ArmorAndIniciative ul {
   padding: 0;
 }
 /*# sourceMappingURL=style.css.map */

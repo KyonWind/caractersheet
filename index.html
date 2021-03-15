@@ -53,125 +53,44 @@
     </section>
 
     <section class="HpAndArmor debug">
-        <div class="hpbar debug flex flex-row-l">
-            
-                <div class="hp__name ">
-                    <div class="HpType flex flex-row" >
-                        <input type="radio" name="hpType" id="" value="PROD">
-                        <p>PROD</p>
-                        <input type="radio" name="hpType" id="">
-                        <p>FULL</p></div>
-                    <ul class="flex flex-column">
-                        <li class="Box__black">
-                            <h1>HP</h1>
-                            <p>HIT POINTS</p>
-                        </li>
-                    </ul>
-                </div>
-
-                <div class="hp__value">
-                    <p class="hp">TOTAL</p>
-                    <ul class="flex flex-column">
-                        <li class="Box__value">
-                            <p>30</p>
-                        </li>
-                    </ul>
-                </div>
-
-                <div class="hp__extra">
-                    <p class="hp">HP EXTRA</p>
-                    <ul class="flex flex-column">
-                        <li class="Box__input">
-                            <input type="text">
-                        </li>
-                    </ul>
-                </div>
-
-                <div class="hp__wounds">
-                    <p class="hp">WOUNDS/CURRENT HP</p>
-                    <ul class="flex flex-column flex-ai-c">
-                        <li class="Box__input">
-                            <input type="text">
-                        </li>
-                    </ul>
-                </div>
-
-                <div class="hp__nonlethaldamage">
-                    <p class="hp">NONLETHAL DAMAGE</p>
-                    <ul class="flex flex-column">
-                        <li class="Box__input">
-                            <input type="text">
-                        </li>
-                    </ul>
-                </div>
-
-                <div class="hp__speed">
-                    <p class="hp">SPEED</p>
-                    <ul class="flex flex-column flex-ai-c">
-                        <li class="Box__input">
-                            <input type="text">
-                        </li>
-                    </ul>
-                </div>
-
-        </div>
-
-        <div class="acbar debug flex flex-row-l">
-            <div class="ac__name ">
-                <ul class="flex flex-column">
-                    <li class="Box__black">
-                        <h1>AC</h1>
-                        <p>ARMOR CLASS</p>
-                    </li>
-                </ul>
-            </div>
-
-            <div class="ac__value">
-                <ul class="flex flex-column">
-                    <li class="Box__value flex flex-column">
-                        <p>30</p>
-                    </li>
-                </ul>
-                <p class="ac">TOTAL</p>
-            </div>
-
-            <div class="hp__armorbonbus">
-                <ul class="flex flex-column">
-                    <li class="Box__input">
-                        <input type="text">
-                    </li>
-                </ul>
-                <p class="ac">HP EXTRA</p>
-            </div>
-
-            <div class="hp__wounds">
-                <p class="hp">WOUNDS/CURRENT HP</p>
-                <ul class="flex flex-column flex-ai-c">
-                    <li class="Box__input">
-                        <input type="text">
-                    </li>
-                </ul>
-            </div>
-
-            <div class="hp__nonlethaldamage">
-                <p class="hp">NONLETHAL DAMAGE</p>
-                <ul class="flex flex-column">
-                    <li class="Box__input">
-                        <input type="text">
-                    </li>
-                </ul>
-            </div>
-
-            <div class="hp__speed">
-                <p class="hp">SPEED</p>
-                <ul class="flex flex-column flex-ai-c">
-                    <li class="Box__input">
-                        <input type="text">
-                    </li>
-                </ul>
-            </div>
-        </div>
     </section>
+
+    <section class="ArmorAndIniciative debug flex flex-column">
+        <ul class="flex flex-row-l">
+            <li class=" flex flex-column Box__black">
+                <h1>TOUCH</h1>
+                <p>ARMOR CLASS</p>
+            </li>
+            <li class=" flex flex-column Box__input">
+                <input type="text" name="" >
+            </li>
+            <li class=" flex flex-column Box__black">
+                <h1>FLAT FOOTED</h1>
+                <p>ARMOR CLASS</p>
+            </li>
+            <li class=" flex flex-column Box__input">
+                <input type="text" name="" >
+            </li>
+            <li class=" flex flex-column Box__black">
+                <h1>INICIATIVE</h1>
+                <p>MODIFIER</p>
+            </li>
+            <li class="Box__value flex flex-row">
+                <p>0</p>
+            </li>
+            <li class="Box__input flex flex-row">
+                <input type="text">
+            </li>
+            <li class="flex flex-ai-c">
+                <p>+</p>
+            </li>
+            <li class="Box__input flex flex-row">
+                <input type="text">
+            </li>
+        </ul>
+    </section>
+
+
 
 </main>
 

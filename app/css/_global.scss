@@ -92,7 +92,6 @@ a, a:visited, a:hover {text-decoration: none;}
         align-items: flex-end;
     }
     &-column {
-        display: flex;
         flex-flow: wrap column;
         align-content: center;
         margin: 0 auto;
@@ -100,14 +99,12 @@ a, a:visited, a:hover {text-decoration: none;}
     }
 
     &-column-t {
-        display: flex;
         flex-flow: wrap column;
         align-content: center;
         margin: 0 auto;
         justify-content: flex-start;
     }
     &-row {
-        display: flex;
         flex-flow: wrap row;
         align-content: center;
         margin: 0 auto;
@@ -115,7 +112,6 @@ a, a:visited, a:hover {text-decoration: none;}
     }
 
     &-row-l {
-        display: flex;
         flex-flow: wrap row;
         align-content: center;
         margin: 0 auto;
@@ -135,6 +131,7 @@ a, a:visited, a:hover {text-decoration: none;}
             background-color: $Black;
             color: $White;
             p{
+                font-size: 8px;
                 margin: 0 auto ;
                 color: $White;
             }
