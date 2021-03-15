@@ -549,4 +549,103 @@ h2 {
 .HpAndArmor .hp__extra input {
   width: 50px;
 }
+
+.HpAndArmor .hp__wounds {
+  margin-left: 20px;
+  margin-right: 20px;
+}
+
+.HpAndArmor .hp__wounds p:first-child {
+  height: 20px;
+  text-align: center;
+  margin-top: 3px;
+}
+
+.HpAndArmor .hp__wounds ul {
+  width: 160px;
+  margin-top: 2px;
+  margin-bottom: 2px;
+  padding: 0;
+}
+
+.HpAndArmor .hp__wounds li {
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: inherit;
+}
+
+.HpAndArmor .hp__wounds input {
+  margin-left: 12px;
+  width: inherit;
+}
+
+.HpAndArmor .hp__nonlethaldamage p:first-child {
+  height: 20px;
+  text-align: center;
+  margin-top: 3px;
+}
+
+.HpAndArmor .hp__nonlethaldamage ul {
+  margin-top: 2px;
+  margin-bottom: 2px;
+  padding: 0;
+}
+
+.HpAndArmor .hp__nonlethaldamage input {
+  width: 50px;
+}
+
+.HpAndArmor .hp__speed {
+  margin-left: 20px;
+  margin-right: 20px;
+}
+
+.HpAndArmor .hp__speed p:first-child {
+  height: 20px;
+  text-align: center;
+  margin-top: 3px;
+}
+
+.HpAndArmor .hp__speed ul {
+  width: 160px;
+  margin-top: 2px;
+  margin-bottom: 2px;
+  padding: 0;
+}
+
+.HpAndArmor .hp__speed li {
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: inherit;
+}
+
+.HpAndArmor .hp__speed input {
+  margin-left: 12px;
+  width: inherit;
+}
+
+.HpAndArmor .ac__name p:first-child {
+  height: 20px;
+  text-align: center;
+  margin-top: 3px;
+}
+
+.HpAndArmor .ac__name ul {
+  margin-top: 2px;
+  margin-bottom: 2px;
+  padding: 0;
+}
+
+.HpAndArmor .ac__value p:nth-child(2) {
+  height: 10px;
+  text-align: center;
+}
+
+.HpAndArmor .ac__value ul {
+  margin-top: 2px;
+  margin-bottom: 2px;
+  padding: 0;
+}
 /*# sourceMappingURL=style.css.map */
