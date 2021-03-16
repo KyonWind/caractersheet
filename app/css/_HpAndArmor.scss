@@ -1,0 +1,195 @@
+.HpAndArmor{
+    width: 70%;
+    height: 50%;
+
+    .hp{
+        
+        &__name{
+            p:first-child{
+               height: 20px;
+               text-align: center;
+               margin-top: 3px;
+            }
+            ul{
+                margin-top: 2px;
+                margin-bottom: 2px;
+                padding: 0;
+            }
+            
+        }
+        
+        &__value{
+            p:first-child{
+               height: 20px;
+               text-align: center;
+               margin-top: 3px;
+            }
+            p:nth-child(2){
+                height: 100%;
+                text-align: center;
+                margin-top: 3px;
+             }
+            ul{
+                margin-top: 2px;
+                margin-bottom: 2px;
+                padding: 0;
+            }
+            li
+            {
+                height: 25px;
+            }
+            
+
+        } 
+
+        &__extra{
+            p:first-child{
+               height: 10px;
+               text-align: center;
+               margin-top: 3px;
+            }
+            ul{
+                margin-top: 2px;
+                margin-bottom: 2px;
+                padding: 0;
+            }
+            input{
+                width: 50px;
+            }
+            li
+            {
+                height: 25px;
+            }
+        }
+
+        &__wounds{
+            margin-left: 20px;
+            margin-right: 20px;
+            p:first-child{
+               height: 10px;
+               text-align: center;
+               margin-top: 3px;
+            }
+            ul{
+                width: 160px;
+                margin-top: 2px;
+                margin-bottom: 2px;
+                padding: 0;
+            }
+            li{
+                align-items: center;
+                width: inherit;
+            }
+            input{
+                margin-left: 12px;
+                width: inherit;
+            }
+            li
+            {
+                height: 25px;
+            }
+        }
+
+        &__nonlethaldamage
+        {
+            p:first-child{
+                height: 10px;
+                text-align: center;
+                margin-top: 3px;
+             }
+             
+             ul{
+                 margin-top: 2px;
+                 margin-bottom: 2px;
+                 padding: 0;
+             }
+             input{
+                 width: 50px;
+             }
+             li
+            {
+                height: 25px;
+            }
+        }
+        
+        &__speed{
+            margin-left: 20px;
+            margin-right: 20px;
+            p:first-child{
+               height: 10px;
+               text-align: center;
+               margin-top: 3px;
+            }
+            ul{
+                width: 160px;
+                margin-top: 2px;
+                margin-bottom: 2px;
+                padding: 0;
+            }
+            li{
+                align-items: center;
+                width: inherit;
+            }
+            input{
+                margin-left: 12px;
+                width: inherit;
+            }
+            li
+            {
+                height: 25px;
+            }
+        }
+
+    }
+    .ac{
+        &__name
+        {
+            p:first-child{
+               height: 20px;
+               text-align: center;
+               margin-top: 3px;
+            }
+            ul{
+                margin-top: 2px;
+                margin-bottom: 2px;
+                padding: 0;
+            }
+            
+           
+        }
+        &__bonus
+        {
+            margin: 0 auto;
+            p:first-child{
+                font-size: 15px;
+            }
+            p:nth-child(1n+2){
+                font-size: 8px;
+            }
+            :nth-child(2){
+                border: none;
+            }
+            ul{
+                padding: 0;
+            }
+            
+           p{
+               text-align: center;
+               margin: 1px;
+               font-size: 5px;
+           }
+            
+        }
+        &__DmgRed
+        {
+            width: 80px;
+            input{
+                width: 80px;
+            }
+        }
+
+    }
+
+
+}
+
