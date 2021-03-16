@@ -150,6 +150,10 @@ a, a:visited, a:hover {
   padding-bottom: 2.25rem;
 }
 
+main section:last-child {
+  margin-left: auto;
+}
+
 .flex {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -197,6 +201,7 @@ a, a:visited, a:hover {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
+  justify-items: center;
 }
 
 .flex-column-t {
@@ -268,12 +273,12 @@ a, a:visited, a:hover {
   margin: 1px;
 }
 
-.Box__value p {
+.Box__value p:first-child {
   background-color: white;
   margin: 0 auto;
   font-size: 15px;
   text-align: center;
-  border: 1px solid black;
+  border: 2px solid black;
   width: 40px;
 }
 
@@ -286,7 +291,7 @@ a, a:visited, a:hover {
 
 .Box__input input {
   text-align: center;
-  border: 1px solid black;
+  border: 2px solid black;
   height: 25px;
   width: 40px;
 }
@@ -495,8 +500,9 @@ h2 {
 }
 
 .HpAndArmor {
-  width: 70%;
+  width: 69%;
   height: 50%;
+  margin-left: 6px;
 }
 
 .HpAndArmor .hp__name p:first-child {
@@ -554,6 +560,7 @@ h2 {
 }
 
 .HpAndArmor .hp__wounds {
+  width: 140px;
   margin-left: 20px;
   margin-right: 20px;
 }
@@ -565,7 +572,7 @@ h2 {
 }
 
 .HpAndArmor .hp__wounds ul {
-  width: 160px;
+  width: inherit;
   margin-top: 2px;
   margin-bottom: 2px;
   padding: 0;
@@ -680,19 +687,60 @@ h2 {
 }
 
 .HpAndArmor .ac__DmgRed {
-  width: 80px;
+  width: 61px;
 }
 
 .HpAndArmor .ac__DmgRed input {
-  width: 80px;
+  width: 60px;
 }
 
 .ArmorAndIniciative {
-  width: 30%;
-  height: 50%;
+  margin-top: 20px;
+  width: 47%;
 }
 
 .ArmorAndIniciative ul {
   padding: 0;
+}
+
+.ArmorAndIniciative .iniciative_name {
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+}
+
+.ArmorAndIniciative .flatfooted_name {
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+}
+
+.ArmorAndIniciative .flatfooted_name h1 {
+  font-size: 15px;
+}
+
+.ArmorAndIniciative li {
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
+  text-align: center;
+}
+
+.skill {
+  position: absolute;
+  left: 62%;
+  width: 35%;
+  bottom: 37%;
+}
+
+.skill ul {
+  padding: 0;
+  width: 100%;
+}
+
+.skill ul li {
+  padding: 10px 5px 10px 5px;
+  margin: auto;
+  width: 380px;
 }
 /*# sourceMappingURL=style.css.map */

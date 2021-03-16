@@ -69,6 +69,14 @@ a, a:visited, a:hover {text-decoration: none;}
     }
  }
 
+ main
+ {
+     section:last-child
+     {
+        margin-left: auto;
+     }
+ }
+
 //FLEXBOX
 .flex{
     display: flex;
@@ -96,6 +104,7 @@ a, a:visited, a:hover {text-decoration: none;}
         align-content: center;
         margin: 0 auto;
         justify-content: center;
+        justify-items: center;
     }
 
     &-column-t {
@@ -104,6 +113,7 @@ a, a:visited, a:hover {text-decoration: none;}
         margin: 0 auto;
         justify-content: flex-start;
     }
+    
     &-row {
         flex-flow: wrap row;
         align-content: center;
@@ -146,12 +156,12 @@ a, a:visited, a:hover {text-decoration: none;}
             color: $White;
             margin: 1px;
             
-            p{
+            p:first-child{
                 background-color: $White;
                 margin: 0 auto;
                 font-size: 15px;
                 text-align: center;
-                border: 1px solid $Black;
+                border: 2px solid $Black;
                 width: 40px;
             }
     }
@@ -163,7 +173,7 @@ a, a:visited, a:hover {text-decoration: none;}
            
             input{
                 text-align: center;
-                border: 1px solid $Black;
+                border: 2px solid $Black;
                 height: 25px;
                 width: 40px;
 

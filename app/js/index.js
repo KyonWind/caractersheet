@@ -242,6 +242,48 @@ const hpAcMap = (data) =>{
             </div>
                 
         </div>
+        <div class="ArmorAndIniciative debug flex flex-column-l">
+            <ul class="flex flex-row-l">
+                <li class="touch_name flex flex-column Box__black">
+                    <h1>TOUCH</h1>
+                    <p>ARMOR CLASS</p>
+                </li>
+                <li class=" flex flex-column Box__input">
+                    <input type="text" name="" >
+                </li>
+                <li class="flatfooted_name flex flex-column Box__black">
+                    <h1>FLAT FOOTED</h1>
+                    <p>ARMOR CLASS</p>
+                </li>
+                <li class=" flex flex-column Box__input">
+                    <input type="text" name="" >
+                    
+                </li>
+                <li class="iniciative_name flex flex-column Box__black">
+                    <h1>INICIATIVE</h1>
+                    <p>MODIFIER</p>
+                </li>
+                <li class="Box__value flex flex-row">
+                    <p>0</p>
+                    <p>TOTAL</p>
+                </li>
+                <li class="flex flex-ai-c">
+                    <p>=</p>
+                    
+                </li>
+                <li class="Box__input flex flex-row">
+                    <input type="text">
+                    <p>DEX MODIFIER</p>
+                </li>
+                <li class="flex flex-ai-c">
+                    <p>+</p>
+                </li>
+                <li class="Box__input flex flex-row">
+                    <input type="text">
+                    <p>MISC MODIFIER</p>
+                </li>
+            </ul>
+        </div>
     `
     HpAcSection.innerHTML = query;
 }
