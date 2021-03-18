@@ -15,10 +15,7 @@ p{
     color: $Black;
 }
 
-.debug
-{
-    border: 1px solid red;
-}
+
 
 body{
     margin: 0;
@@ -113,6 +110,13 @@ a, a:visited, a:hover {text-decoration: none;}
         margin: 0 auto;
         justify-content: flex-start;
     }
+
+    &-column-l {
+        flex-flow: wrap column;
+        align-content: flex-end;
+        margin: 0 auto;
+        justify-content: flex-start;
+    }
     
     &-row {
         flex-flow: wrap row;
@@ -155,7 +159,6 @@ a, a:visited, a:hover {text-decoration: none;}
             width: 50px;
             color: $White;
             margin: 1px;
-            
             p:first-child{
                 background-color: $White;
                 margin: 0 auto;
