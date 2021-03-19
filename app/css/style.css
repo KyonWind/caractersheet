@@ -280,24 +280,18 @@ main section:last-child {
 }
 
 .Box__value {
-  height: -webkit-fit-content;
-  height: -moz-fit-content;
-  height: fit-content;
-  width: -webkit-fit-content;
-  width: -moz-fit-content;
-  width: fit-content;
-  color: white;
-  margin: 1px;
-}
-
-.Box__value p:first-child {
-  background-color: white;
-  margin: 0 auto;
-  font-size: 15px;
-  text-align: center;
-  border: 2px solid black;
   width: 40px;
   height: 25px;
+  color: white;
+  border: 1px solid black;
+  background-color: white;
+}
+
+.Box__value p {
+  background-color: white;
+  font-size: 15px;
+  text-align: center;
+  margin: 0 auto;
 }
 
 .Box__input {
@@ -314,8 +308,8 @@ main section:last-child {
 .Box__input input {
   text-align: center;
   border: 2px solid black;
-  height: 25px;
   width: 40px;
+  height: 25px;
 }
 
 button, .button {
@@ -487,7 +481,7 @@ h2 {
 
 .stats__vModifier ul li {
   margin-top: 7px;
-  margin-bottom: 15px;
+  margin-bottom: 12px;
 }
 
 .stats__Temp p:first-child {
@@ -519,7 +513,7 @@ h2 {
 }
 
 .stats__tModifier li:last-child {
-  margin-bottom: 8px;
+  margin-bottom: 6px;
 }
 
 .stats__tModifier ul {
@@ -530,8 +524,8 @@ h2 {
 }
 
 .stats__tModifier ul li {
-  margin-top: 7px;
-  margin-bottom: 15px;
+  margin-top: 6px;
+  margin-bottom: 12px;
 }
 
 .HpAndArmor {
@@ -558,12 +552,6 @@ h2 {
   margin-top: 3px;
 }
 
-.HpAndArmor .hp__value p:nth-child(2) {
-  height: 100%;
-  text-align: center;
-  margin-top: 3px;
-}
-
 .HpAndArmor .hp__value ul {
   margin-top: 2px;
   margin-bottom: 2px;
@@ -571,11 +559,14 @@ h2 {
 }
 
 .HpAndArmor .hp__value li {
-  height: 25px;
+  margin-left: 5px;
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
 }
 
 .HpAndArmor .hp__extra p:first-child {
-  height: 10px;
+  height: 20px;
   text-align: center;
   margin-top: 3px;
 }
@@ -591,17 +582,17 @@ h2 {
 }
 
 .HpAndArmor .hp__extra li {
+  margin-left: 5px;
   height: 25px;
 }
 
 .HpAndArmor .hp__wounds {
-  width: 140px;
+  width: 170px;
   margin-left: 20px;
-  margin-right: 20px;
 }
 
 .HpAndArmor .hp__wounds p:first-child {
-  height: 10px;
+  height: 20px;
   text-align: center;
   margin-top: 3px;
 }
@@ -621,7 +612,7 @@ h2 {
 }
 
 .HpAndArmor .hp__wounds input {
-  margin-left: 12px;
+  margin-left: 5px;
   width: inherit;
 }
 
@@ -630,7 +621,7 @@ h2 {
 }
 
 .HpAndArmor .hp__nonlethaldamage p:first-child {
-  height: 10px;
+  height: 20px;
   text-align: center;
   margin-top: 3px;
 }
@@ -655,13 +646,13 @@ h2 {
 }
 
 .HpAndArmor .hp__speed p:first-child {
-  height: 10px;
+  height: 20px;
   text-align: center;
   margin-top: 3px;
 }
 
 .HpAndArmor .hp__speed ul {
-  width: 160px;
+  width: 120px;
   margin-top: 2px;
   margin-bottom: 2px;
   padding: 0;
@@ -695,38 +686,104 @@ h2 {
   padding: 0;
 }
 
-.HpAndArmor .ac__bonus {
-  margin: 0 auto;
-}
-
-.HpAndArmor .ac__bonus p:first-child {
-  font-size: 15px;
-}
-
-.HpAndArmor .ac__bonus p:nth-child(1n+2) {
-  font-size: 8px;
-}
-
-.HpAndArmor .ac__bonus :nth-child(2) {
-  border: none;
-}
-
-.HpAndArmor .ac__bonus ul {
+.HpAndArmor .ac__input ul {
   padding: 0;
 }
 
-.HpAndArmor .ac__bonus p {
+.HpAndArmor .ac__input ul li {
+  margin-top: 5px;
+  margin-left: 5px;
+}
+
+.HpAndArmor .ac__input ul li p {
   text-align: center;
-  margin: 1px;
-  font-size: 5px;
 }
 
-.HpAndArmor .ac__DmgRed {
-  width: 61px;
+.HpAndArmor .ac__base ul {
+  padding: 0;
 }
 
-.HpAndArmor .ac__DmgRed input {
-  width: 60px;
+.HpAndArmor .ac__base ul li {
+  margin-top: 5px;
+  margin-left: 5px;
+}
+
+.HpAndArmor .ac__base ul li p {
+  font-size: 15px;
+  text-align: center;
+}
+
+.HpAndArmor .ac__reduction ul {
+  padding: 0;
+}
+
+.HpAndArmor .ac__reduction ul li {
+  margin-top: 5px;
+  margin-left: 5px;
+}
+
+.HpAndArmor .ac__reduction ul li div {
+  width: 80px;
+}
+
+.HpAndArmor .ac__reduction ul li input {
+  width: 80px;
+}
+
+.HpAndArmor .ac__plus {
+  margin-left: 5px;
+  margin-top: 5px;
+}
+
+.HpAndArmor .ac__plus p {
+  font-size: 15px;
+}
+
+.HpAndArmor .ac__flatName ul {
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+}
+
+.HpAndArmor .ac__flatName ul li {
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+}
+
+.HpAndArmor .init {
+  margin-top: 6px;
+}
+
+.HpAndArmor .init__inicitiveName {
+  margin-right: 10px;
+}
+
+.HpAndArmor .init__inicitiveName ul {
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+}
+
+.HpAndArmor .init__inicitiveName ul li {
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+}
+
+.HpAndArmor .init__inicitiveValue {
+  text-align: center;
+}
+
+.HpAndArmor .init__dex {
+  margin-left: 6px;
+  text-align: center;
+}
+
+.HpAndArmor .init__misc {
+  margin-right: 20px;
+  margin-left: 6px;
+  text-align: center;
 }
 
 .ArmorAndIniciative {
@@ -740,31 +797,6 @@ h2 {
 
 .ArmorAndIniciative ul {
   padding: 0;
-}
-
-.ArmorAndIniciative .iniciative_name {
-  padding-left: 15px;
-  padding-right: 15px;
-  width: -webkit-fit-content;
-  width: -moz-fit-content;
-  width: fit-content;
-}
-
-.ArmorAndIniciative .flatfooted_name {
-  width: -webkit-fit-content;
-  width: -moz-fit-content;
-  width: fit-content;
-}
-
-.ArmorAndIniciative .flatfooted_name h1 {
-  font-size: 15px;
-}
-
-.ArmorAndIniciative li {
-  height: -webkit-fit-content;
-  height: -moz-fit-content;
-  height: fit-content;
-  text-align: center;
 }
 
 .skill {

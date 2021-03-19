@@ -160,18 +160,19 @@ a, a:visited, a:hover {text-decoration: none;}
             }
     }
     &__value{
-            height: fit-content;
-            width: fit-content;
+            width: 40px;
+            height: 25px;
             color: $White;
-            margin: 1px;
-            p:first-child{
+            border: 1px solid $Black;
+            background-color: $White;
+            
+
+            p{
                 background-color: $White;
-                margin: 0 auto;
                 font-size: 15px;
                 text-align: center;
-                border: 2px solid $Black;
-                width: 40px;
-                height: 25px;
+                //border: 1px solid $Black;
+                margin: 0 auto;
             }
     }
     &__input {
@@ -183,8 +184,8 @@ a, a:visited, a:hover {text-decoration: none;}
             input{
                 text-align: center;
                 border: 2px solid $Black;
-                height: 25px;
                 width: 40px;
+                height: 25px;
 
             }
         

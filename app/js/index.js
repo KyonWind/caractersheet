@@ -1,6 +1,21 @@
 window.onload = function(e){
     console.log("hello grom js")
-    const headerNames = ["CHARACTER NAME","PLAYER","CLASS AND LEVEL","RACE","ALIGNMENT","DEITY","SIZE","AGE","GENDER","HEIGHT","WEIGHT","EYES","HAIR","SKIN"]
+    const headerNames = 
+    ["CHARACTER NAME",
+    "PLAYER",
+    "CLASS AND LEVEL",
+    "RACE",
+    "ALIGNMENT",
+    "DEITY",
+    "SIZE",
+    "AGE",
+    "GENDER",
+    "HEIGHT",
+    "WEIGHT",
+    "EYES",
+    "HAIR",
+    "SKIN"
+    ];
     const abName = 
     [
         {STA: "STR", Des: "STRENGHT"},
@@ -66,11 +81,41 @@ window.onload = function(e){
         {VALUE: "", Modifier: ""},
         {VALUE: "", Modifier: ""}
     ];
+    const hpbar = [
+        {name: "TOTAL", class:"hp__value", type:"value"},
+        {name: "HP EXTRA", class:"hp__extra",type:"input"},
+        {name: "WOUNDS/CURRENT HP", class:"hp__wounds",type:"input"},
+        {name: "NONLETHAL DAMAGE", class:"hp__nonlethaldamage",type:"input"},
+        {name: "SPEED", class:"hp__speed",type:"input"}
+    ];
+    const acbar = [
+        {name: "TOTAL", class:"ac__value ", type:"value"},
+        {name: "BASE", class:"ac__base ac__input",type:"base"},
+        {name: "ARMOR <br> BONUS", class:"ac__bonus ac__input",type:"input"},
+        {name: "SHIELD <br> BONUS", class:"ac__shield",type:"input"},
+        {name: "DEX <br> MODIFIER", class:"ac__dex",type:"input"},
+        {name: "SIZE <br> MODIFIER", class:"ac__size",type:"input"},
+        {name: "NATURAL <br> ARMOR", class:"ac__natural",type:"input"},
+        {name: "DEFLECTION <br> MODIFIER", class:"ac__deflection",type:"input"},
+        {name: "MISC <br> MODIFIER", class:"ac__misc",type:"input"},
+        {name: "DAMAGE REDUCTION", class:"ac__reduction",type:"dmg"},
+    ];
+    const acInit = [
+        {name: "<h1>TOUCH</h1><p>ARMOR CLASS</p>", class:"",type:"name"},
+        {name: "", class:"ac__touch",type:"input"},
+        {name: "<h1>FLAT-FOOTED</h1><p>ARMOR CLASS</p>", class:"ac__flatName",type:"name"},
+        {name: "", class:"ac__flat",type:"input"},
+        {name: "<h1>INICIATIVE</h1><p>MODIFIER</p>", class:" init init__inicitiveName",type:["name","init"]},
+        {name: "TOTAL", class:" init init__inicitiveValue", type:["value","init"]},
+        {name: "DEX <br> MODIFIER", class:" init init__dex",type:["input","init"]},
+        {name: "MISC <br> MODIFIER", class:" init init__misc",type:["lastinput","init"]},
+
+    ];
     
     headerMap(headerNames);
     statsMap(abName);
-   // hpAcMap(abName);
-   skillsMap(skill)
+    hpAcMap(hpbar,acbar,acInit);
+    skillsMap(skill)
 
 
 };
@@ -91,7 +136,6 @@ const headerMap = (data) =>  {
 
         header.innerHTML += query;
 };
-
 const statsMap = (data) =>{
     const StaNamelist = document.querySelector(".StaNamelist")
     const StatValuelist = document.querySelector(".StatValuelist")
@@ -154,75 +198,58 @@ const statsMap = (data) =>{
     StatTempModifier.innerHTML += query;
     query = ``;
 };
-const hpAcMap = (data) =>{
-    const HpAcSkillSection = document.querySelector('.HpAndArmor');
+const hpAcMap = (hpbar,acbar,acInit) =>{
+    const HpSection = document.querySelector('.hpbar');
+    const AcSection = document.querySelector('.acbar');
+    const InicSection = document.querySelector('.ArmorAndIniciative');
     let query = ``;
+    //BARRA HP
     query = `
-    <div class="hpbar debug flex flex-row-l">
-            
-                <div class="hp__name ">
-                    <div class="HpType flex flex-row" >
-                        <input type="radio" name="hpType" id="" value="PROD">
-                        <p>PROD</p>
-                        <input type="radio" name="hpType" id="">
-                        <p>FULL</p></div>
-                    <ul class="flex flex-column">
-                        <li class="Box__black">
-                            <h1>HP</h1>
-                            <p>HIT POINTS</p>
-                        </li>
-                    </ul>
-                </div>
-
-                <div class="hp__value">
-                    <p class="hp">TOTAL</p>
-                    <ul class="flex flex-column">
-                        <li class="Box__value">
-                            <p>30</p>
-                        </li>
-                    </ul>
-                </div>
-
-                <div class="hp__extra">
-                    <p class="hp">HP EXTRA</p>
-                    <ul class="flex flex-column">
-                        <li class="Box__input">
-                            <input type="text">
-                        </li>
-                    </ul>
-                </div>
-
-                <div class="hp__wounds">
-                    <p class="hp">WOUNDS/CURRENT HP</p>
-                    <ul class="flex flex-column flex-ai-c">
-                        <li class="Box__input">
-                            <input type="text">
-                        </li>
-                    </ul>
-                </div>
-
-                <div class="hp__nonlethaldamage">
-                    <p class="hp">NONLETHAL DAMAGE</p>
-                    <ul class="flex flex-column">
-                        <li class="Box__input">
-                            <input type="text">
-                        </li>
-                    </ul>
-                </div>
-
-                <div class="hp__speed">
-                    <p class="hp">SPEED</p>
-                    <ul class="flex flex-column flex-ai-c">
-                        <li class="Box__input">
-                            <input type="text">
-                        </li>
-                    </ul>
-                </div>
-
-        </div>
-
-        <div class="acbar debug flex flex-row-l">
-            <div class="ac__name ">
+    <div class="hp__name">
+         <div class="HpType flex flex-row">
+             <input type="radio" name="hpType">
+             <p>PROD</p>
+                 <input type="radio" name="hpType">
+             <p>FULL</p>
+         </div>
+         <ul class="flex flex-column">
+             <li class="Box__black">
+                 <h1>HP</h1>
+                 <p>HIT POINTS</p>
+             </li>
+         </ul>
+    </div>
+    `
+    hpbar.forEach(element => {
+        query += 
+        `
+        <div class="${element.class}">
+        <p class="hp">${element.name}</p>
+        <ul class="flex flex-column">
+            <li class="flex flex-row">
+        `
+        if(element.type == "value"){
+            query += `
+                    <div class="Box__value">
+                        <p></p>
+                    </div>     
+                </li>
+            </ul>
+        </div>`  
+        } else{
+            query += `
+                    <div class="Box__input">
+                        <input type="text">
+                    </div>   
+                </li>
+            </ul>
+        </div>` 
+        } 
+    });
+    HpSection.innerHTML += query;
+    //BARRA AC
+    query = `
+            <div class="ac__name">
                 <ul class="flex">
                     <li class="Box__black">
                         <h1>AC</h1>
@@ -230,127 +257,160 @@ const hpAcMap = (data) =>{
                     </li>
                 </ul>
             </div>
-            <div class="ac__bonus flex flex-row-l">
-                <ul class="flex flex-row">
-                    <li class="Box__value flex flex-row">
-                        <p>30</p>
-                        <p>TOTAL</p>
-                    </li>
-                    <li class="Box__input flex flex-row">
-                        <p>= 10 +</p>
-                    </li>
-                    <li class="Box__input flex flex-row">
-                        <input type="text">
-                        <p>ARMOR BONUS</p>
-                    </li>
-                    <li class="flex flex-ai-c">
-                        <p>+</p>
-                    </li>
-                    <li class="Box__input flex flex-row">
-                        <input type="text">
-                        <p>SHIELD BONUS</p>
-                    </li>
-                    <li class="flex flex-ai-c">
-                        <p>+</p>
-                    </li>
-                    <li class="Box__input flex flex-row">
-                        <input type="text">
-                        <p>DEX MODIFIER</p>
-                    </li>
-                    <li class="flex flex-ai-c">
-                        <p>+</p>
-                    </li>
-                    <li class="Box__input flex flex-row">
-                        <input type="text">
-                        <p>SIZE MODIFIER</p>
-                    </li>
-                    <li class="flex flex-ai-c">
-                        <p>+</p>
-                    </li>
-                    <li class="Box__input flex flex-row">
-                        <input type="text">
-                        <p>NATURAL ARMOR</p>
-                    </li>
-                    <li class="flex flex-ai-c">
-                        <p>+</p>
-                    </li>
-                    <li class="Box__input flex flex-row">
-                        <input type="text">
-                        <p>DEFLECTION MODIFIER</p>
-                    </li>
-                    <li class="flex flex-ai-c">
-                        <p>+</p>
-                    </li>
-                    <li class="Box__input flex flex-row">
-                        <input type="text">
-                        <p>MISC MODIFIER</p>
-                    </li>
-                    <li class="ac__DmgRed Box__input flex flex-row">
-                        <input type="text">
-                        <p>DAMAGE REDUCTION</p>
-                    </li>
-                </ul>
-            </div>
-                
-        </div>
-        <div class="flex flex-row">
-            <div class="ArmorAndIniciative debug flex flex-column-l">
-                <ul class="flex flex-row-l">
-                    <li class="touch_name flex flex-column Box__black">
-                        <h1>TOUCH</h1>
-                        <p>ARMOR CLASS</p>
-                    </li>
-                    <li class=" flex flex-column Box__input">
-                        <input type="text" name="" >
-                    </li>
-                    <li class="flatfooted_name flex flex-column Box__black">
-                        <h1>FLAT FOOTED</h1>
-                        <p>ARMOR CLASS</p>
-                    </li>
-                    <li class=" flex flex-column Box__input">
-                        <input type="text" name="" >
-                        
-                    </li>
-                    <li class="iniciative_name flex flex-column Box__black">
-                        <h1>INICIATIVE</h1>
-                        <p>MODIFIER</p>
-                    </li>
-                    <li class="Box__value flex flex-row">
-                        <p>0</p>
-                        <p>TOTAL</p>
-                    </li>
-                    <li class="flex flex-ai-c">
-                        <p>=</p>
-                        
-                    </li>
-                    <li class="Box__input flex flex-row">
-                        <input type="text">
-                        <p>DEX MODIFIER</p>
-                    </li>
-                    <li class="flex flex-ai-c">
-                        <p>+</p>
-                    </li>
-                    <li class="Box__input flex flex-row">
-                        <input type="text">
-                        <p>MISC MODIFIER</p>
-                    </li>
-                </ul>
-            </div>
-
-            <div class="skill flex debug">
-            <div class="skillcontainer">
-                <ul class="flex flex-column-t">
-                    <li class="flex flex-row Box__black">
-                        <h1>SKILLS</h1>
-                    </li>
-                </ul>
-            </div>
-
-        </div>
     `
-    HpAcSkillSection.innerHTML += query;
-}
+    acbar.forEach(element => {
+        query += 
+        `
+        <div class="${element.class } ac__input">
+        <ul class="flex flex-column">
+            <li class="flex flex-column">
+        `
+        if(element.type == "value"){
+            query += `
+            
+                    <div class="Box__value">
+                        <p></p>
+                    </div>
+                    <p class="hp">${element.name}</p>     
+                </li>
+            </ul>
+        </div>`  
+        } else if(element.type == "input"){
+            query += `
+                    <div class="Box__input">
+                        <input type="text">
+                    </div>
+                    <p class="hp">${element.name}</p>   
+                </li>
+            </ul>
+        </div>
+        <div class="ac__plus">
+            <p>+</p>
+        </div>`
+        } else if(element.type == "dmg"){
+            query += `
+                    <div class="Box__input">
+                        <input type="text">
+                    </div>
+                    <p class="hp">${element.name}</p>   
+                </li>
+            </ul>
+        </div>`
+            } 
+        else {
+            query += `
+                    <div class="Box__input">
+                        <p>= 10 +</p>
+                    </div>   
+                </li>
+            </ul>
+        </div>`
+        }
+    });
+    AcSection.innerHTML += query;
 
+    //BARRA INICIATIVA
+    query = ``;
+    acInit.forEach(element => {
+        if(element.type == "name")
+        {
+            query +=  `
+        <div class="${element.class}">
+            <ul class="flex flex-column">
+                <li class="Box__black">
+                    ${element.name}
+                </li>
+            </ul>
+        </div>
+        `
+        }
+        else if(element.type == "input")
+        {
+            query += `
+        <div class="${element.class}">
+            <ul class="flex flex-column">
+                <li class="flex flex-row">
+                    <div class="Box__input">
+                        <input type="text">
+                    </div>
+                </li>
+            </ul>
+        </div>
+        `
+        }
+        else if(element.type[1] == "init")
+        {
+            
+            if(element.type[0] == "name")
+            {
+                query +=  `
+            <div class="${element.class}">
+                <ul class="flex flex-column">
+                    <li class="Box__black">
+                        ${element.name}
+                    </li>
+                </ul>
+            </div>
+            `
+            }
+            else if(element.type[0] == "value")
+            {
+                query += `
+            <div class="${element.class}">
+                <ul class="flex flex-column">
+                    <li class="flex flex-column">
+                    <div class="Box__value">
+                    <p></p>
+                </div>
+                <p class="hp">${element.name}</p>     
+            </li>
+        </ul>
+    </div>
+    <div class="ac__plus">
+                <p>=</p>
+            </div>
+            `  
+            
+            }
+            else if(element.type[0] == "input")
+            {
+                query += `
+                <div class="${element.class}">
+                    
+                    <ul class="flex flex-column">
+                        <li class="flex flex-column">
+                            <div class="Box__input">
+                                <input type="text">
+                            </div>
+                            <p class="hp">${element.name}</p>
+                        </li>
+                    </ul>
+                </div>
+                <div class="ac__plus">
+                <p>+</p>
+            </div>
+                `    
+            }
+            else{
+                query += `
+                <div class="${element.class}">
+                    
+                    <ul class="flex flex-column">
+                        <li class="flex flex-column">
+                            <div class="Box__input">
+                                <input type="text">
+                            </div>
+                            <p class="hp">${element.name}</p>
+                        </li>
+                    </ul>
+                </div>
+                `   
+            }
+        }
+        
+    });
+    InicSection.innerHTML += query;
+};
 const skillsMap = (data) =>{
     const skill_container = document.querySelector('.skill_container');
     let query = `
@@ -419,33 +479,4 @@ const skillsMap = (data) =>{
     </div>
     `
     skill_container.innerHTML += query;
-}
-
-/*
-<li class="skill__skills flex flex-row-l">
-                    
-                    <div class="skill__name flex flex-row-l">
-                    <input type="checkbox">
-                    <p>APPRAISE</p>
-                    </div>
-                    <div class="skill__modifier">
-                    <p>INT</p>
-                    </div>
-                    <div class="skill__value">
-                        <p>0</p>
-                    </div>
-                    <p>=</p>
-                    <input type="number" name="" id="">
-                    <p>+</p>
-                    <input type="number" name="" id="">
-                    <p>+</p>
-                    <input type="number" name="" id="">
-                </li>
-
-
-                </ul>
-            </ul>
-        </div>
-        
-    </div>
-*/ 
+};
