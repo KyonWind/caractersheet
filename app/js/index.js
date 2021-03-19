@@ -10,6 +10,53 @@ window.onload = function(e){
         {STA: "WIS", Des: "WISDOM"},
         {STA: "CAR", Des: "CHARISMA"}
     ];
+    const skill = 
+    [
+        {name: "Appraise", modifier: "INT"},
+        {name: "Balance", modifier: "DEX"},
+        {name: "Bluff", modifier: "CHA"},
+        {name: "Climb", modifier: "STR*"},
+        {name: "Concentration", modifier: "CON"},
+        {name: "Craft( _______________)", modifier: "INT"},
+        {name: "Craft( _______________)", modifier: "INT"},
+        {name: "Craft( _______________)", modifier: "INT"},
+        {name: "Decipher Script", modifier: "INT"},
+        {name: "Diplomacy", modifier: "CHA"},
+        {name: "Disable Device", modifier: "INT"},
+        {name: "Disguise", modifier: "CHA"},
+        {name: "Escape Artist", modifier: "DEX*"},
+        {name: "Forgery", modifier: "INT"},
+        {name: "Gather Information", modifier: "CHA"},
+        {name: "Handle Animal", modifier: "CHA"},
+        {name: "Heal", modifier: "WIS"},
+        {name: "Hide", modifier: "DEX*"},
+        {name: "Intimidate", modifier: "CHA"},
+        {name: "Jump", modifier: "STR*"},
+        {name: "Knowledge (Arcana)", modifier: "INT"},
+        {name: "Knowledge (Natural)", modifier: "INT"},
+        {name: "Knowledge (Dungeon)", modifier: "INT"},
+        {name: "Knowledge (Religion)", modifier: "INT"},
+        {name: "Knowledge (Nobleza)", modifier: "INT"},
+        {name: "Listen", modifier: "WIS"},
+        {name: "Move Silently", modifier: "DEX*"},
+        {name: "Open Lock", modifier: "DEX"},
+        {name: "Perform (______________)", modifier: "CHA"},
+        {name: "Perform (______________)", modifier: "CHA"},
+        {name: "Perform (______________)", modifier: "CHA"},
+        {name: "Profession (___________)", modifier: "WIS"},
+        {name: "Profession (___________)", modifier: "WIS"},
+        {name: "Ride", modifier: "DEX"},
+        {name: "Search", modifier: "INT"},
+        {name: "Sense Motive", modifier: "WIS"},
+        {name: "Sleight of Hand ", modifier: "DEX*"},
+        {name: "Spellcraft ", modifier: "INT"},
+        {name: "Spot", modifier: "WIS"},
+        {name: "Survival", modifier: "WIS"},
+        {name: "Swim", modifier: "STR"},
+        {name: "Tumble ", modifier: "DEX*"},
+        {name: "Use Magic Device", modifier: "CHA"},
+        {name: "Use Rope", modifier: "DEX"},
+    ]
 
     const StatsModifier = 
     [
@@ -24,6 +71,7 @@ window.onload = function(e){
     headerMap(headerNames);
     statsMap(abName);
    // hpAcMap(abName);
+   skillsMap(skill)
 
 
 };
@@ -104,7 +152,7 @@ const statsMap = (data) =>{
     query = ``;
 };
 const hpAcMap = (data) =>{
-    const HpAcSection = document.querySelector('.HpAndArmor')
+    const HpAcSkillSection = document.querySelector('.HpAndArmor')
     let query = ``;
     query = `
     <div class="hpbar debug flex flex-row-l">
@@ -297,6 +345,16 @@ const hpAcMap = (data) =>{
 
         </div>
     `
-    HpAcSection.innerHTML = query;
+    HpAcSkillSection.innerHTML += query;
+}
+
+const skillsMap = (data) =>{
+    const HpAcSkillSection = document.querySelector('.HpAndArmor')
+    let query = `
+    `;
+    query = `
+    
+    `
+    HpAcSkillSection.innerHTML += query;
 }
 
