@@ -218,8 +218,8 @@ main section:last-child {
   -webkit-box-direction: normal;
       -ms-flex-flow: wrap column;
           flex-flow: wrap column;
-  -ms-flex-line-pack: end;
-      align-content: flex-end;
+  -ms-flex-line-pack: center;
+      align-content: center;
   margin: 0 auto;
   -webkit-box-pack: start;
       -ms-flex-pack: start;
@@ -704,6 +704,7 @@ h2 {
 }
 
 .ArmorAndIniciative {
+  margin-left: 0;
   margin-top: 20px;
   width: 47%;
 }
@@ -713,6 +714,8 @@ h2 {
 }
 
 .ArmorAndIniciative .iniciative_name {
+  padding-left: 15px;
+  padding-right: 15px;
   width: -webkit-fit-content;
   width: -moz-fit-content;
   width: fit-content;
@@ -744,6 +747,69 @@ h2 {
   bottom: 37%;
 }
 
+.skill__name {
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
+  margin-left: 0;
+  margin-right: 0;
+  width: 135px;
+}
+
+.skill__name input {
+  margin: 0;
+}
+
+.skill__name p {
+  width: 40px;
+}
+
+.skill__modifier {
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
+  width: 45px;
+  margin: 0;
+}
+
+.skill__modifier p {
+  margin: 0 auto;
+  font-size: 15px;
+}
+
+.skill__skills {
+  margin: 0;
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
+}
+
+.skill__skills input {
+  margin-left: 0 auto;
+  border: none;
+  border-bottom: 1px solid;
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
+  width: 37px;
+}
+
+.skill__value {
+  margin: 0;
+  border: 2px solid black;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+}
+
+.skill__value p {
+  text-align: center;
+  width: 45px;
+}
+
 .skill ul {
   padding: 0;
   width: -webkit-fit-content;
@@ -772,8 +838,23 @@ h2 {
   text-align: right;
 }
 
+.skill ul li:nth-child(2) div:first-child {
+  width: 135px;
+}
+
+.skill ul li:nth-child(2) div:first-child p {
+  text-align: left;
+  color: black;
+  font-size: 15px;
+}
+
 .skill ul li:nth-child(2) div {
   border: 1px solid black;
   padding: 5px 4px 5px 4px;
+  width: 45px;
+}
+
+.skill ul li:nth-child(2) div p {
+  text-align: center;
 }
 /*# sourceMappingURL=style.css.map */

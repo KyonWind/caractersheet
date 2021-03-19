@@ -198,15 +198,16 @@
 }
 .ArmorAndIniciative
 {
+    margin-left: 0;
     margin-top: 20px;
     width: 47%;
     ul{
         padding: 0;
     }
     .iniciative_name{
-        h1{
-
-        }
+        
+        padding-left: 15px;
+        padding-right: 15px;
         width: fit-content;
     }
     .flatfooted_name{

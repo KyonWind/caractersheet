@@ -1,4 +1,54 @@
 .skill{
+
+    &__name
+    {
+        align-items: center;
+        height: fit-content;
+        margin-left: 0;
+        margin-right: 0;
+        width: 135px;
+        input
+        {
+            margin: 0;
+        }
+        p{
+            width: 40px;
+        }
+    }
+    &__modifier
+    {
+        height: fit-content;
+        width: 45px;
+        margin: 0;
+        p
+        {
+            margin: 0 auto;
+            font-size: 15px;
+        }
+    }
+    &__skills
+    {
+            margin: 0;
+            height: fit-content;
+            input{
+                margin-left: 0 auto;
+                border: none;
+                border-bottom: 1px solid;
+                height: fit-content;
+                width: 37px;
+            }
+           
+    }
+    &__value
+    {
+        margin: 0;
+        border: 2px solid $Black;    
+        width: fit-content;
+        p{
+            text-align: center;
+            width: 45px;
+        }
+    }
     margin-top: 20px;
     left: 62%;
     width: fit-content;
@@ -22,10 +72,26 @@
             }
         }
         li:nth-child(2){
+            div:first-child
+            {
+                width: 135px;
+                p{
+                    text-align: left;
+                    color: $Black;
+                    font-size: 15px;
+                }
+            }
             div{
                 border: 1px solid $Black;
                 padding: 5px 4px 5px 4px;
-            }
+                width: 45px;
+                    p{
+                       text-align: center; 
+                    }
+                }
         }
+
     }
+
+    
 }
