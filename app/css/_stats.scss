@@ -1,5 +1,6 @@
 .stats{
     width: 30%;
+    height: fit-content;
     p {
         text-align: center;
     }
@@ -47,6 +48,11 @@
             margin-top: 2px;
             margin-bottom: 2px;
             padding: 0;
+
+            li{
+                margin-top: 7px;
+                margin-bottom: 15px;
+            }
         }
         
     }
@@ -78,14 +84,23 @@
         p:first-child{
             height: 20px;
          }
+         li:last-child{
+            margin-bottom: 8px;
+         }
         ul{
             background-color: $GrayishBlue;
             margin-top: 2px;
             margin-bottom: 2px;
             padding: 0;
+
+            li{
+                margin-top: 7px;
+                margin-bottom: 15px;
+                p{
+                    
+                }
+            }
         }
-        p{
-            border: none;
-        }
+        
     }
 }

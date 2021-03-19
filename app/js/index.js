@@ -40,9 +40,9 @@ window.onload = function(e){
         {name: "Listen", modifier: "WIS"},
         {name: "Move Silently", modifier: "DEX*"},
         {name: "Open Lock", modifier: "DEX"},
-        {name: "Perform (______________)", modifier: "CHA"},
-        {name: "Perform (______________)", modifier: "CHA"},
-        {name: "Perform (______________)", modifier: "CHA"},
+        {name: "Perform (____________)", modifier: "CHA"},
+        {name: "Perform (____________)", modifier: "CHA"},
+        {name: "Perform (____________)", modifier: "CHA"},
         {name: "Profession (___________)", modifier: "WIS"},
         {name: "Profession (___________)", modifier: "WIS"},
         {name: "Ride", modifier: "DEX"},
@@ -56,8 +56,7 @@ window.onload = function(e){
         {name: "Tumble ", modifier: "DEX*"},
         {name: "Use Magic Device", modifier: "CHA"},
         {name: "Use Rope", modifier: "DEX"},
-    ]
-
+    ];
     const StatsModifier = 
     [
         {VALUE: "", Modifier: ""},
@@ -123,8 +122,10 @@ const statsMap = (data) =>{
 
     data.forEach(element => {
         query += `
-        <li class=" flex flex-column Box__value">
+        <li class=" flex flex-column">
+        <div  class="Box__value">
         <p class="${element.STA}-Modifier">30</p>
+        </div>
         </li>`
     });
 
@@ -143,8 +144,10 @@ const statsMap = (data) =>{
 
     data.forEach(element => {
         query += `
-        <li class=" flex flex-column Box__value">
+        <li class=" flex flex-column">
+        <div  class="Box__value">
         <p class="${element.STA}-TModifier">30</p>
+        </div>
         </li>`
     });
 
@@ -152,7 +155,7 @@ const statsMap = (data) =>{
     query = ``;
 };
 const hpAcMap = (data) =>{
-    const HpAcSkillSection = document.querySelector('.HpAndArmor')
+    const HpAcSkillSection = document.querySelector('.HpAndArmor');
     let query = ``;
     query = `
     <div class="hpbar debug flex flex-row-l">
@@ -349,12 +352,100 @@ const hpAcMap = (data) =>{
 }
 
 const skillsMap = (data) =>{
-    const HpAcSkillSection = document.querySelector('.HpAndArmor')
+    const skill_container = document.querySelector('.skill_container');
     let query = `
+    <div class="skill flex debug">
+        <div class="skillcontainer">
+            <ul class="flex flex-column-t">
+                <li class="flex flex-row-l Box__black">
+                    <h1>SKILLS</h1>
+                    <div class="flex flex-row">
+                        <p>MAX RANKS <br> (CLASS/CROSS-CLASS)</p>
+                        <div class="Box__value">
+                            <p>0</p>
+                        </div>
+                    </div>
+                </li>
+                <li class="flex flex-row">
+                    <div>
+                        <p>SKILL NAME</p>
+                    </div>
+                    <div>
+                        <p>KEY <br> ABILITY</p>
+                    </div>
+                    <div>
+                        <p>SKILL <br> MODIFIER</p>
+                    </div>
+                    <div>
+                        <p>ABILITY <br> MODIFIER</p>
+                    </div>
+                    <div>
+                        <p>RANKS</p>
+                    </div>
+                    <div>
+                        <p>MISC <br> MODIFIER</p>
+                    </div>
+                </li>
+                
     `;
-    query = `
-    
+
+    data.forEach(element => {
+        query += `
+                <li class="skill__skills flex flex-row-l">
+                    <div class="skill__name ${element.name}_c flex flex-row-l">
+                        <input type="checkbox">
+                        <p>${element.name}</p>
+                    </div>
+                    <div class="skill__modifier ${element.name}_skill">
+                        <p>${element.modifier}</p>
+                    </div>
+                    <div class="skill__value ${element.name}_value">
+                        <p>0</p>
+                    </div>
+                        <p>=</p>
+                        <input type="number" class="${element.modifier}_value" name="" id="">
+                        <p>+</p>
+                     <input type="number" class="${element.name}_ranks" name="" id="">
+                        <p>+</p>
+                    <input type="number" class="${element.name}_misc_ranks" name="" id="">
+                </li>
+        `;
+    });
+
+    query += `
+    </ul>
+        </div>
+        
+    </div>
     `
-    HpAcSkillSection.innerHTML += query;
+    skill_container.innerHTML += query;
 }
 
+/*
+<li class="skill__skills flex flex-row-l">
+                    
+                    <div class="skill__name flex flex-row-l">
+                    <input type="checkbox">
+                    <p>APPRAISE</p>
+                    </div>
+                    <div class="skill__modifier">
+                    <p>INT</p>
+                    </div>
+                    <div class="skill__value">
+                        <p>0</p>
+                    </div>
+                    <p>=</p>
+                    <input type="number" name="" id="">
+                    <p>+</p>
+                    <input type="number" name="" id="">
+                    <p>+</p>
+                    <input type="number" name="" id="">
+                </li>
+
+
+                </ul>
+            </ul>
+        </div>
+        
+    </div>
+*/ 

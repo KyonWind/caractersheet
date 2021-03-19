@@ -7,6 +7,11 @@ html
     box-sizing: inherit; 
 }
 
+.debug{
+    border: 1px solid red;
+}
+
+
 p{
     margin-top: 3px;
     margin-bottom: 1px;
@@ -155,8 +160,8 @@ a, a:visited, a:hover {text-decoration: none;}
             }
     }
     &__value{
-            height: 36px;
-            width: 50px;
+            height: fit-content;
+            width: fit-content;
             color: $White;
             margin: 1px;
             p:first-child{
@@ -166,12 +171,13 @@ a, a:visited, a:hover {text-decoration: none;}
                 text-align: center;
                 border: 2px solid $Black;
                 width: 40px;
+                height: 25px;
             }
     }
     &__input {
             margin: 1px;
-            height: 36px;
-            width: 50px;
+            height: fit-content;
+            width: fit-content;
             color: $White;
            
             input{

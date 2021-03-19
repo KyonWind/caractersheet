@@ -12,19 +12,21 @@
             margin: 0;
         }
         p{
-            font-size: 10px;
-            width: 40px;
+            font-weight: 800;
+            font-size: 9px;
+            width: fit-content;
         }
     }
     &__modifier
     {
+        
         height: fit-content;
         width: 45px;
         margin: 0;
         p
         {
-            margin: 0 auto;
-            font-size: 15px;
+            font-size: 10px;
+            text-align: center;
         }
     }
     &__skills
@@ -43,7 +45,10 @@
     &__value
     {
         margin: 0;
-        border: 2px solid $Black;    
+        border-left:2px solid $Black ;   
+        border-right:2px solid $Black;
+        border-top: 1px solid $Black;
+        border-bottom: 1px solid $Black;
         width: fit-content;
         p{
             text-align: center;

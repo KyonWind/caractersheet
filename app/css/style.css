@@ -83,6 +83,10 @@ html {
           box-sizing: inherit;
 }
 
+.debug {
+  border: 1px solid red;
+}
+
 p {
   margin-top: 3px;
   margin-bottom: 1px;
@@ -276,8 +280,12 @@ main section:last-child {
 }
 
 .Box__value {
-  height: 36px;
-  width: 50px;
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
   color: white;
   margin: 1px;
 }
@@ -289,12 +297,17 @@ main section:last-child {
   text-align: center;
   border: 2px solid black;
   width: 40px;
+  height: 25px;
 }
 
 .Box__input {
   margin: 1px;
-  height: 36px;
-  width: 50px;
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
   color: white;
 }
 
@@ -419,6 +432,9 @@ h2 {
 
 .stats {
   width: 30%;
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
 }
 
 .stats p {
@@ -469,6 +485,11 @@ h2 {
   padding: 0;
 }
 
+.stats__vModifier ul li {
+  margin-top: 7px;
+  margin-bottom: 15px;
+}
+
 .stats__Temp p:first-child {
   height: 20px;
 }
@@ -497,6 +518,10 @@ h2 {
   height: 20px;
 }
 
+.stats__tModifier li:last-child {
+  margin-bottom: 8px;
+}
+
 .stats__tModifier ul {
   background-color: #9698a6;
   margin-top: 2px;
@@ -504,8 +529,9 @@ h2 {
   padding: 0;
 }
 
-.stats__tModifier p {
-  border: none;
+.stats__tModifier ul li {
+  margin-top: 7px;
+  margin-bottom: 15px;
 }
 
 .HpAndArmor {
@@ -707,6 +733,9 @@ h2 {
   margin-left: 0;
   margin-top: 20px;
   width: 47%;
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
 }
 
 .ArmorAndIniciative ul {
@@ -764,8 +793,11 @@ h2 {
 }
 
 .skill__name p {
-  font-size: 10px;
-  width: 40px;
+  font-weight: 800;
+  font-size: 9px;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
 }
 
 .skill__modifier {
@@ -777,8 +809,8 @@ h2 {
 }
 
 .skill__modifier p {
-  margin: 0 auto;
-  font-size: 15px;
+  font-size: 10px;
+  text-align: center;
 }
 
 .skill__skills {
@@ -800,7 +832,10 @@ h2 {
 
 .skill__value {
   margin: 0;
-  border: 2px solid black;
+  border-left: 2px solid black;
+  border-right: 2px solid black;
+  border-top: 1px solid black;
+  border-bottom: 1px solid black;
   width: -webkit-fit-content;
   width: -moz-fit-content;
   width: fit-content;
