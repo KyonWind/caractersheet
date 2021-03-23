@@ -1,5 +1,5 @@
 window.onload = function(e){
-    console.log("hello grom js")
+    //MOCK UP DATA
     const headerNames = 
     ["CHARACTER NAME",
     "PLAYER",
@@ -115,9 +115,7 @@ window.onload = function(e){
     headerMap(headerNames);
     statsMap(abName);
     hpAcMap(hpbar,acbar,acInit);
-    skillsMap(skill)
-
-
+    skillsMap(skill);
 };
 
 const headerMap = (data) =>  {
