@@ -439,7 +439,7 @@ const hpAcMap = (hpbar,acbar,acInit) =>{
     InicSection.innerHTML += query;
 };
 const skillsMap = (data) =>{
-    const skill_container = document.querySelector('.skill_container');
+    const skill_container = document.querySelector('.skill__container');
     let query = `
     <div class="skill flex debug">
         <div class="skillcontainer">

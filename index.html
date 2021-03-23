@@ -16,59 +16,61 @@
       <div class="header__logo"></div>
     </section>
 
-    <main class="debug flex flex-row-l">
+    <main class="debug flex">
+        <section class="stats flex flex-auto debug">
+                
+            <div class="stats__name">
+            <p class="StaName">ABILITY NAME</p>
+            <ul class="StaNamelist">
+            </ul>
+            </div>
+
+            <div class="stats__value flex flex-column-t">
+                <p class="">ABILITY <br> SCORE</p>
+                <ul class="StatValuelist">
+                </ul> 
+            </div>
+
+            <div class="stats__vModifier flex flex-column-t">
+                <p class="Stat">ABILITY <br> MODIFIER</p>
+                    <ul class="StatvModifierlist">
+                    </ul> 
+            </div>
+
+            <div class="stats__Temp flex flex-column-t">
+                <p class="Stat">TEMPORARY <br> SCORE</p>
+                    <ul class="StatTempValue">
+                    </ul> 
+            </div>
+
+            <div class="stats__tModifier flex flex-column-t">
+                <p class="Stat">TEMPORARY <br> MODIFIER</p>
+                    <ul class="StatTempModifier">
+                    </ul> 
+            </div>
+        </section>
+        <section class="saves flex debug">
+            <div class="saves__bar fortitude__bar flex"></div>
+            <div class="saves__bar reflex__bar flex"></div>
+            <div class="saves__bar will__bar flex"></div>
+            <div class="saves__bar others__modifier flex-auto">
+                <div class="Box__input">
+                    <input type="text">
+                </div>
+            </div>
+    </section>
+
+        <section class="HpAndArmor debug">
+            <div class="hpbar debug flex flex-row-l"></div>
+            <div class="acbar debug flex flex-row-l"></div>
+        </section>
+
+        <div class="ArmorAndIniciative debug flex flex-row-l"></div> 
+        <div class="flex skill__container debug"></div>
 
         
-        <section class="stat_saves_attacks debug">
-            <section class="stats flex debug">
-                
-                <div class="stats__name">
-                <p class="StaName">ABILITY NAME</p>
-                <ul class="StaNamelist">
-                </ul>
-                </div>
-
-                <div class="stats__value flex flex-column-t">
-                    <p class="">ABILITY <br> SCORE</p>
-                    <ul class="StatValuelist">
-                    </ul> 
-                </div>
-
-                <div class="stats__vModifier flex flex-column-t">
-                    <p class="Stat">ABILITY <br> MODIFIER</p>
-                        <ul class="StatvModifierlist">
-                        </ul> 
-                </div>
-
-                <div class="stats__Temp flex flex-column-t">
-                    <p class="Stat">TEMPORARY <br> SCORE</p>
-                        <ul class="StatTempValue">
-                        </ul> 
-                </div>
-
-                <div class="stats__tModifier flex flex-column-t">
-                    <p class="Stat">TEMPORARY <br> MODIFIER</p>
-                        <ul class="StatTempModifier">
-                        </ul> 
-                </div>
-            </section>
-
-                <section class="saves flex debug">
-                        <div class="saves__bar fortitude__bar flex"></div>
-                        <div class="saves__bar reflex__bar flex"></div>
-                        <div class="saves__bar will__bar flex"></div>
-                </section>
-         
-        </section>
-         
             
-            <section class="HpAndArmor debug">
-                <div class="hpbar debug flex flex-row-l"></div>
-                <div class="acbar debug flex flex-row-l"></div>
-                <div class="flex flex-row skill_container">
-                    <div class="ArmorAndIniciative debug flex flex-row"></div>  
-                </div>
-            </section>
+                
 </main>
 
 </body>

@@ -2,6 +2,7 @@ html
 {
    font-size: 100%;
    box-sizing: border-box; 
+   list-style-type: none;
 } 
 *, *::before, *::after {
     box-sizing: inherit; 
@@ -9,6 +10,10 @@ html
 
 .debug{
     border: 1px solid red;
+}
+
+.flex-auto{
+    flex: auto;
 }
 
 
@@ -73,6 +78,8 @@ a, a:visited, a:hover {text-decoration: none;}
 
  main
  {
+     height: 1300px;
+     flex-flow: column wrap;
      section:last-child
      {
         margin-left: auto;

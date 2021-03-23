@@ -76,6 +76,7 @@ html {
   font-size: 100%;
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
+  list-style-type: none;
 }
 
 *, *::before, *::after {
@@ -85,6 +86,12 @@ html {
 
 .debug {
   border: 1px solid red;
+}
+
+.flex-auto {
+  -webkit-box-flex: 1;
+      -ms-flex: auto;
+          flex: auto;
 }
 
 p {
@@ -148,6 +155,14 @@ a, a:visited, a:hover {
 
 .container--pb {
   padding-bottom: 2.25rem;
+}
+
+main {
+  height: 1300px;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: column wrap;
+          flex-flow: column wrap;
 }
 
 main section:last-child {
@@ -805,7 +820,8 @@ h2 {
 .ArmorAndIniciative {
   margin-left: 0;
   margin-top: 20px;
-  width: 47%;
+  margin-right: 0;
+  width: 30%;
   height: -webkit-fit-content;
   height: -moz-fit-content;
   height: fit-content;
@@ -894,6 +910,12 @@ h2 {
   width: 45px;
 }
 
+.skill__container {
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+}
+
 .skill ul {
   padding: 0;
   width: -webkit-fit-content;
@@ -942,21 +964,16 @@ h2 {
   text-align: center;
 }
 
-.stat_saves_attacks {
-  width: 30%;
-}
-
-.stat_saves_attacks .saves {
+.saves {
   margin-top: 30px;
-  width: 30%;
-  margin-left: 0;
-  -webkit-box-orient: vertical;
+  width: 60%;
+  -webkit-box-orient: horizontal;
   -webkit-box-direction: normal;
-      -ms-flex-flow: column;
-          flex-flow: column;
+      -ms-flex-flow: row wrap;
+          flex-flow: row wrap;
 }
 
-.stat_saves_attacks .saves__bar {
+.saves__bar {
   height: -webkit-fit-content;
   height: -moz-fit-content;
   height: fit-content;
@@ -968,7 +985,7 @@ h2 {
           align-items: flex-end;
 }
 
-.stat_saves_attacks .saves__bar ul {
+.saves__bar ul {
   height: -webkit-fit-content;
   height: -moz-fit-content;
   height: fit-content;
@@ -976,24 +993,37 @@ h2 {
   margin: 0;
 }
 
-.stat_saves_attacks .saves__bar ul:first-child {
+.saves__bar ul:first-child {
   margin-right: 5px;
 }
 
-.stat_saves_attacks .saves__bar li {
+.saves__bar li {
   text-align: center;
   width: -webkit-fit-content;
   width: -moz-fit-content;
   width: fit-content;
 }
 
-.stat_saves_attacks .saves__bar .Box__black:first-child {
+.saves__bar .Box__black:first-child {
   width: 130px;
 }
 
-.stat_saves_attacks .saves__bar .save {
+.saves__bar .save {
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
   height: -webkit-fit-content;
   height: -moz-fit-content;
   height: fit-content;
+}
+
+.saves .others__modifier {
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
+}
+
+.saves .others__modifier input {
+  height: 120px;
 }
 /*# sourceMappingURL=style.css.map */
