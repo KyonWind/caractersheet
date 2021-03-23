@@ -1,5 +1,5 @@
 .stats{
-    width: 30%;
+    width: fit-content;
     height: fit-content;
     p {
         text-align: center;
@@ -48,6 +48,7 @@
             margin-top: 2px;
             margin-bottom: 2px;
             padding: 0;
+            margin-right: 5px;
 
             li{
                 margin-top: 7px;

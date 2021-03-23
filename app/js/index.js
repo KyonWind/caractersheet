@@ -111,11 +111,40 @@ window.onload = function(e){
         {name: "MISC <br> MODIFIER", class:" init init__misc",type:["lastinput","init"]},
 
     ];
+    const saveData = [
+    {SaveName:"FORTITUDE",class:"Box_black", type:"name", data: [
+        {name:"TOTAL", class:"save_for_total", type:"value"},
+        {name:"BASE <br> SAVE", class:"save_for_base", type:"input"},
+        {name:"ABILITY <br> MODIFIER", class:"save_for_modif", type:"input"},
+        {name:"MAGIC <br> MODIFIER", class:"save_for_magic", type:"input"},
+        {name:"MISC <br> MODIFIER", class:"save_for_misc", type:"input"},
+        {name:"TEMP <br> MODIFIER", class:"save_for_temp", type:"Lastinput"}]
+    },
+
+    {SaveName:"REFLEX",class:"Box_black", type:"name", data: [
+        {name:"TOTAL", class:"save_reflex_total", type:"value"},
+        {name:"BASE <br> SAVE", class:"save_reflex_base", type:"input"},
+        {name:"ABILITY <br> MODIFIER", class:"save_reflex_modif", type:"input"},
+        {name:"MAGIC <br> MODIFIER", class:"save_reflex_magic", type:"input"},
+        {name:"MISC <br> MODIFIER", class:"save_reflex_misc", type:"input"},
+        {name:"TEMP <br> MODIFIER", class:"save_reflex_temp", type:"Lastinput"}]
+    },
+
+    {SaveName:"WILL",class:"Box_black", type:"name", data: [
+        {name:"TOTAL", class:"save_will_total", type:"value"},
+        {name:"BASE <br> SAVE", class:"save_will_base", type:"input"},
+        {name:"ABILITY <br> MODIFIER", class:"save_will_modif", type:"input"},
+        {name:"MAGIC <br> MODIFIER", class:"save_will_magic", type:"input"},
+        {name:"MISC <br> MODIFIER", class:"save_will_misc", type:"input"},
+        {name:"TEMP <br> MODIFIER", class:"save_will_temp", type:"Lastinput"}]
+    }
+    ];
     
     headerMap(headerNames);
     statsMap(abName);
     hpAcMap(hpbar,acbar,acInit);
     skillsMap(skill);
+    savesMap(saveData);
 };
 
 const headerMap = (data) =>  {
@@ -478,3 +507,90 @@ const skillsMap = (data) =>{
     `
     skill_container.innerHTML += query;
 };
+const savesMap = (data) =>{
+    console.log('carga de saves');
+    const FORTITUDE = document.querySelector('.fortitude__bar');
+    const REFLEX = document.querySelector('.reflex__bar');
+    const WILL = document.querySelector('.will__bar');
+    let query = ``;
+    data.forEach(element =>{
+        //if(element.SaveName == "FORTITUDE"){
+          
+            if(element.type == "name"){
+                query = `
+                <ul>
+                <li class="Box__black">
+                <h1>${element.SaveName}</h1>
+                </li>
+                </ul>
+                `  
+                element.data.forEach(subelement => {
+                    query += 
+                            `
+                            <div class="save ${subelement.class}">
+                            <ul class="flex flex-column">
+                                <li class="flex flex-column">
+                            `
+                                    if(subelement.type == "value"){
+                                        if(element.SaveName == "FORTITUDE")
+                                            {
+                                            query += `<p>${subelement.name}</p> `
+                                            }
+                                        query += `  
+                                                <div class="Box__value">
+                                                    <p></p>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <div class="plus">
+                                        <p>=</p>
+                                    </div>`  
+                                    } else if(subelement.type == "input"){
+                                        if(element.SaveName == "FORTITUDE")
+                                            {
+                                            query += `<p>${subelement.name}</p> `
+                                            }
+                                        query += `
+                                                <div class="Box__input">
+                                                    <input type="text">
+                                                </div>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <div class="plus">
+                                        <p>+</p>
+                                    </div>`
+                                    } else {
+                                        if(element.SaveName == "FORTITUDE")
+                                            {
+                                            query += `<p>${element.name}</p> `
+                                            }
+                                        query += `
+                                                <div class="Box__input">
+                                                    <input type="text">
+                                                </div>
+                                            </li>
+                                        </ul>
+                                    </div>`
+                                    }
+                 });
+            }
+            if(element.SaveName == "FORTITUDE")
+            {
+                FORTITUDE.innerHTML = query;
+            }
+            else if(element.SaveName == "REFLEX")
+            {
+                REFLEX.innerHTML = query;
+            }
+            else
+            {
+                WILL.innerHTML = query;
+            }
+            
+       // }
+          
+    });
+
+}
