@@ -16,6 +16,14 @@ html
     flex: auto;
 }
 
+//GRID CONTAINER
+.grid{
+    display: grid;
+    grid-template-columns: 10% 10% 10% 10% 10% 10% 10% 10% 10% 10%; 
+    grid-template-rows: 10% 10% 10% 10% 10% 10% 10% 10% 10% 10%;
+
+}
+
 
 p{
     margin-top: 3px;
@@ -44,7 +52,7 @@ a, a:visited, a:hover {text-decoration: none;}
 
 //spacing
 .container {
-    max-width: 1110px;
+    max-width: 1100px;
     margin: 0 auto;
     
     &--pall{

@@ -94,6 +94,15 @@ html {
           flex: auto;
 }
 
+.grid {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 10% 10% 10% 10% 10% 10% 10% 10% 10% 10%;
+      grid-template-columns: 10% 10% 10% 10% 10% 10% 10% 10% 10% 10%;
+  -ms-grid-rows: 10% 10% 10% 10% 10% 10% 10% 10% 10% 10%;
+      grid-template-rows: 10% 10% 10% 10% 10% 10% 10% 10% 10% 10%;
+}
+
 p {
   margin-top: 3px;
   margin-bottom: 1px;
@@ -120,7 +129,7 @@ a, a:visited, a:hover {
 }
 
 .container {
-  max-width: 1110px;
+  max-width: 1100px;
   margin: 0 auto;
 }
 
@@ -453,6 +462,12 @@ h2 {
 }
 
 .stats {
+  -ms-grid-column: 1;
+      grid-column-start: 1;
+  grid-column-end: 3;
+  -ms-grid-row: 1;
+      grid-row-start: 1;
+  grid-row-end: 3;
   width: -webkit-fit-content;
   width: -moz-fit-content;
   width: fit-content;
@@ -560,9 +575,12 @@ h2 {
 }
 
 .HpAndArmor {
-  width: 69%;
-  height: 50%;
-  margin-left: 6px;
+  -ms-grid-column: 4;
+      grid-column-start: 4;
+  grid-column-end: 12;
+  -ms-grid-row: 1;
+      grid-row-start: 1;
+  grid-row-end: 3;
 }
 
 .HpAndArmor .hp__name p:first-child {
@@ -818,26 +836,36 @@ h2 {
 }
 
 .ArmorAndIniciative {
-  margin-left: 0;
-  margin-top: 20px;
-  margin-right: 0;
-  width: 30%;
-  height: -webkit-fit-content;
-  height: -moz-fit-content;
-  height: fit-content;
+  -ms-grid-column: 4;
+      grid-column-start: 4;
+  grid-column-end: 7;
+  -ms-grid-row: 2;
+      grid-row-start: 2;
+  grid-row-end: 3;
 }
 
 .ArmorAndIniciative ul {
   padding: 0;
-}
-
-.skill {
-  margin-top: 20px;
-  left: 62%;
   width: -webkit-fit-content;
   width: -moz-fit-content;
   width: fit-content;
-  bottom: 37%;
+}
+
+.ArmorAndIniciative li {
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+}
+
+.ArmorAndIniciative h1 {
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  font-size: 16px;
+}
+
+.ArmorAndIniciative .ac__plus p {
+  font-size: 14px;
 }
 
 .skill__name {
@@ -849,7 +877,7 @@ h2 {
   height: fit-content;
   margin-left: 0;
   margin-right: 0;
-  width: 135px;
+  width: 190px;
 }
 
 .skill__name input {
@@ -911,9 +939,12 @@ h2 {
 }
 
 .skill__container {
-  width: -webkit-fit-content;
-  width: -moz-fit-content;
-  width: fit-content;
+  -ms-grid-column: 7;
+      grid-column-start: 7;
+  grid-column-end: 12;
+  -ms-grid-row: 2;
+      grid-row-start: 2;
+  grid-row-end: 12;
 }
 
 .skill ul {
@@ -933,7 +964,7 @@ h2 {
 
 .skill ul li:nth-child(1) {
   margin: auto;
-  width: 360px;
+  width: 415px;
 }
 
 .skill ul li:nth-child(1) div:nth-child(2) {
@@ -945,7 +976,7 @@ h2 {
 }
 
 .skill ul li:nth-child(2) div:first-child {
-  width: 135px;
+  width: 190px;
 }
 
 .skill ul li:nth-child(2) div:first-child p {
@@ -964,13 +995,27 @@ h2 {
   text-align: center;
 }
 
+.skillcontainer {
+  -ms-flex-item-align: stretch;
+      -ms-grid-row-align: stretch;
+      align-self: stretch;
+}
+
 .saves {
-  margin-top: 30px;
-  width: 60%;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-      -ms-flex-flow: row wrap;
-          flex-flow: row wrap;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  -ms-flex-line-pack: end;
+      align-content: flex-end;
+  -webkit-box-align: end;
+      -ms-flex-align: end;
+          align-items: flex-end;
+  -ms-grid-column: 1;
+      grid-column-start: 1;
+  grid-column-end: 7;
+  -ms-grid-row: 3;
+      grid-row-start: 3;
+  grid-row-end: 4;
 }
 
 .saves__bar {
@@ -1017,13 +1062,34 @@ h2 {
   height: fit-content;
 }
 
+.saves__container {
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: row wrap;
+          flex-flow: row wrap;
+  width: 81%;
+  margin-left: 0;
+}
+
 .saves .others__modifier {
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
   height: -webkit-fit-content;
   height: -moz-fit-content;
   height: fit-content;
 }
 
-.saves .others__modifier input {
-  height: 120px;
+.saves .others__modifier div {
+  margin: 0 auto;
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
+  width: 100%;
+}
+
+.saves .others__modifier div input {
+  width: 100px;
+  height: 85px;
 }
 /*# sourceMappingURL=style.css.map */

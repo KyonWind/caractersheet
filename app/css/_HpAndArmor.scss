@@ -1,8 +1,11 @@
 .HpAndArmor{
-    width: 69%;
-    height: 50%;
-    margin-left: 6px;
     
+    //GRID PROPERTIES
+    
+    grid-column-start: 4;
+    grid-column-end: 12;
+    grid-row-start: 1;
+    grid-row-end: 3;
 
     .hp{
         
@@ -270,13 +273,26 @@
 }
 .ArmorAndIniciative
 {
-    margin-left: 0;
-    margin-top: 20px;
-    margin-right: 0;
-    width: 30%;
-    height: fit-content;
+    grid-column-start: 4;
+    grid-column-end: 7;
+    grid-row-start: 2;
+    grid-row-end: 3;
     ul{
         padding: 0;
+        width: fit-content;
+    }
+    li{
+        width: fit-content;
+    }
+    h1{
+        width: fit-content;
+        font-size: 16px;
+    }
+    .ac__plus{
+        p{
+            font-size: 14px;
+        }
+        
     }
     
 

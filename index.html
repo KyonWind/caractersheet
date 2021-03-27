@@ -16,7 +16,7 @@
       <div class="header__logo"></div>
     </section>
 
-    <main class="debug flex">
+    <main class="debug grid">
         <section class="stats flex flex-auto debug">
                 
             <div class="stats__name">
@@ -50,14 +50,17 @@
             </div>
         </section>
         <section class="saves flex debug">
+        <div class="saves__container flex debug">
             <div class="saves__bar fortitude__bar flex"></div>
             <div class="saves__bar reflex__bar flex"></div>
             <div class="saves__bar will__bar flex"></div>
-            <div class="saves__bar others__modifier flex-auto">
+        </div>
+            <div class="saves__bar others__modifier debug flex-auto">
                 <div class="Box__input">
                     <input type="text">
                 </div>
             </div>
+
     </section>
 
         <section class="HpAndArmor debug">
@@ -66,7 +69,7 @@
         </section>
 
         <div class="ArmorAndIniciative debug flex flex-row-l"></div> 
-        <div class="flex skill__container debug"></div>
+        <div class="flex skill__container grid debug"></div>
 
         
             

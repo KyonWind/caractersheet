@@ -1,4 +1,6 @@
 .skill{
+    
+
 
     &__name
     {
@@ -6,7 +8,7 @@
         height: fit-content;
         margin-left: 0;
         margin-right: 0;
-        width: 135px;
+        width: 190px;
         input
         {
             margin: 0;
@@ -56,13 +58,17 @@
         }
     }
     &__container{
-        width: fit-content;
+        //GRID FORM
+     grid-column-start: 7;
+     grid-column-end: 12;
+     grid-row-start: 2;
+     grid-row-end: 12;
+       // width: fit-content;
         
     }
-    margin-top: 20px;
-    left: 62%;
-    width: fit-content;
-    bottom: 37%;
+   // left: 62%;
+   // width: fit-content;
+   // bottom: 37%;
     ul{
         h1{
             margin-left: 40%;
@@ -74,7 +80,7 @@
         li:nth-child(1){
           //  padding: 10px 5px 10px 5px;
             margin: auto;
-            width: 360px;
+            width: 415px;
             div:nth-child(2){
                 height: fit-content;
                 margin-right: 0;
@@ -84,7 +90,7 @@
         li:nth-child(2){
             div:first-child
             {
-                width: 135px;
+                width: 190px;
                 p{
                     text-align: left;
                     color: $Black;
@@ -104,4 +110,8 @@
     }
 
     
+}
+
+.skillcontainer{
+    align-self: stretch;
 }
