@@ -1080,7 +1080,21 @@ h2 {
   height: fit-content;
 }
 
-.saves .others__modifier div {
+.saves .others__modifier p {
+  text-align: center;
+}
+
+.saves .others__modifier .Box__input {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: wrap row;
+          flex-flow: wrap row;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
   margin: 0 auto;
   height: -webkit-fit-content;
   height: -moz-fit-content;
@@ -1088,8 +1102,51 @@ h2 {
   width: 100%;
 }
 
-.saves .others__modifier div input {
+.saves .others__modifier .Box__input input {
   width: 100px;
   height: 85px;
+  margin-bottom: 2px;
+}
+
+.baseAttack {
+  -ms-grid-column: 1;
+      grid-column-start: 1;
+  grid-column-end: 7;
+  -ms-grid-row: 4;
+      grid-row-start: 4;
+  grid-row-end: 5;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: wrap row;
+          flex-flow: wrap row;
+}
+
+.baseAttack ul {
+  margin-top: 10px;
+  padding: 0;
+}
+
+.baseAttack .Box__black {
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+.baseAttack .Box__input {
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  padding: 0;
+  margin-left: 10px;
+}
+
+.baseAttack .ab_extra {
+  margin-left: 20px;
+  width: 230PX;
 }
 /*# sourceMappingURL=style.css.map */

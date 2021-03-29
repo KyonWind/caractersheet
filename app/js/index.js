@@ -139,12 +139,26 @@ window.onload = function(e){
         {name:"TEMP <br> MODIFIER", class:"save_will_temp", type:"Lastinput"}]
     }
     ];
+    const baseAttack = [
+        {name:"BASE ATTACK BONUS", class: "ab_name", type:"name"},
+        {name:"input", class: "ab_value", type:"input"},
+        {name:"EXTRA ATTACK BONUSES", class: "ab_extra", type:"input"}
+    ];
+    const grapple = [
+        {name:"GRAPPLE", class: "gp_name", type:"name"},
+        {name:"TOTAL", class: "gp__total", type:"value"},
+        {name:"BASE ATTACK BONUS", class: "ab_value", type:"value"},
+        {name:"STRENGHT", class: "str_value", type:"value"},
+        {name:"SIZE MODIFIER", class: "size_value", type:"value"},
+        {name:"MISC MODIFIER", class: "gp_misc_value", type:"input"}
+    ];
     
     headerMap(headerNames);
     statsMap(abName);
     hpAcMap(hpbar,acbar,acInit);
     skillsMap(skill);
     savesMap(saveData);
+    AttackMap(baseAttack);
 };
 
 const headerMap = (data) =>  {
@@ -564,7 +578,7 @@ const savesMap = (data) =>{
                                     } else {
                                         if(element.SaveName == "FORTITUDE")
                                             {
-                                            query += `<p>${element.name}</p> `
+                                            query += `<p>${subelement.name}</p> `
                                             }
                                         query += `
                                                 <div class="Box__input">
@@ -593,4 +607,39 @@ const savesMap = (data) =>{
           
     });
 
-}
+};
+const AttackMap = (data) =>{
+    const attack = document.querySelector('.baseAttack');
+    let query = ``;
+
+    data.forEach(element => {
+        if(element.type == "name")
+        {
+            query = `
+            <ul>
+            <li class="Box__black">
+            <h1>${element.name}</h1>
+            </li>
+            </ul>
+            `
+        }    
+        else if(element.type == 'input') 
+        {
+            query += `
+            <div class="attack">
+                <ul class="flex flex-column">
+                    <li class="flex flex-column">
+                        <div class="Box__input">
+                            <input class="${element.class}" type="text">
+                        </div>
+                    </li>
+                </ul>
+            </div>`
+        }
+
+    });
+
+    attack.innerHTML = (query);
+};
+
+
