@@ -1149,4 +1149,103 @@ h2 {
   margin-left: 20px;
   width: 230PX;
 }
+
+.grapple {
+  padding-top: 50px;
+  -ms-grid-column: 1;
+      grid-column-start: 1;
+  grid-column-end: 7;
+  -ms-grid-row: 4;
+      grid-row-start: 4;
+  grid-row-end: 5;
+}
+
+.grapple ul {
+  margin-top: 10px;
+  padding: 0;
+}
+
+.grapple ul p {
+  text-align: center;
+}
+
+.grapple .Box__black {
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+.grapple .Box__input {
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  padding: 0;
+  margin-left: 10px;
+}
+
+.grapple .Box__value {
+  width: 60px;
+  padding: 0;
+  margin-left: 10px;
+}
+
+.grapple .gp_div {
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+.weapon {
+  -ms-grid-column: 1;
+      grid-column-start: 1;
+  grid-column-end: 7;
+  -ms-grid-row: 5;
+      grid-row-start: 5;
+  grid-row-end: 6;
+}
+
+.weapon__box:first-child {
+  -ms-flex-preferred-size: 30%;
+      flex-basis: 30%;
+}
+
+.weapon__box:nth-child(n+2) {
+  -ms-flex-preferred-size: 40%;
+      flex-basis: 40%;
+}
+
+.weapon__box:nth-child(n+5) {
+  -ms-flex-preferred-size: 8%;
+      flex-basis: 8%;
+}
+
+.weapon ul {
+  padding-left: 0;
+}
+
+.weapon li {
+  border: 1px solid black;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+  margin: 0;
+}
+
+.weapon li p {
+  text-align: center;
+  width: 100%;
+  margin: 0;
+  font-size: 12px;
+  font-weight: 800;
+  color: white;
+  background-color: black;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  padding-left: 10px;
+  padding-right: 10px;
+}
 /*# sourceMappingURL=style.css.map */

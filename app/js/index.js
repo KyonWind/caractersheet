@@ -147,10 +147,10 @@ window.onload = function(e){
     const grapple = [
         {name:"GRAPPLE", class: "gp_name", type:"name"},
         {name:"TOTAL", class: "gp__total", type:"value"},
-        {name:"BASE ATTACK BONUS", class: "ab_value", type:"value"},
+        {name:"BASE ATTACK <br> BONUS", class: "ab_value", type:"value"},
         {name:"STRENGHT", class: "str_value", type:"value"},
-        {name:"SIZE MODIFIER", class: "size_value", type:"value"},
-        {name:"MISC MODIFIER", class: "gp_misc_value", type:"input"}
+        {name:"SIZE <br> MODIFIER", class: "size_value", type:"value"},
+        {name:"MISC <br> MODIFIER", class: "gp_misc_value", type:"input"}
     ];
     
     headerMap(headerNames);
@@ -159,6 +159,22 @@ window.onload = function(e){
     skillsMap(skill);
     savesMap(saveData);
     AttackMap(baseAttack);
+    grappleMap(grapple);
+
+    const openDB = indexedDB.open("mapping",1);
+    openDB.onerror = function(){
+        console.log(openDB.error);
+    };
+    openDB.onsuccess = function(){
+        var db = openDB.result;
+        db.onversionchange = function() {
+            db.close();
+            alert("Database is outdated, please reload the page.")
+          };
+        db.createObjectStore("books",{keyPath:'id'});
+    };
+
+    
 };
 
 const headerMap = (data) =>  {
@@ -640,6 +656,54 @@ const AttackMap = (data) =>{
     });
 
     attack.innerHTML = (query);
+};
+const grappleMap = (data) =>{
+    const grappleHTML = document.querySelector(".grapple");
+    let query = '';
+
+    data.forEach(element =>{
+
+        if(element.type == "name")
+        {
+            query = `
+            <ul>
+            <li class="Box__black">
+            <h1>${element.name}</h1>
+            </li>
+            </ul>
+            `
+        }    
+        else if(element.type == 'input') 
+        {
+            query += `
+            <div class="gp_div">
+                <ul class="flex flex-column">
+                    <li class="flex flex-column">
+                        <div class="Box__input">
+                            <input class="${element.class}" type="text">
+                        </div>
+                        <p class="hp">${element.name}</p>  
+                    </li>
+                </ul>
+            </div>`
+        }
+        if(element.type == "value"){
+            query += `
+            <div class="gp_div">
+                <ul class="flex flex-column">
+                    <li class="flex flex-column">
+                    <div class="Box__value">
+                        <p></p>
+                    </div>
+                    <p class="hp">${element.name}</p>     
+                </li>
+            </ul>
+        </div>`  
+        } 
+        
+    });
+
+    grappleHTML.innerHTML = query; 
 };
 
 
