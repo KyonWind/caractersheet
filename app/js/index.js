@@ -152,6 +152,38 @@ window.onload = function(e){
         {name:"SIZE <br> MODIFIER", class: "size_value", type:"value"},
         {name:"MISC <br> MODIFIER", class: "gp_misc_value", type:"input"}
     ];
+
+    const armor = [
+        {name:"AMOR", class: "ar_name", type:"input"},
+        {name:"TYPE", class: "ar_type", type:"input"},
+        {name:"ARMOR BONUS", class: "ar_bonus", type:"input"},
+        {name:"MAX DEX BONUS", class: "ar_max_dex", type:"input"},
+        {name:"CHECK PENALTY", class: "ar_check_penalty", type:"input"},
+        {name:"SPELL FAILURE", class: "ar_spell_failure", type:"input"},
+        {name:"SPEED", class: "ar_speed", type:"input"},
+        {name:"WEIGHT", class: "ar_weight", type:"input"},
+        {name:"SPECIAL PROPERTIES", class: "ar_special_properties", type:"input"}
+    ];
+    const weapon = [
+        {name:"WEAPON", class: "wp_name", type:"input"},
+        {name:"TOTAL ATTACK BONUS", class: "wp_bonus", type:"input"},
+        {name:"DAMAGE", class: "wp_damage", type:"input"},
+        {name:"CRITICAL", class: "wp_critical_chance", type:"input"},
+        {name:"RANGE", class: "wp_range", type:"input"},
+        {name:"WEIGHT", class: "wp_weight", type:"input"},
+        {name:"TYPE", class: "wp_type", type:"input"},
+        {name:"SIZE", class: "wp_size", type:"input"},
+        {name:"SPECIAL PROPERTIES", class: "wp_special_properties", type:"input"}
+    ];
+
+    const shield = [
+        {name:"SHIELD", class: "wp_name", type:"input"},
+        {name:"ARMOR BONUS", class: "wp_bonus", type:"input"},
+        {name:"CHECK PENALTY", class: "wp_damage", type:"input"},
+        {name:"SPELL FAILURE", class: "wp_critical_chance", type:"input"},
+        {name:"WEIGHT", class: "wp_weight", type:"input"},
+        {name:"SPECIAL PROPERTIES", class: "wp_special_properties", type:"input"}
+    ];
     
     headerMap(headerNames);
     statsMap(abName);
@@ -160,19 +192,9 @@ window.onload = function(e){
     savesMap(saveData);
     AttackMap(baseAttack);
     grappleMap(grapple);
-
-    const openDB = indexedDB.open("mapping",1);
-    openDB.onerror = function(){
-        console.log(openDB.error);
-    };
-    openDB.onsuccess = function(){
-        var db = openDB.result;
-        db.onversionchange = function() {
-            db.close();
-            alert("Database is outdated, please reload the page.")
-          };
-        db.createObjectStore("books",{keyPath:'id'});
-    };
+    weaponMap(weapon);
+    armorMap(armor);
+    shieldMap(shield);
 
     
 };
@@ -705,5 +727,64 @@ const grappleMap = (data) =>{
 
     grappleHTML.innerHTML = query; 
 };
+const weaponMap = (data) =>{
+    
+    let count = 1;
+    while (count <= 3) {
+        let query = ``;
+        const weapon = document.querySelector(`.weapon__${count}`)
+        query = `<ul class="flex flex-row">`;
+        data.forEach(element => {
+            query += 
+            `
+            <li class="flex flex-column weapon__box">
+                    <p>${element.name}</p>
+                    <input class=${element.class}__${count} type="text">
+                </li>
+            `;
+        });
+        query += `</ul>`;
+
+        weapon.innerHTML = (query);
+        count++;
+    }
+    
+}
+const armorMap = (data) =>
+{
+    let query = ``;
+    const armor = document.querySelector(`.armor`)
+    query = `<ul class="flex flex-row">`;
+    data.forEach(element => {
+        query += 
+        `
+        <li class="flex flex-column armor__box">
+                <p>${element.name}</p>
+                <input class=${element.class} type="text">
+            </li>
+        `;
+    });
+    query += `</ul>`;
+
+    armor.innerHTML = (query);
+}
+const shieldMap = (data) =>
+{
+    let query = ``;
+    const shield = document.querySelector(`.shield`)
+    query = `<ul class="flex flex-row">`;
+    data.forEach(element => {
+        query += 
+        `
+        <li class="flex flex-column shield__box">
+                <p>${element.name}</p>
+                <input class=${element.class} type="text">
+            </li>
+        `;
+    });
+    query += `</ul>`;
+
+    shield.innerHTML = (query);
+}
 
 

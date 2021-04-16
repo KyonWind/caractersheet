@@ -1,0 +1,52 @@
+.shield{
+
+    grid-column-start: 1;
+        grid-column-end: 7;
+        grid-row-start: 9;
+        grid-row-end: 10;
+
+    &__box:first-child{
+        flex-basis: 40%;
+    }
+    &__box:nth-child(n+2){
+        flex-basis: 20%;
+    }
+    &__box:nth-child(n+3){
+        flex-basis: 20%;
+    }
+    &__box:nth-child(n+5){
+        flex-basis: 20%;
+    }
+    &__box:nth-child(n+6){
+        flex-basis: 80%;
+    }
+   
+    
+    ul{
+        padding-left: 0;
+    }
+
+    li{
+        border: 1px solid $Black;
+        align-items: flex-start;
+        margin: 0;
+
+        input{
+            width: 100%;
+        }
+
+        p{
+            text-align: center;
+            width: 100%;
+            margin: 0;
+            font-size: 12px;
+            font-weight: 800;
+            color: $White;
+            background-color: black;
+            padding-top: 5px;
+            padding-bottom: 5px;
+           // padding-left: 10px;
+           // padding-right: 10px;
+       }
+    }   
+}
