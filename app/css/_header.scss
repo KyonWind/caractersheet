@@ -11,7 +11,10 @@
         flex-basis: 48%;
     }
     .header__box:nth-child(n+5){
-        flex-basis: 16%;
+        flex-basis: 8%;
+    }
+    .header__box:nth-child(n+6){
+        flex-basis: 13%;
     }
     .header__box:nth-child(n+8){
         flex-basis: 12%;
@@ -40,8 +43,6 @@
 
 &__text
 {
-    
-
     p{
         margin-bottom: 0px;
         margin-top: 2px;

@@ -1,0 +1,46 @@
+.headerMenu
+{
+  //  position: absolute;
+    ul li
+    {
+        display: inline-block;
+        list-style: none;
+    }
+    li{
+        padding: 20px;
+        border-bottom: solid 5px white;
+        cursor: pointer;
+        
+        &:hover{
+            transition: 300ms;
+            border-bottom: solid 5px black;
+        }
+    }
+    
+    
+}
+
+.header_skill:hover .header_dropdown_skill
+{
+    display: block;
+}
+
+.header_dropdown_skill
+{
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+  
+  p
+  {
+      padding: 10px;
+      font-size: 15px;
+    input{
+        width: 40px;
+    }
+  }
+  
+} 

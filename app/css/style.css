@@ -398,6 +398,58 @@ h2 {
   }
 }
 
+.overlay {
+  background-image: -webkit-gradient(linear, left top, left bottom, from(black), to(transparent));
+  background-image: linear-gradient(black, transparent);
+  opacity: 1;
+  position: fixed;
+  display: block;
+  top: 0px;
+  right: 0px;
+  bottom: 0px;
+  left: 0px;
+}
+
+.headerMenu ul li {
+  display: inline-block;
+  list-style: none;
+}
+
+.headerMenu li {
+  padding: 20px;
+  border-bottom: solid 5px white;
+  cursor: pointer;
+}
+
+.headerMenu li:hover {
+  -webkit-transition: 300ms;
+  transition: 300ms;
+  border-bottom: solid 5px black;
+}
+
+.header_skill:hover .header_dropdown_skill {
+  display: block;
+}
+
+.header_dropdown_skill {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 160px;
+  -webkit-box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+          box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+}
+
+.header_dropdown_skill p {
+  padding: 10px;
+  font-size: 15px;
+}
+
+.header_dropdown_skill p input {
+  width: 40px;
+}
+
 .header {
   position: relative;
   display: -webkit-box;
@@ -420,8 +472,13 @@ h2 {
 }
 
 .header .header__box:nth-child(n+5) {
-  -ms-flex-preferred-size: 16%;
-      flex-basis: 16%;
+  -ms-flex-preferred-size: 8%;
+      flex-basis: 8%;
+}
+
+.header .header__box:nth-child(n+6) {
+  -ms-flex-preferred-size: 13%;
+      flex-basis: 13%;
 }
 
 .header .header__box:nth-child(n+8) {
@@ -911,6 +968,7 @@ h2 {
   height: -webkit-fit-content;
   height: -moz-fit-content;
   height: fit-content;
+  text-align: center;
 }
 
 .skill__skills input {
@@ -921,6 +979,26 @@ h2 {
   height: -moz-fit-content;
   height: fit-content;
   width: 37px;
+  text-align: center;
+  font-size: 11;
+}
+
+.skill__skills input[type='number']::-webkit-inner-spin-button,
+.skill__skills input[type='number']::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.skill__skills p:nth-child(5) {
+  margin-left: 0 auto;
+  border: none;
+  border-bottom: 1px solid;
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
+  width: 37px;
+  font-size: 11px;
+  text-align: center;
 }
 
 .skill__value {
@@ -972,6 +1050,14 @@ h2 {
   height: -webkit-fit-content;
   height: -moz-fit-content;
   height: fit-content;
+  margin-right: 5px;
+  text-align: right;
+}
+
+.skill ul li:nth-child(1) div:nth-child(4) {
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
   margin-right: 0;
   text-align: right;
 }
@@ -1000,6 +1086,16 @@ h2 {
   -ms-flex-item-align: stretch;
       -ms-grid-row-align: stretch;
       align-self: stretch;
+}
+
+.total_ranks p {
+  font-size: 8px;
+  color: black;
+}
+
+.total_ranks p {
+  font-size: 8px;
+  color: black;
 }
 
 .saves {
@@ -1471,6 +1567,12 @@ h2 {
 }
 
 .featlink {
+  -ms-grid-column: 1;
+      grid-column-start: 1;
+  grid-column-end: 7;
+  -ms-grid-row: 10;
+      grid-row-start: 10;
+  grid-row-end: 11;
   margin: auto;
 }
 

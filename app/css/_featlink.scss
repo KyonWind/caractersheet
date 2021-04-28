@@ -1,5 +1,9 @@
 .featlink
 {
+    grid-column-start: 1;
+        grid-column-end: 7;
+        grid-row-start: 10;
+        grid-row-end: 11;
     p{
         margin-top: 3px;
     margin-bottom: 1px;

@@ -1,20 +1,27 @@
 window.onload = function(e){
     //MOCK UP DATA
     const headerNames = 
-    ["CHARACTER NAME",
-    "PLAYER",
-    "CLASS AND LEVEL",
-    "RACE",
-    "ALIGNMENT",
-    "DEITY",
-    "SIZE",
-    "AGE",
-    "GENDER",
-    "HEIGHT",
-    "WEIGHT",
-    "EYES",
-    "HAIR",
-    "SKIN"
+    [
+    {name:"CHARACTER NAME", type: "text", class:"character_name"},
+    {name:"PLAYER", type: "text", class:"player"},
+    {name:"CLASS", type: "text", class:"class"},
+    {name:"LEVELS", type: "number", class:"levels"},
+    {name:"RACE", type: "text", class:"race"},
+    {name:"ALIGNMENT", type: "text", class:"alignment"},
+    {name:"DEITY", type: "text", class:"deity"},
+    {name:"SIZE", type: "text", class:"size"},
+    {name:"AGE", type: "number", class:"age"},
+    {name:"GENDER", type: "text", class:"gender"},
+    {name:"HEIGHT", type: "text", class:"height"},
+    {name:"WEIGHT", type: "text", class:"weight"},
+    {name:"EYES", type: "text", class:"eyes"},
+    {name:"HAIR", type: "text", class:"hair"},
+    {name:"SKIN", type: "text", class:"skin"},
+    ];
+    const headerMenu = 
+    [
+        {name:"SKILL",                       class:"header_skill",            dropdown:"header_dropdown_skill"},
+        {name:"FEATS",                       class:"header_feats",            dropdown:"header_dropdown_feats"}
     ];
     const abName = 
     [
@@ -23,54 +30,54 @@ window.onload = function(e){
         {STA: "CON", Des: "CONSTITUTION"},
         {STA: "INT", Des: "INTELLIGENCE"},
         {STA: "WIS", Des: "WISDOM"},
-        {STA: "CAR", Des: "CHARISMA"}
+        {STA: "CHA", Des: "CHARISMA"}
     ];
     const skill = 
     [
-        {name: "Appraise", modifier: "INT"},
-        {name: "Balance", modifier: "DEX"},
-        {name: "Bluff", modifier: "CHA"},
-        {name: "Climb", modifier: "STR*"},
-        {name: "Concentration", modifier: "CON"},
-        {name: "Craft( _______________)", modifier: "INT"},
-        {name: "Craft( _______________)", modifier: "INT"},
-        {name: "Craft( _______________)", modifier: "INT"},
-        {name: "Decipher Script", modifier: "INT"},
-        {name: "Diplomacy", modifier: "CHA"},
-        {name: "Disable Device", modifier: "INT"},
-        {name: "Disguise", modifier: "CHA"},
-        {name: "Escape Artist", modifier: "DEX*"},
-        {name: "Forgery", modifier: "INT"},
-        {name: "Gather Information", modifier: "CHA"},
-        {name: "Handle Animal", modifier: "CHA"},
-        {name: "Heal", modifier: "WIS"},
-        {name: "Hide", modifier: "DEX*"},
-        {name: "Intimidate", modifier: "CHA"},
-        {name: "Jump", modifier: "STR*"},
-        {name: "Knowledge (Arcana)", modifier: "INT"},
-        {name: "Knowledge (Natural)", modifier: "INT"},
-        {name: "Knowledge (Dungeon)", modifier: "INT"},
-        {name: "Knowledge (Religion)", modifier: "INT"},
-        {name: "Knowledge (Nobleza)", modifier: "INT"},
-        {name: "Listen", modifier: "WIS"},
-        {name: "Move Silently", modifier: "DEX*"},
-        {name: "Open Lock", modifier: "DEX"},
-        {name: "Perform (____________)", modifier: "CHA"},
-        {name: "Perform (____________)", modifier: "CHA"},
-        {name: "Perform (____________)", modifier: "CHA"},
-        {name: "Profession (___________)", modifier: "WIS"},
-        {name: "Profession (___________)", modifier: "WIS"},
-        {name: "Ride", modifier: "DEX"},
-        {name: "Search", modifier: "INT"},
-        {name: "Sense Motive", modifier: "WIS"},
-        {name: "Sleight of Hand ", modifier: "DEX*"},
-        {name: "Spellcraft ", modifier: "INT"},
-        {name: "Spot", modifier: "WIS"},
-        {name: "Survival", modifier: "WIS"},
-        {name: "Swim", modifier: "STR"},
-        {name: "Tumble ", modifier: "DEX*"},
-        {name: "Use Magic Device", modifier: "CHA"},
-        {name: "Use Rope", modifier: "DEX"},
+        {name: "Appraise",                    modifier: "INT",      class:"INT_TOTAL-MODIFIER", id: "Appraise",                },
+        {name: "Balance",                     modifier: "DEX",      class:"DEX_TOTAL-MODIFIER", id: "Balance",                 },
+        {name: "Bluff",                       modifier: "CHA",      class:"CHA_TOTAL-MODIFIER", id: "Bluff",                   },
+        {name: "Climb",                       modifier: "STR*",     class:"STR_TOTAL-MODIFIER", id: "Climb",                   },
+        {name: "Concentration",               modifier: "CON",      class:"CON_TOTAL-MODIFIER", id: "Concentration",           },
+        {name: "Craft(_______________)",      modifier: "INT",      class:"INT_TOTAL-MODIFIER", id: "Craft1",                  },
+        {name: "Craft(_______________)",      modifier: "INT",      class:"INT_TOTAL-MODIFIER", id: "Craft2",                  },
+        {name: "Craft(_______________)",      modifier: "INT",      class:"INT_TOTAL-MODIFIER", id: "Craft3"                   },
+        {name: "Decipher Script",             modifier: "INT",      class:"INT_TOTAL-MODIFIER", id: "Decipher Script"          },
+        {name: "Diplomacy",                   modifier: "CHA",      class:"CHA_TOTAL-MODIFIER", id: "Diplomacy"                },
+        {name: "Disable Device",              modifier: "INT",      class:"INT_TOTAL-MODIFIER", id: "Disable Device"           },
+        {name: "Disguise",                    modifier: "CHA",      class:"CHA_TOTAL-MODIFIER", id: "Disguise"                 },
+        {name: "Escape Artist",               modifier: "DEX*",     class:"DEX_TOTAL-MODIFIER", id: "Escape Artist"            },
+        {name: "Forgery",                     modifier: "INT",      class:"INT_TOTAL-MODIFIER", id: "Forgery"                  },
+        {name: "Gather Information",          modifier: "CHA",      class:"CHA_TOTAL-MODIFIER", id: "Gather Information"       },
+        {name: "Handle Animal",               modifier: "CHA",      class:"CHA_TOTAL-MODIFIER", id: "Handle Animal"            },
+        {name: "Heal",                        modifier: "WIS",      class:"WIS_TOTAL-MODIFIER", id: "Heal"                     },
+        {name: "Hide",                        modifier: "DEX*",     class:"DEX_TOTAL-MODIFIER", id: "Hide"                     },
+        {name: "Intimidate",                  modifier: "CHA",      class:"CHA_TOTAL-MODIFIER", id: "Intimidate"               },
+        {name: "Jump",                        modifier: "STR*",     class:"STR_TOTAL-MODIFIER", id: "Jump"                     },
+        {name: "Knowledge (Arcana)",          modifier: "INT",      class:"INT_TOTAL-MODIFIER", id: "Knowledge(Arcana)"        },
+        {name: "Knowledge (Natural)",         modifier: "INT",      class:"INT_TOTAL-MODIFIER", id: "Knowledge(Natural)"       },
+        {name: "Knowledge (Dungeon)",         modifier: "INT",      class:"INT_TOTAL-MODIFIER", id: "Knowledge(Dungeon)"       },
+        {name: "Knowledge (Religion)",        modifier: "INT",      class:"INT_TOTAL-MODIFIER", id: "Knowledge(Religion)"      },
+        {name: "Knowledge (Nobleza)",         modifier: "INT",      class:"INT_TOTAL-MODIFIER", id: "Knowledge(Nobleza)"       },
+        {name: "Listen",                      modifier: "WIS",      class:"WIS_TOTAL-MODIFIER", id: "Listen"                   },
+        {name: "Move Silently",               modifier: "DEX*",     class:"DEX_TOTAL-MODIFIER", id: "Move Silently"            },
+        {name: "Open Lock",                   modifier: "DEX",      class:"DEX_TOTAL-MODIFIER", id: "Open Lock"                },
+        {name: "Perform (____________)",      modifier: "CHA",      class:"CHA_TOTAL-MODIFIER", id: "Perform1"                 },
+        {name: "Perform (____________)",      modifier: "CHA",      class:"CHA_TOTAL-MODIFIER", id: "Perform2"                 },
+        {name: "Perform (____________)",      modifier: "CHA",      class:"CHA_TOTAL-MODIFIER", id: "Perform3"                 },
+        {name: "Profession (___________)",    modifier: "WIS",      class:"WIS_TOTAL-MODIFIER", id: "Profession1"              },
+        {name: "Profession (___________)",    modifier: "WIS",      class:"WIS_TOTAL-MODIFIER", id: "Profession2"              },
+        {name: "Ride",                        modifier: "DEX",      class:"DEX_TOTAL-MODIFIER", id: "Ride"                     },
+        {name: "Search",                      modifier: "INT",      class:"INT_TOTAL-MODIFIER", id: "Search"                   },
+        {name: "Sense Motive",                modifier: "WIS",      class:"WIS_TOTAL-MODIFIER", id: "Sense Motive"             },
+        {name: "Sleight of Hand ",            modifier: "DEX*",     class:"DEX_TOTAL-MODIFIER", id: "Sleight of Hand "         },
+        {name: "Spellcraft ",                 modifier: "INT",      class:"INT_TOTAL-MODIFIER", id: "Spellcraft "              },
+        {name: "Spot",                        modifier: "WIS",      class:"WIS_TOTAL-MODIFIER", id: "Spot"                     },
+        {name: "Survival",                    modifier: "WIS",      class:"WIS_TOTAL-MODIFIER", id: "Survival"                 },
+        {name: "Swim",                        modifier: "STR",      class:"STR_TOTAL-MODIFIER", id: "Swim"                     },
+        {name: "Tumble ",                     modifier: "DEX*",     class:"DEX_TOTAL-MODIFIER", id: "Tumble "                  },
+        {name: "Use Magic Device",            modifier: "CHA",      class:"CHA_TOTAL-MODIFIER", id: "Use Magic Device"         },
+        {name: "Use Rope",                    modifier: "DEX",      class:"DEX_TOTAL-MODIFIER", id: "Use Rope"                 },
     ];
     const StatsModifier = 
     [
@@ -148,11 +155,10 @@ window.onload = function(e){
         {name:"GRAPPLE", class: "gp_name", type:"name"},
         {name:"TOTAL", class: "gp__total", type:"value"},
         {name:"BASE ATTACK <br> BONUS", class: "ab_value", type:"value"},
-        {name:"STRENGHT", class: "str_value", type:"value"},
+        {name:"STRENGHT", class: "STR_TOTAL-MODIFIER", type:"value"},
         {name:"SIZE <br> MODIFIER", class: "size_value", type:"value"},
         {name:"MISC <br> MODIFIER", class: "gp_misc_value", type:"input"}
     ];
-
     const armor = [
         {name:"AMOR", class: "ar_name", type:"input"},
         {name:"TYPE", class: "ar_type", type:"input"},
@@ -175,7 +181,6 @@ window.onload = function(e){
         {name:"SIZE", class: "wp_size", type:"input"},
         {name:"SPECIAL PROPERTIES", class: "wp_special_properties", type:"input"}
     ];
-
     const shield = [
         {name:"SHIELD", class: "wp_name", type:"input"},
         {name:"ARMOR BONUS", class: "wp_bonus", type:"input"},
@@ -185,7 +190,8 @@ window.onload = function(e){
         {name:"SPECIAL PROPERTIES", class: "wp_special_properties", type:"input"}
     ];
     
-    headerMap(headerNames);
+    
+    headerMap(headerNames,headerMenu);
     statsMap(abName);
     hpAcMap(hpbar,acbar,acInit);
     skillsMap(skill);
@@ -196,24 +202,51 @@ window.onload = function(e){
     armorMap(armor);
     shieldMap(shield);
 
+
     
 };
 
-const headerMap = (data) =>  {
-        const header = document.querySelector(".header")
+const headerMap = (headerNames,headerMenu) =>  {
+        const header = document.querySelector(".header");
+        const skillheader = document.querySelector(".headerMenu");
+
         let query = ``
-        data.forEach(element => {
+        headerNames.forEach(element => {
             query += `
-            <div class="header__box">
-                <input type="text"  class="header__input"></input>
-                <div class="header__line"></div>
+            <div class="header__box">`
+                if(element.type == "number")
+                {
+                    query += `
+                    <input type="${element.type}" onchange="totalrank(this)"  class="${element.class} header__input"></input>`      
+                }
+                else
+                {
+                    query += `
+                    <input type="${element.type}"  class="${element.class} header__input"></input>`   
+                }
+                query += `<div class="header__line"></div>
                 <div class="header__text flex-jc-l">
-                    <p>${element}</p>
+                    <p>${element.name}</p>
                 </div>
             </div>`
         });
-
         header.innerHTML += query;
+
+        query = `<ul class="debug">`
+        headerMenu.forEach(element => {
+            query += `
+            <li class="debug ${element.class}">
+            ${element.name}
+            <div class="${element.dropdown}">
+            </div>  
+            </li>
+            `
+        });
+        query += `</ul>`
+
+        skillheader.innerHTML = query;
+
+        
 };
 const statsMap = (data) =>{
     const StaNamelist = document.querySelector(".StaNamelist")
@@ -236,7 +269,7 @@ const statsMap = (data) =>{
     data.forEach(element => {
         query += `
         <li class="flex flex-column flex-ai-c">
-        <input type="number" value="0" class="${element.STA}-Value">
+        <input type="number" onchange="statMaths(value,this)" value="0" id="${element.STA}_value">
         </li>`
     });
     
@@ -247,7 +280,7 @@ const statsMap = (data) =>{
         query += `
         <li class=" flex flex-column">
         <div  class="Box__value">
-        <p class="${element.STA}-Modifier">30</p>
+        <p id="${element.STA}_modifier">0</p>
         </div>
         </li>`
     });
@@ -258,7 +291,7 @@ const statsMap = (data) =>{
     data.forEach(element => {
         query += `
         <li class="flex flex-column flex-ai-c">
-        <input type="number" value="0" class="${element.STA}-TValue">
+        <input type="number" onchange="statMaths(value,this)" value="0" id="${element.STA}_Tvalue">
         </li>`
     });
 
@@ -269,7 +302,7 @@ const statsMap = (data) =>{
         query += `
         <li class=" flex flex-column">
         <div  class="Box__value">
-        <p class="${element.STA}-TModifier">30</p>
+        <p id="${element.STA}_Tmodifier">0</p>
         </div>
         </li>`
     });
@@ -500,8 +533,12 @@ const skillsMap = (data) =>{
                     <h1>SKILLS</h1>
                     <div class="flex flex-row">
                         <p>MAX RANKS <br> (CLASS/CROSS-CLASS)</p>
-                        <div class="Box__value">
-                            <p>0</p>
+                        <div class="Box__value" style="margin-left:5px;">
+                            <p style="color:black;font-size:13px" onchange="rankValidate(this)" class="total_ranks">0</p>
+                        </div>
+                        <p>TOTAL<br> SKILLPOINTS</p>
+                        <div class="Box__value" style="margin-left:5px;">
+                            <p style="color:black;font-size:13px" onchange="skillPointValidate(this)" class="total_skillpoint">0</p>
                         </div>
                     </div>
                 </li>
@@ -531,8 +568,8 @@ const skillsMap = (data) =>{
     data.forEach(element => {
         query += `
                 <li class="skill__skills flex flex-row-l">
-                    <div class="skill__name ${element.name}_c flex flex-row-l">
-                        <input type="checkbox">
+                    <div class="skill__name flex flex-row-l">
+                        <input type="checkbox" class="${element.name}_check">
                         <p>${element.name}</p>
                     </div>
                     <div class="skill__modifier ${element.name}_skill">
@@ -542,11 +579,11 @@ const skillsMap = (data) =>{
                         <p>0</p>
                     </div>
                         <p>=</p>
-                        <input type="number" class="${element.modifier}_value" name="" id="">
+                        <p class="${element.class}">0</p>
                         <p>+</p>
-                     <input type="number" class="${element.name}_ranks" name="" id="">
+                     <input type="number" onchange="validateRank(this)"  class="ranks" id="${element.name}_ranks" name="">
                         <p>+</p>
-                    <input type="number" class="${element.name}_misc_ranks" name="" id="">
+                    <input type="number" class="${element.name}_misc_ranks" name="">
                 </li>
         `;
     });
@@ -715,9 +752,9 @@ const grappleMap = (data) =>{
                 <ul class="flex flex-column">
                     <li class="flex flex-column">
                     <div class="Box__value">
-                        <p></p>
+                        <p class="${element.class}"></p>
                     </div>
-                    <p class="hp">${element.name}</p>     
+                    <p>${element.name}</p>     
                 </li>
             </ul>
         </div>`  
@@ -787,4 +824,143 @@ const shieldMap = (data) =>
     shield.innerHTML = (query);
 }
 
+//MATHS
 
+function statMaths(staValue, value){
+    try
+    {
+        let modifier = document.querySelector(`#${value.id.replace("value","modifier")}`);
+        let stamodifier;
+        let count = 0;
+        if((value.id).includes("Tvalue"))
+        {
+            while(count <= staValue)
+            { 
+                if(count == 0)
+                {
+                    stamodifier = 0;
+                }  else if(count%2 == 0){
+                    stamodifier++    
+                }
+                count++
+            }
+        }
+        else
+        {
+            while(count <= staValue)
+            {
+                if(count == 0)
+                {
+                    stamodifier = -5;
+                }  else if(count%2 == 0){
+                    stamodifier++    
+                }
+                count++
+            }
+        }
+       
+
+    modifier.innerText = stamodifier;
+    let sta = value.id.split("_");
+    let staV =  document.querySelector(`#${value.id.split("_")[0] + "_modifier"}`).innerText;
+    let staTV = document.querySelector(`#${value.id.split("_")[0] + "_Tmodifier"}`).innerText;
+    totalStatValues(sta[0],staV,staTV)
+    }
+    catch(e){
+        console.log(e);
+    }
+ }
+ function totalStatValues(sta,staV,staTV)
+ {
+     const staTotalValue = document.querySelectorAll(`.${sta + "_TOTAL-MODIFIER"}`);
+
+     staTotalValue.forEach(element => {
+        element.innerText = (parseInt(staV) + parseInt(staTV));    
+     });
+     
+}
+function skillvalues(ranks) {
+    
+}
+function totalrank(level) {
+    
+const total_ranks = document.querySelector('.total_ranks');
+    try 
+    {
+        let levels = level.value;
+        total_ranks.innerText = (parseInt(levels) + 3) + '/' + ((parseInt(levels) + 3) / 2);    
+        validateRanks(total_ranks);
+        skillpoint();
+    } 
+    catch (error)
+    {
+        console.log(error)
+    }
+
+    
+
+
+}
+function  skillpoint() {
+    const levels = document.querySelector(".levels").value;
+    const skillPoint = document.querySelector(".header_dropdown_skill");
+
+    let query = ``;
+    let index;
+    for ( index = 0; index < levels; index++) {
+        if (condition) {
+            
+        }
+        query += 
+        `<p class="skill_input${index}">LV ${index} <input class="skillLV${index}"  type="number" value="0"></p>`
+    }
+
+    skillPoint.innerHTML = query;
+
+
+
+
+}
+function validateRanks(totalrank) {
+    const rankValidate = document.querySelectorAll('.ranks');
+
+    rankValidate.forEach(element => {
+
+        if (parseInt(element.value) > parseInt(totalrank.innerText.split('/')[0]) )
+        {
+            element.style.color = 'red';
+            console.log('supera el rango maximo');
+        }
+        
+    });
+
+}
+function validateRank(rank)
+{
+    const rankValidate = document.querySelector(`#${rank.id}`);
+    const totalranks = document.querySelector('.total_ranks');
+    const levels = document.querySelector('.levels');
+try {
+    if (levels.value != 0) 
+    {
+        if (rankValidate.value > parseInt(totalranks.innerText.split('/')[0])) {
+            rankValidate.style.color = 'red';    
+        }
+    }
+    else
+    {
+        rankValidate.value = 0;
+        alert('No puedes subir rangos sin colocar lv de personaje');
+    }
+    
+    
+    console.log(rankValidate);
+} catch (error) {
+    console.log(error);
+}
+   
+}
+function skillPointValidate(totalskillpoint)
+{
+ console.log(totalskillpoint);
+}
