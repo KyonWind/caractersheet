@@ -34,34 +34,34 @@ window.onload = function(e){
     ];
     const skill = 
     [
-        {name: "Appraise",                    modifier: "INT",      class:"INT_TOTAL-MODIFIER", id: "Appraise",                },
-        {name: "Balance",                     modifier: "DEX",      class:"DEX_TOTAL-MODIFIER", id: "Balance",                 },
-        {name: "Bluff",                       modifier: "CHA",      class:"CHA_TOTAL-MODIFIER", id: "Bluff",                   },
-        {name: "Climb",                       modifier: "STR*",     class:"STR_TOTAL-MODIFIER", id: "Climb",                   },
-        {name: "Concentration",               modifier: "CON",      class:"CON_TOTAL-MODIFIER", id: "Concentration",           },
-        {name: "Craft(_______________)",      modifier: "INT",      class:"INT_TOTAL-MODIFIER", id: "Craft1",                  },
-        {name: "Craft(_______________)",      modifier: "INT",      class:"INT_TOTAL-MODIFIER", id: "Craft2",                  },
+        {name: "Appraise",                    modifier: "INT",      class:"INT_TOTAL-MODIFIER", id: "Appraise"                },
+        {name: "Balance",                     modifier: "DEX",      class:"DEX_TOTAL-MODIFIER", id: "Balance"                 },
+        {name: "Bluff",                       modifier: "CHA",      class:"CHA_TOTAL-MODIFIER", id: "Bluff"                   },
+        {name: "Climb",                       modifier: "STR*",     class:"STR_TOTAL-MODIFIER", id: "Climb"                   },
+        {name: "Concentration",               modifier: "CON",      class:"CON_TOTAL-MODIFIER", id: "Concentration"           },
+        {name: "Craft(_______________)",      modifier: "INT",      class:"INT_TOTAL-MODIFIER", id: "Craft1"                  },
+        {name: "Craft(_______________)",      modifier: "INT",      class:"INT_TOTAL-MODIFIER", id: "Craft2"                  },
         {name: "Craft(_______________)",      modifier: "INT",      class:"INT_TOTAL-MODIFIER", id: "Craft3"                   },
-        {name: "Decipher Script",             modifier: "INT",      class:"INT_TOTAL-MODIFIER", id: "Decipher Script"          },
+        {name: "Decipher Script",             modifier: "INT",      class:"INT_TOTAL-MODIFIER", id: "Decipher_Script"          },
         {name: "Diplomacy",                   modifier: "CHA",      class:"CHA_TOTAL-MODIFIER", id: "Diplomacy"                },
-        {name: "Disable Device",              modifier: "INT",      class:"INT_TOTAL-MODIFIER", id: "Disable Device"           },
+        {name: "Disable Device",              modifier: "INT",      class:"INT_TOTAL-MODIFIER", id: "Disable_Device"           },
         {name: "Disguise",                    modifier: "CHA",      class:"CHA_TOTAL-MODIFIER", id: "Disguise"                 },
-        {name: "Escape Artist",               modifier: "DEX*",     class:"DEX_TOTAL-MODIFIER", id: "Escape Artist"            },
+        {name: "Escape Artist",               modifier: "DEX*",     class:"DEX_TOTAL-MODIFIER", id: "Escape_Artist"            },
         {name: "Forgery",                     modifier: "INT",      class:"INT_TOTAL-MODIFIER", id: "Forgery"                  },
-        {name: "Gather Information",          modifier: "CHA",      class:"CHA_TOTAL-MODIFIER", id: "Gather Information"       },
-        {name: "Handle Animal",               modifier: "CHA",      class:"CHA_TOTAL-MODIFIER", id: "Handle Animal"            },
+        {name: "Gather Information",          modifier: "CHA",      class:"CHA_TOTAL-MODIFIER", id: "Gather_Information"       },
+        {name: "Handle Animal",               modifier: "CHA",      class:"CHA_TOTAL-MODIFIER", id: "Handle_Animal"            },
         {name: "Heal",                        modifier: "WIS",      class:"WIS_TOTAL-MODIFIER", id: "Heal"                     },
         {name: "Hide",                        modifier: "DEX*",     class:"DEX_TOTAL-MODIFIER", id: "Hide"                     },
         {name: "Intimidate",                  modifier: "CHA",      class:"CHA_TOTAL-MODIFIER", id: "Intimidate"               },
         {name: "Jump",                        modifier: "STR*",     class:"STR_TOTAL-MODIFIER", id: "Jump"                     },
-        {name: "Knowledge (Arcana)",          modifier: "INT",      class:"INT_TOTAL-MODIFIER", id: "Knowledge(Arcana)"        },
-        {name: "Knowledge (Natural)",         modifier: "INT",      class:"INT_TOTAL-MODIFIER", id: "Knowledge(Natural)"       },
-        {name: "Knowledge (Dungeon)",         modifier: "INT",      class:"INT_TOTAL-MODIFIER", id: "Knowledge(Dungeon)"       },
-        {name: "Knowledge (Religion)",        modifier: "INT",      class:"INT_TOTAL-MODIFIER", id: "Knowledge(Religion)"      },
-        {name: "Knowledge (Nobleza)",         modifier: "INT",      class:"INT_TOTAL-MODIFIER", id: "Knowledge(Nobleza)"       },
+        {name: "Knowledge (Arcana)",          modifier: "INT",      class:"INT_TOTAL-MODIFIER", id: "Knowledge1"               },
+        {name: "Knowledge (Natural)",         modifier: "INT",      class:"INT_TOTAL-MODIFIER", id: "Knowledge2"               },
+        {name: "Knowledge (Dungeon)",         modifier: "INT",      class:"INT_TOTAL-MODIFIER", id: "Knowledge3"               },
+        {name: "Knowledge (Religion)",        modifier: "INT",      class:"INT_TOTAL-MODIFIER", id: "Knowledge4"               },
+        {name: "Knowledge (Nobleza)",         modifier: "INT",      class:"INT_TOTAL-MODIFIER", id: "Knowledge5"               },
         {name: "Listen",                      modifier: "WIS",      class:"WIS_TOTAL-MODIFIER", id: "Listen"                   },
-        {name: "Move Silently",               modifier: "DEX*",     class:"DEX_TOTAL-MODIFIER", id: "Move Silently"            },
-        {name: "Open Lock",                   modifier: "DEX",      class:"DEX_TOTAL-MODIFIER", id: "Open Lock"                },
+        {name: "Move Silently",               modifier: "DEX*",     class:"DEX_TOTAL-MODIFIER", id: "Move_Silently"            },
+        {name: "Open Lock",                   modifier: "DEX",      class:"DEX_TOTAL-MODIFIER", id: "Open_Lock"                },
         {name: "Perform (____________)",      modifier: "CHA",      class:"CHA_TOTAL-MODIFIER", id: "Perform1"                 },
         {name: "Perform (____________)",      modifier: "CHA",      class:"CHA_TOTAL-MODIFIER", id: "Perform2"                 },
         {name: "Perform (____________)",      modifier: "CHA",      class:"CHA_TOTAL-MODIFIER", id: "Perform3"                 },
@@ -69,15 +69,15 @@ window.onload = function(e){
         {name: "Profession (___________)",    modifier: "WIS",      class:"WIS_TOTAL-MODIFIER", id: "Profession2"              },
         {name: "Ride",                        modifier: "DEX",      class:"DEX_TOTAL-MODIFIER", id: "Ride"                     },
         {name: "Search",                      modifier: "INT",      class:"INT_TOTAL-MODIFIER", id: "Search"                   },
-        {name: "Sense Motive",                modifier: "WIS",      class:"WIS_TOTAL-MODIFIER", id: "Sense Motive"             },
-        {name: "Sleight of Hand ",            modifier: "DEX*",     class:"DEX_TOTAL-MODIFIER", id: "Sleight of Hand "         },
-        {name: "Spellcraft ",                 modifier: "INT",      class:"INT_TOTAL-MODIFIER", id: "Spellcraft "              },
+        {name: "Sense Motive",                modifier: "WIS",      class:"WIS_TOTAL-MODIFIER", id: "Sense_Motive"             },
+        {name: "Sleight of Hand ",            modifier: "DEX*",     class:"DEX_TOTAL-MODIFIER", id: "Sleight_of_Hand"          },
+        {name: "Spellcraft ",                 modifier: "INT",      class:"INT_TOTAL-MODIFIER", id: "Spellcraft"               },
         {name: "Spot",                        modifier: "WIS",      class:"WIS_TOTAL-MODIFIER", id: "Spot"                     },
         {name: "Survival",                    modifier: "WIS",      class:"WIS_TOTAL-MODIFIER", id: "Survival"                 },
         {name: "Swim",                        modifier: "STR",      class:"STR_TOTAL-MODIFIER", id: "Swim"                     },
-        {name: "Tumble ",                     modifier: "DEX*",     class:"DEX_TOTAL-MODIFIER", id: "Tumble "                  },
-        {name: "Use Magic Device",            modifier: "CHA",      class:"CHA_TOTAL-MODIFIER", id: "Use Magic Device"         },
-        {name: "Use Rope",                    modifier: "DEX",      class:"DEX_TOTAL-MODIFIER", id: "Use Rope"                 },
+        {name: "Tumble ",                     modifier: "DEX*",     class:"DEX_TOTAL-MODIFIER", id: "Tumble"                   },
+        {name: "Use Magic Device",            modifier: "CHA",      class:"CHA_TOTAL-MODIFIER", id: "Use_Magic_Device"         },
+        {name: "Use Rope",                    modifier: "DEX",      class:"DEX_TOTAL-MODIFIER", id: "Use_Rope"                 },
     ];
     const StatsModifier = 
     [
@@ -189,10 +189,13 @@ window.onload = function(e){
         {name:"WEIGHT", class: "wp_weight", type:"input"},
         {name:"SPECIAL PROPERTIES", class: "wp_special_properties", type:"input"}
     ];
+
+
     
-    
+    prepareCacheSave(skill);
+    // MAP PAGE
     headerMap(headerNames,headerMenu);
-    statsMap(abName);
+    
     hpAcMap(hpbar,acbar,acInit);
     skillsMap(skill);
     savesMap(saveData);
@@ -201,6 +204,13 @@ window.onload = function(e){
     weaponMap(weapon);
     armorMap(armor);
     shieldMap(shield);
+    statsMap(abName);
+
+    //FUNCTIONS
+    totalStatValues('cache',0,0);
+    totalrank();
+
+
 
 
     
@@ -217,7 +227,7 @@ const headerMap = (headerNames,headerMenu) =>  {
                 if(element.type == "number")
                 {
                     query += `
-                    <input type="${element.type}" onchange="totalrank(this)"  class="${element.class} header__input"></input>`      
+                    <input type="${element.type}" onchange="levels(this)"  class="${element.class} header__input"></input>`      
                 }
                 else
                 {
@@ -233,6 +243,7 @@ const headerMap = (headerNames,headerMenu) =>  {
         header.innerHTML += query;
 
         query = `<ul class="debug">`
+        
         headerMenu.forEach(element => {
             query += `
             <li class="debug ${element.class}">
@@ -269,7 +280,7 @@ const statsMap = (data) =>{
     data.forEach(element => {
         query += `
         <li class="flex flex-column flex-ai-c">
-        <input type="number" onchange="statMaths(value,this)" value="0" id="${element.STA}_value">
+        <input type="number" onchange="statMaths(value,this)" value="${localStorage[`${element.STA}_value`]}" id="${element.STA}_value">
         </li>`
     });
     
@@ -277,11 +288,16 @@ const statsMap = (data) =>{
     query = ``;
 
     data.forEach(element => {
-        query += `
-        <li class=" flex flex-column">
-        <div  class="Box__value">
-        <p id="${element.STA}_modifier">0</p>
-        </div>
+        query += 
+       // `
+       // <li class=" flex flex-column">
+       // <div  class="Box__value">
+       // <p id="${element.STA}_modifier">0</p>
+       // </div>
+       // </li>`
+        `
+        <li class="flex flex-column flex-ai-c Box__input">
+        <input type="number" value="0" id="${element.STA}_modifier">
         </li>`
     });
 
@@ -291,7 +307,7 @@ const statsMap = (data) =>{
     data.forEach(element => {
         query += `
         <li class="flex flex-column flex-ai-c">
-        <input type="number" onchange="statMaths(value,this)" value="0" id="${element.STA}_Tvalue">
+        <input type="number" onchange="statMaths(value,this)" value="${localStorage[`${element.STA}_Tvalue`]}" id="${element.STA}_Tvalue">
         </li>`
     });
 
@@ -299,15 +315,21 @@ const statsMap = (data) =>{
     query = ``;
 
     data.forEach(element => {
-        query += `
-        <li class=" flex flex-column">
-        <div  class="Box__value">
-        <p id="${element.STA}_Tmodifier">0</p>
-        </div>
+        query += 
+      //  `
+      //  <li class=" flex flex-column">
+      //  <div  class="Box__value">
+      //  <p id="${element.STA}_Tmodifier">0</p>
+      //  </div>
+      //  </li>`
+      `
+        <li class="flex flex-column flex-ai-c Box__input">
+        <input type="number" style="border:none" value="0" id="${element.STA}_Tmodifier">
         </li>`
     });
 
     StatTempModifier.innerHTML += query;
+   statMaths(0,data)
     query = ``;
 };
 const hpAcMap = (hpbar,acbar,acInit) =>{
@@ -534,7 +556,7 @@ const skillsMap = (data) =>{
                     <div class="flex flex-row">
                         <p>MAX RANKS <br> (CLASS/CROSS-CLASS)</p>
                         <div class="Box__value" style="margin-left:5px;">
-                            <p style="color:black;font-size:13px" onchange="rankValidate(this)" class="total_ranks">0</p>
+                            <p style="color:black;font-size:13px" onchange="" class="total_skillPoint">0</p>
                         </div>
                         <p>TOTAL<br> SKILLPOINTS</p>
                         <div class="Box__value" style="margin-left:5px;">
@@ -576,14 +598,14 @@ const skillsMap = (data) =>{
                         <p>${element.modifier}</p>
                     </div>
                     <div class="skill__value ${element.name}_value">
-                        <p>0</p>
+                    <input type="number" onchange="" disabled  class="${element.class}" id="${element.id}_total_ranks" name="">
                     </div>
                         <p>=</p>
-                        <p class="${element.class}">0</p>
+                        <input type="number" disabled onchange="validateRank(this)"  class="${element.class} ranks" id="${element.id}_${element.class}" name="">
                         <p>+</p>
-                     <input type="number" onchange="validateRank(this)"  class="ranks" id="${element.name}_ranks" name="">
+                     <input type="number" onchange="rankMaths(this)"  class="ranks" id="${element.id}_ranks" name="">
                         <p>+</p>
-                    <input type="number" class="${element.name}_misc_ranks" name="">
+                    <input type="number" onchange="rankMaths(this)" id="${element.id}_misc_ranks" name="">
                 </li>
         `;
     });
@@ -751,8 +773,8 @@ const grappleMap = (data) =>{
             <div class="gp_div">
                 <ul class="flex flex-column">
                     <li class="flex flex-column">
-                    <div class="Box__value">
-                        <p class="${element.class}"></p>
+                    <div class="Box__input">
+                    <input type="number" disabled class="${element.class} ranks" name="">
                     </div>
                     <p>${element.name}</p>     
                 </li>
@@ -786,7 +808,7 @@ const weaponMap = (data) =>{
         count++;
     }
     
-}
+};
 const armorMap = (data) =>
 {
     let query = ``;
@@ -804,7 +826,7 @@ const armorMap = (data) =>
     query += `</ul>`;
 
     armor.innerHTML = (query);
-}
+};
 const shieldMap = (data) =>
 {
     let query = ``;
@@ -822,74 +844,155 @@ const shieldMap = (data) =>
     query += `</ul>`;
 
     shield.innerHTML = (query);
-}
+};
 
 //MATHS
 
 function statMaths(staValue, value){
     try
     {
-        let modifier = document.querySelector(`#${value.id.replace("value","modifier")}`);
-        let stamodifier;
-        let count = 0;
-        if((value.id).includes("Tvalue"))
-        {
-            while(count <= staValue)
-            { 
-                if(count == 0)
-                {
-                    stamodifier = 0;
-                }  else if(count%2 == 0){
-                    stamodifier++    
+        if (value.length > 1) {
+            value.forEach(element =>
+            {
+                let modifier = document.querySelector(`#${element.STA + "_modifier"}`);
+                let Tmodifier = document.querySelector(`#${element.STA + "_Tmodifier"}`);
+                let value = document.querySelector(`#${element.STA + "_value"}`);
+                let Tvalue = document.querySelector(`#${element.STA + "_Tvalue"}`);
+                let stamodifier;
+                let Tstamodifier;
+                let Tcount = 0;
+                let count = 0;
+               
+                while(Tcount <= Tvalue.value)
+                { 
+                    if(Tcount == 0)
+                    {
+                        Tstamodifier = 0;
+                    }  
+                    else if(Tcount%2 == 0)
+                    {
+                        Tstamodifier++    
+                    }
+                    Tcount++
                 }
-                count++
-            }
+            
+                while(count <= value.value)
+                {
+                    if(count == 0)
+                    {
+                        stamodifier = -5;
+                    }  
+                    else if(count%2 == 0)
+                    {
+                        stamodifier++    
+                    }
+                    count++
+                }
+                    modifier.value = stamodifier;
+                    Tmodifier.value = Tstamodifier;
+                    let sta = value.id.split("_");
+                    let staV =  modifier.value;
+                    let staTV = Tmodifier.value;
+                    totalStatValues(sta[0],staV,staTV)
+                    cacheSave(staValue,value.id);
+            });
+            
         }
         else
         {
-            while(count <= staValue)
+            let modifier = document.querySelector(`#${value.id.replace("value","modifier")}`);
+            let stamodifier;
+            let count = 0;
+            if((value.id).includes("Tvalue"))
             {
-                if(count == 0)
-                {
-                    stamodifier = -5;
-                }  else if(count%2 == 0){
-                    stamodifier++    
+                while(count <= staValue)
+                { 
+                    if(count == 0)
+                    {
+                        stamodifier = 0;
+                    }  else if(count%2 == 0){
+                        stamodifier++    
+                    }
+                    count++
                 }
-                count++
             }
+            else
+            {
+                while(count <= staValue)
+                {
+                    if(count == 0)
+                    {
+                        stamodifier = -5;
+                    }  else if(count%2 == 0){
+                        stamodifier++    
+                    }
+                    count++
+                }
+            }
+           
+    
+         modifier.value = stamodifier;
+         let sta = value.id.split("_");
+         let staV =  document.querySelector(`#${value.id.split("_")[0] + "_modifier"}`).value;
+         let staTV = document.querySelector(`#${value.id.split("_")[0] + "_Tmodifier"}`).value;
+         totalStatValues(sta[0],staV,staTV)
+         cacheSave(staValue,value.id);
         }
-       
 
-    modifier.innerText = stamodifier;
-    let sta = value.id.split("_");
-    let staV =  document.querySelector(`#${value.id.split("_")[0] + "_modifier"}`).innerText;
-    let staTV = document.querySelector(`#${value.id.split("_")[0] + "_Tmodifier"}`).innerText;
-    totalStatValues(sta[0],staV,staTV)
+        
     }
     catch(e){
         console.log(e);
     }
- }
- function totalStatValues(sta,staV,staTV)
- {
-     const staTotalValue = document.querySelectorAll(`.${sta + "_TOTAL-MODIFIER"}`);
+};
+function rankMaths(rank)
+{
+    let data = JSON.parse(localStorage["SKILLS"]);
+    data = data.filter(element => element.id == rank.id.split('_')[0]);
 
-     staTotalValue.forEach(element => {
-        element.innerText = (parseInt(staV) + parseInt(staTV));    
-     });
+    data.forEach(element =>
+        {
+            const totalrankskill = document.querySelector(`#${element.id}_total_ranks`);
+            const totalrankskillM = document.querySelector(`#${element.id}_${element.class}`);
+            const rankskill = document.querySelector(`#${element.id}_ranks`);
+            const miscranks = document.querySelector(`#${element.id}_misc_ranks`);
+
+            
+            totalrankskill.value = (
+                (totalrankskillM.value == "" ? totalrankskillM.value = 0 : parseInt(totalrankskillM.value)) + 
+                (rankskill.value == "" ? rankskill.value = 0 : parseInt(rankskill.value)) + 
+                (miscranks.value == "" ? miscranks.value = 0 : parseInt(miscranks.value)));
+        });
+}
+function totalStatValues(sta,staV,staTV)
+ {
      
-}
-function skillvalues(ranks) {
+        const staTotalValue = document.querySelectorAll(`.${sta + "_TOTAL-MODIFIER"}`);
+
+        staTotalValue.forEach(element => 
+        {
+        element.value = (parseInt(staV) + parseInt(staTV));
+        });    
     
+     
+     
+     
+};
+function levels(level)
+{
+    if (level.value == 1) {
+        localStorage["INT_modifier_lv1"] = document.querySelector('#INT_modifier');
+    }
+    totalskillPoint(level);
 }
-function totalrank(level) {
+function totalskillPoint(level) {
     
-const total_ranks = document.querySelector('.total_ranks');
+const total_skillPoint = document.querySelector('.total_skillPoint');
     try 
     {
         let levels = level.value;
-        total_ranks.innerText = (parseInt(levels) + 3) + '/' + ((parseInt(levels) + 3) / 2);    
-        validateRanks(total_ranks);
+        total_skillPoint.innerText = (parseInt(levels) + 3) + '/' + ((parseInt(levels) + 3) / 2);    
+        validateRanks(total_skillPoint);
         skillpoint();
     } 
     catch (error)
@@ -900,19 +1003,24 @@ const total_ranks = document.querySelector('.total_ranks');
     
 
 
-}
-function  skillpoint() {
+};
+function skillpoint() {
     const levels = document.querySelector(".levels").value;
     const skillPoint = document.querySelector(".header_dropdown_skill");
 
     let query = ``;
     let index;
-    for ( index = 0; index < levels; index++) {
-        if (condition) {
-            
-        }
+    let skill_cache;
+    try {
+        skill_cache = localStorage["skillLV"].split('|');
+    } catch (error) {
+        skill_cache = [0];
+    }
+    
+    query += `<p> HUMAN <input class="human_skill" onchange="cacheSave(this,'human_skill')" type="checkbox" checked="${localStorage["human_skill"] == false  ? false : true}" ></p>`
+    for ( index = 1 ; index <= levels; index++) {
         query += 
-        `<p class="skill_input${index}">LV ${index} <input class="skillLV${index}"  type="number" value="0"></p>`
+        `<p class="skill_input${index}">LV ${index} <input class="skillLV${index}" onchange="cacheSave(this,'skillLV')" type="number" value="${skill_cache[(index - 1)]}"></p>`
     }
 
     skillPoint.innerHTML = query;
@@ -920,13 +1028,13 @@ function  skillpoint() {
 
 
 
-}
-function validateRanks(totalrank) {
+};
+function validateRanks(totalskillPoint) {
     const rankValidate = document.querySelectorAll('.ranks');
 
     rankValidate.forEach(element => {
 
-        if (parseInt(element.value) > parseInt(totalrank.innerText.split('/')[0]) )
+        if (parseInt(element.value) > parseInt(totalskillPoint.innerText.split('/')[0]) )
         {
             element.style.color = 'red';
             console.log('supera el rango maximo');
@@ -934,16 +1042,16 @@ function validateRanks(totalrank) {
         
     });
 
-}
+};
 function validateRank(rank)
 {
     const rankValidate = document.querySelector(`#${rank.id}`);
-    const totalranks = document.querySelector('.total_ranks');
+    const totalskillPoints = document.querySelector('.total_skillPoint');
     const levels = document.querySelector('.levels');
 try {
     if (levels.value != 0) 
     {
-        if (rankValidate.value > parseInt(totalranks.innerText.split('/')[0])) {
+        if (rankValidate.value > parseInt(totalskillPoints.innerText.split('/')[0])) {
             rankValidate.style.color = 'red';    
         }
     }
@@ -959,8 +1067,102 @@ try {
     console.log(error);
 }
    
-}
+};
 function skillPointValidate(totalskillpoint)
 {
  console.log(totalskillpoint);
+};
+function cacheSave(data,type_data){
+
+    switch (type_data) {
+        case 'skillLV':
+            const levels = document.querySelector(".levels").value;
+            localStorage["skillLV"] = '';
+            for (let index = 1; index <= levels; index++) {
+            localStorage["skillLV"] += document.querySelector(`.skillLV${index}`).value + "|";
+            }
+            break;
+        case 'human_skill':
+            data.checked == false ? localStorage["human_skill"] = false : localStorage["human_skill"] = true;
+            break;
+        case 'STR_value':
+            localStorage[`${type_data}`] = data;
+            break;
+        case 'DEX_value':
+            localStorage[`${type_data}`] = data;
+            break;
+        case 'CON_value':
+            localStorage[`${type_data}`] = data;
+            break;
+        case 'INT_value':
+            localStorage[`${type_data}`] = data;
+            break;
+        case 'WIS_value':
+            localStorage[`${type_data}`] = data;
+            break;
+        case 'CHA_value':
+            localStorage[`${type_data}`] = data;
+            break;
+        case 'STR_Tvalue':
+            localStorage[`${type_data}`] = data;
+            break;
+        case 'DEX_Tvalue':
+            localStorage[`${type_data}`] = data;
+            break;
+        case 'CON_Tvalue':
+            localStorage[`${type_data}`] = data;
+            break;
+        case 'INT_Tvalue':
+            localStorage[`${type_data}`] = data;
+            break;
+        case 'WIS_Tvalue':
+            localStorage[`${type_data}`] = data;
+            break;
+        case 'CHA_Tvalue':
+            localStorage[`${type_data}`] = data;
+            break;
+            
+        default:
+            break;
+    }
+};
+function totalrank()
+{
+
+   let data = JSON.parse(localStorage["SKILLS"]);
+
+    data.forEach(element =>
+        {
+            const totalrankskill = document.querySelector(`#${element.id}_total_ranks`);
+            const totalrankskillM = document.querySelector(`#${element.id}_${element.class}`);
+            const rankskill = document.querySelector(`#${element.id}_ranks`);
+            const miscranks = document.querySelector(`#${element.id}_misc_ranks`);
+
+            totalrankskill.value = (
+                (totalrankskillM.value == "" ? totalrankskillM.value = 0 : parseInt(totalrankskillM.value)) + 
+                (rankskill.value == "" ? rankskill.value = 0 : parseInt(rankskill.value)) + 
+                (miscranks.value == "" ? miscranks.value = 0 : parseInt(miscranks.value)));
+                
+        });
 }
+function prepareCacheSave(skill)
+{
+    localStorage["skillLV"];
+    localStorage["human_skill"];
+    localStorage["STR_value"];
+    localStorage["DEX_value"];
+    localStorage["CON_value"];
+    localStorage["INT_value"];
+    localStorage["WIS_value"];
+    localStorage["CHA_value"];
+    localStorage["STR_Tvalue"];
+    localStorage["DEX_Tvalue"];
+    localStorage["CON_Tvalue"];
+    localStorage["INT_Tvalue"];
+    localStorage["WIS_Tvalue"];
+    localStorage["CHA_Tvalue"];
+    localStorage["SKILLS"] = JSON.stringify(skill);
+    
+
+
+};

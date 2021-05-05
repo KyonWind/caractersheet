@@ -69,11 +69,11 @@
         border-left:2px solid $Black ;   
         border-right:2px solid $Black;
         border-top: 1px solid $Black;
-        border-bottom: 1px solid $Black;
         width: fit-content;
-        p{
+        input{
             text-align: center;
             width: 45px;
+            height: 15px;
         }
     }
     &__container{
