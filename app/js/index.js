@@ -21,7 +21,8 @@ window.onload = function(e){
     const headerMenu = 
     [
         {name:"SKILL",                       class:"header_skill",            dropdown:"header_dropdown_skill"},
-        {name:"FEATS",                       class:"header_feats",            dropdown:"header_dropdown_feats"}
+        {name:"FEATS",                       class:"header_feats",            dropdown:"header_dropdown_feats"},
+        {name:"HIT DICE",                       class:"header_hit_dice",            dropdown:"header_dropdown_hit_dice"}
     ];
     const abName = 
     [
@@ -114,7 +115,7 @@ window.onload = function(e){
         {name: "", class:"ac__flat",type:"input"},
         {name: "<h1>INICIATIVE</h1><p>MODIFIER</p>", class:" init init__inicitiveName",type:["name","init"]},
         {name: "TOTAL", class:" init init__inicitiveValue", type:["value","init"]},
-        {name: "DEX <br> MODIFIER", class:" init init__dex",type:["input","init"]},
+        {name: "DEX <br> MODIFIER", class:" init init__dex DEX_TOTAL-MODIFIER",type:["input","init"]},
         {name: "MISC <br> MODIFIER", class:" init init__misc",type:["lastinput","init"]},
 
     ];
@@ -226,13 +227,32 @@ const headerMap = (headerNames,headerMenu) =>  {
             <div class="header__box">`
                 if(element.type == "number")
                 {
-                    query += `
-                    <input type="${element.type}" onchange="levels(this)"  class="${element.class} header__input"></input>`      
+                    if(localStorage[element.class] == undefined)
+                    {
+                        query += `
+                    <input type="${element.type}" onchange="levels(this)" type="number" id="${element.class}" value="0"  class="header__input"></input>`  
+                        
+                    } 
+                    else
+                    {
+                        query += `
+                        <input type="${element.type}" onchange="levels(this)" type="number" value="${localStorage[element.class]}" id="${element.class}" class="header__input"></input>`       
+                    }
+                    
                 }
                 else
                 {
-                    query += `
-                    <input type="${element.type}"  class="${element.class} header__input"></input>`   
+                    if(localStorage[element.class] == undefined)
+                    {
+                        query += `
+                    <input type="${element.type}" onchange="cacheSave(this,'header__input')" id="${element.class}"  class="header__input"></input>`   
+                    }
+                    else
+                    {
+                        query += `
+                    <input type="${element.type}" onchange="cacheSave(this,'header__input')" value="${localStorage[element.class]}" id="${element.class}"  class="header__input"></input>`   
+                    }
+                    
                 }
                 query += `<div class="header__line"></div>
                 <div class="header__text flex-jc-l">
@@ -465,7 +485,7 @@ const hpAcMap = (hpbar,acbar,acInit) =>{
             <ul class="flex flex-column">
                 <li class="flex flex-row">
                     <div class="Box__input">
-                        <input type="text">
+                        <input type="number">
                     </div>
                 </li>
             </ul>
@@ -514,7 +534,7 @@ const hpAcMap = (hpbar,acbar,acInit) =>{
                     <ul class="flex flex-column">
                         <li class="flex flex-column">
                             <div class="Box__input">
-                                <input type="text">
+                                <input class="${element.class}" type="number">
                             </div>
                             <p class="hp">${element.name}</p>
                         </li>
@@ -532,7 +552,7 @@ const hpAcMap = (hpbar,acbar,acInit) =>{
                     <ul class="flex flex-column">
                         <li class="flex flex-column">
                             <div class="Box__input">
-                                <input type="text">
+                                <input class="${element.class}" type="number">
                             </div>
                             <p class="hp">${element.name}</p>
                         </li>
@@ -591,7 +611,7 @@ const skillsMap = (data) =>{
         query += `
                 <li class="skill__skills flex flex-row-l">
                     <div class="skill__name flex flex-row-l">
-                        <input type="checkbox" class="${element.name}_check">
+                        <input type="checkbox" class="classSkill" onchange="classSkillValidate(this)" id="${element.id}_check">
                         <p>${element.name}</p>
                     </div>
                     <div class="skill__modifier ${element.name}_skill">
@@ -601,9 +621,9 @@ const skillsMap = (data) =>{
                     <input type="number" onchange="" disabled  class="${element.class}" id="${element.id}_total_ranks" name="">
                     </div>
                         <p>=</p>
-                        <input type="number" disabled onchange="validateRank(this)"  class="${element.class} ranks" id="${element.id}_${element.class}" name="">
+                        <input type="number" disabled onchange="validateRank(this)"  class="${element.class}" id="${element.id}_${element.class}" name="">
                         <p>+</p>
-                     <input type="number" onchange="rankMaths(this)"  class="ranks" id="${element.id}_ranks" name="">
+                     <input type="number" onchange="rankMaths(this)" onkeydown="return false" step="0.5"  class="ranks" id="${element.id}_ranks" name="">
                         <p>+</p>
                     <input type="number" onchange="rankMaths(this)" id="${element.id}_misc_ranks" name="">
                 </li>
@@ -894,7 +914,6 @@ function statMaths(staValue, value){
                     let staV =  modifier.value;
                     let staTV = Tmodifier.value;
                     totalStatValues(sta[0],staV,staTV)
-                    cacheSave(staValue,value.id);
             });
             
         }
@@ -945,6 +964,19 @@ function statMaths(staValue, value){
         console.log(e);
     }
 };
+function classSkillValidate(checkbox)
+{
+    if (checkbox.checked == true) 
+    {
+        let input = document.querySelector(`#${checkbox.id.split('_')[0]}_ranks`);
+        input.step = 1;
+    }
+    else
+    {
+        let input = document.querySelector(`#${checkbox.id.split('_')[0]}_ranks`);
+        input.step = 0.5;
+    }
+};
 function rankMaths(rank)
 {
     let data = JSON.parse(localStorage["SKILLS"]);
@@ -963,7 +995,8 @@ function rankMaths(rank)
                 (rankskill.value == "" ? rankskill.value = 0 : parseInt(rankskill.value)) + 
                 (miscranks.value == "" ? miscranks.value = 0 : parseInt(miscranks.value)));
         });
-}
+    cacheSave(0,'ranks')    
+};
 function totalStatValues(sta,staV,staTV)
  {
      
@@ -984,6 +1017,8 @@ function levels(level)
         localStorage["INT_modifier_lv1"] = document.querySelector('#INT_modifier');
     }
     totalskillPoint(level);
+    feats();
+    hitDice();
 }
 function totalskillPoint(level) {
     
@@ -1014,16 +1049,85 @@ function skillpoint() {
     try {
         skill_cache = localStorage["skillLV"].split('|');
     } catch (error) {
-        skill_cache = [0];
+        localStorage["skillLV"] = '';
     }
     
     query += `<p> HUMAN <input class="human_skill" onchange="cacheSave(this,'human_skill')" type="checkbox" checked="${localStorage["human_skill"] == false  ? false : true}" ></p>`
     for ( index = 1 ; index <= levels; index++) {
-        query += 
+        if (index == 1) {
+            query += 
+            `<p class="skill_input${index}">LV ${index} <input class="skillLV${index}" onchange="cacheSave(this,'skillLV')" type="number" value="${skill_cache[(index - 1)]}"></p>`
+        } else 
+        {
+            query += 
         `<p class="skill_input${index}">LV ${index} <input class="skillLV${index}" onchange="cacheSave(this,'skillLV')" type="number" value="${skill_cache[(index - 1)]}"></p>`
+        }
+        
     }
 
     skillPoint.innerHTML = query;
+
+
+
+
+};
+function feats(){
+
+    const levels = document.querySelector(".levels").value;
+    const feats = document.querySelector(".header_dropdown_feats");
+
+    let query = ``;
+    let index;
+    let feats_cache;
+    try {
+        feats_cache = localStorage["feats"].split('|');
+    } catch (error) {
+        localStorage["feats"] = ''
+    }
+    
+   
+    for ( index = 1 ; index <= levels; index++) {
+        if (index%3 == 0) {
+            query += 
+            `<p class="feats_input${index}">FEAT LV ${index} <input class="feats${index}" onchange="cacheSave(this,'feats')" type="text" value="${feats_cache[(index - 1)]}"></p>`;
+        } else if(index == 1){
+            query +=
+            `<p class="feats_input${index}">FEAT LV ${index} <input class="feats${index}" onchange="cacheSave(this,'feats')" type="text" value="${feats_cache[(index - 1)]}"></p>`;
+        }
+        
+    }
+
+    feats.innerHTML = query;
+
+};
+function hitDice() {
+    const levels = document.querySelector(".levels").value;
+    const hitDice = document.querySelector(".header_dropdown_hit_dice");
+
+    let query = ``;
+    let index;
+    let hitDice_cache;
+    try {
+        hitDice_cache = localStorage["hitDice"].split('|');
+    } catch (error) {
+        localStorage["hitDice"] = '';
+    }
+    
+    
+    for ( index = 1 ; index <= levels; index++) {
+        if (index == 1) {
+            query += 
+            `<p class="hit_input${index}">HIT DICE LV ${index} <input class="hitDice${index}" onchange="cacheSave(this,'hitDice')" type="number" value="${hitDice_cache[(index - 1)]}"></p>`
+        }
+        else 
+        {
+            query += 
+        `<p class="hit_input${index}">HIT DICE LV ${index} <input class="hitDice${index}" onchange="cacheSave(this,'hitDice')" type="number" value="${hitDice_cache[(index - 1)]}"></p>`
+        }
+        
+    }
+
+    hitDice.innerHTML = query;
 
 
 
@@ -1074,14 +1178,44 @@ function skillPointValidate(totalskillpoint)
 };
 function cacheSave(data,type_data){
 
+    const levels = document.querySelector("#levels").value;
+    
     switch (type_data) {
+        case 'header__input':
+            localStorage["header__input"] = '';
+            const headerInput = document.querySelectorAll('.header__input');
+            headerInput.forEach(element => {
+                localStorage[`${element.id}`] = element.value;
+            });
+            break;
+//            const levels = document.querySelector(".levels").value;
+            for (let index = 1; index <= levels; index++) {
+            localStorage["feats"] += document.querySelector(`.feats${index}`).value + "|";
+            }
+            break;
+        case 'ranks':
+                const ranks = document.querySelectorAll('.ranks');
+                const ranksCheck = document.querySelectorAll('.classSkill');
+                ranks.forEach(element =>{
+                    localStorage[`${element.id}`] = element.value;
+                });
+                ranksCheck.forEach(element =>{
+                    localStorage[`${element.id}`] = element.checked;
+                });
+            break;
         case 'skillLV':
-            const levels = document.querySelector(".levels").value;
+  //          const levels = document.querySelector(".levels").value;
             localStorage["skillLV"] = '';
             for (let index = 1; index <= levels; index++) {
             localStorage["skillLV"] += document.querySelector(`.skillLV${index}`).value + "|";
             }
             break;
+        case 'hitDice':
+            localStorage["hitDice"] = '';
+            for (let index = 1; index <= levels; index++) {
+            localStorage["hitDice"] += document.querySelector(`.hitDice${index}`).value + "|";
+            }
+            break;    
         case 'human_skill':
             data.checked == false ? localStorage["human_skill"] = false : localStorage["human_skill"] = true;
             break;
@@ -1148,6 +1282,7 @@ function totalrank()
 function prepareCacheSave(skill)
 {
     localStorage["skillLV"];
+    localStorage["feats"];
     localStorage["human_skill"];
     localStorage["STR_value"];
     localStorage["DEX_value"];
