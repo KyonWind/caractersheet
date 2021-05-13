@@ -90,16 +90,16 @@ window.onload = function(e){
         {name: "SPEED", class:"hp__speed",type:"input"}
     ];
     const acbar = [
-        {name: "TOTAL", class:"ac__value ", type:"value"},
-        {name: "BASE", class:"ac__base ac__input",type:"base"},
-        {name: "ARMOR <br> BONUS", class:"ac__bonus ac__input",type:"input"},
-        {name: "SHIELD <br> BONUS", class:"ac__shield",type:"input"},
-        {name: "DEX <br> MODIFIER", class:"ac__dex DEX_TOTAL-MODIFIER",type:"input"},
-        {name: "SIZE <br> MODIFIER", class:"ac__size",type:"input"},
-        {name: "NATURAL <br> ARMOR", class:"ac__natural",type:"input"},
-        {name: "DEFLECTION <br> MODIFIER", class:"ac__deflection",type:"input"},
-        {name: "MISC <br> MODIFIER", class:"ac__misc",type:"input"},
-        {name: "DAMAGE REDUCTION", class:"ac__reduction",type:"dmg"},
+        {name: "TOTAL",                         id:"AC_total",                    class:"AC ac__value ", type:"value"},
+        {name: "BASE",                          id:"AC_base",                     class:"AC ac__base ac__input",type:"base"},
+        {name: "ARMOR <br> BONUS",              id:"AC_armor",                    class:"AC ac__bonus ac__input",type:"input"},
+        {name: "SHIELD <br> BONUS",             id:"AC_shield",                   class:"AC ac__shield",type:"input"},
+        {name: "DEX <br> MODIFIER",             id:"AC_dex",                      class:"AC ac__dex DEX_TOTAL-MODIFIER",type:"input"},
+        {name: "SIZE <br> MODIFIER",            id:"AC_size",                     class:"AC ac__size",type:"input"},
+        {name: "NATURAL <br> ARMOR",            id:"AC_natural",                  class:"AC ac__natural",type:"input"},
+        {name: "DEFLECTION <br> MODIFIER",      id:"AC_deflection",               class:"AC ac__deflection",type:"input"},
+        {name: "MISC <br> MODIFIER",            id:"AC_misc",                     class:"AC ac__misc",type:"input"},
+        {name: "DAMAGE REDUCTION",              id:"AC_reduction",                class:"AC ac__reduction",type:"dmg"},
     ];
     const acInit = [
         {name: "<h1>TOUCH</h1><p>ARMOR CLASS</p>", class:"",type:"name"},
@@ -141,17 +141,16 @@ window.onload = function(e){
     }
     ];
     const baseAttack = [
-        {name:"BASE ATTACK BONUS", class: "ab_name", type:"name"},
-        {name:"input", class: "ab_value", type:"input"},
-        {name:"EXTRA ATTACK BONUSES", class: "ab_extra", type:"input"}
+        {name:"BASE ATTACK BONUS",           id:"AB_name",                       class: "ab_name", type:"name"},
+        {name:"input",                       id:"AB_total",                      class: "", type:"input"},
     ];
     const grapple = [
-        {name:"GRAPPLE", class: "gp_name", type:"name"},
-        {name:"TOTAL", class: "gp__total", type:"value"},
-        {name:"BASE ATTACK <br> BONUS", class: "ab_value", type:"value"},
-        {name:"STRENGHT", class: "STR_TOTAL-MODIFIER", type:"value"},
-        {name:"SIZE <br> MODIFIER", class: "size_value", type:"value"},
-        {name:"MISC <br> MODIFIER", class: "gp_misc_value", type:"input"}
+        {name:"GRAPPLE",                     id:"GRAPPLE_name",                  class: "gp_name", type:"name"},
+        {name:"TOTAL",                       id:"GRAPPLE_total",                 class: "", type:"value"},
+        {name:"BASE ATTACK <br> BONUS",      id:"GRAPPLE_ab",                    class: "AB GRAPPLE", type:"value"},
+        {name:"STRENGHT",                    id:"GRAPPLE_str",                   class: "GRAPPLE STR_TOTAL-MODIFIER", type:"value"},
+        {name:"SIZE <br> MODIFIER",          id:"GRAPPLE_size",                  class: "GRAPPLE", type:"value"},
+        {name:"MISC <br> MODIFIER",          id:"GRAPPLE_misc",                  class: "GRAPPLE", type:"input"}
     ];
     const armor = [
         {name:"AMOR", class: "ar_name", type:"input"},
@@ -343,7 +342,7 @@ const hpAcMap = (hpbar,acbar,acInit) =>{
         if(element.type == "value"){
             query += `
             <div class="Box__input">
-            <input id="${element.class}" class="" type="number">
+            <input id="${element.id}" class="${element.class}" value="0" type="number">
             </div>     
                 </li>
             </ul>
@@ -351,7 +350,7 @@ const hpAcMap = (hpbar,acbar,acInit) =>{
         } else{
             query += `
                     <div class="Box__input">
-                        <input type="text">
+                        <input id="${element.id}" class="${element.class}" value="0" type="number">
                     </div>   
                 </li>
             </ul>
@@ -373,7 +372,7 @@ const hpAcMap = (hpbar,acbar,acInit) =>{
     acbar.forEach(element => {
         query += 
         `
-        <div class="${element.class } ac__input">
+        <div class="${element.id} ac__input">
         <ul class="flex flex-column">
             <li class="flex flex-column">
         `
@@ -381,7 +380,7 @@ const hpAcMap = (hpbar,acbar,acInit) =>{
             query += `
             
             <div class="Box__input">
-            <input id="${element.class}" class="" type="number">
+            <input onchange="totals('AC',this)" id="${element.id}" class="${element.class}" value="0" type="number">
             </div> 
                     <p class="hp">${element.name}</p>     
                 </li>
@@ -390,7 +389,7 @@ const hpAcMap = (hpbar,acbar,acInit) =>{
         } else if(element.type == "input"){
             query += `
             <div class="Box__input">
-            <input id="${element.class}" class="${element.class}" type="number">
+            <input onchange="totals('AC',this)" id="${element.id}" class="${element.class}" value="0" type="number">
             </div> 
                     <p class="hp">${element.name}</p>   
                 </li>
@@ -705,7 +704,7 @@ const AttackMap = (data) =>{
                 <ul class="flex flex-column">
                     <li class="flex flex-column">
                         <div class="Box__input">
-                            <input class="${element.class}" type="text">
+                            <input onchange="totals('AB',this)" id="${element.id}" class="${element.class}" value="0" type="number">
                         </div>
                     </li>
                 </ul>
@@ -739,7 +738,7 @@ const grappleMap = (data) =>{
                 <ul class="flex flex-column">
                     <li class="flex flex-column">
                         <div class="Box__input">
-                            <input class="${element.class}" type="text">
+                            <input onchange="totals('GRAPPLE',this)" value="0" id="${element.id}" class="${element.class}" type="number">
                         </div>
                         <p class="hp">${element.name}</p>  
                     </li>
@@ -752,7 +751,7 @@ const grappleMap = (data) =>{
                 <ul class="flex flex-column">
                     <li class="flex flex-column">
                     <div class="Box__input">
-                    <input type="number" disabled class="${element.class} ranks" name="">
+                    <input onchange="totals('GRAPPLE',this)"  type="number" value="0" id="${element.id}" class="${element.class}" name="">
                     </div>
                     <p>${element.name}</p>     
                 </li>
@@ -872,17 +871,22 @@ function totals(type,object){
                     element.dispatchEvent(new Event('change'));
                 });
             break;
-        case 'SAVE':
-                    let save = object.id.split('_')[0];
-                    let total = 0;
-                    let saveValues = document.querySelectorAll(`.${save}`);
-
-                    saveValues.forEach(element =>{
-                        total =  total + parseInt(element.value);
+        case 'AB':
+                document.querySelectorAll(`.${object.id.split('_')[0]}`).forEach(element =>{
+                element.value = object.value;
+                element.dispatchEvent(new Event('change'));
                     });
-                    document.querySelector(`#${save}_total`).value = total;
             break;
         default:
+                let total;
+                type.includes('AC') ? total = 10 
+                                     :total = 0;
+                let saveValues = document.querySelectorAll(`.${object.id.split('_')[0]}`);
+
+                saveValues.forEach(element =>{
+                    total =  total + parseInt(element.value);
+                });
+                document.querySelector(`#${object.id.split('_')[0]}_total`).value = total;
             break;
     }
 };
