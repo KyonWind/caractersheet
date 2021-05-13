@@ -22,14 +22,15 @@ window.onload = function(e){
     [
         {name:"SKILL",                       class:"header_skill",            dropdown:"header_dropdown_skill"},
         {name:"FEATS",                       class:"header_feats",            dropdown:"header_dropdown_feats"},
-        {name:"HIT DICE",                       class:"header_hit_dice",            dropdown:"header_dropdown_hit_dice"}
+        {name:"HIT DICE",                       class:"header_hit_dice",            dropdown:"header_dropdown_hit_dice"},
+        {name:"CHARACTER",                       class:"header_character",            dropdown:"header_dropdown_CHARACTER"}
     ];
     const abName = 
     [
         {STA: "STR", Des: "STRENGHT"},
         {STA: "DEX", Des: "DEXTERY"},
         {STA: "CON", Des: "CONSTITUTION"},
-        {STA: "INT", Des: "INTELLIGENCE"},
+        {STA: "INTE", Des: "INTELLIGENCE"},
         {STA: "WIS", Des: "WISDOM"},
         {STA: "CHA", Des: "CHARISMA"}
     ];
@@ -80,15 +81,7 @@ window.onload = function(e){
         {name: "Use Magic Device",            modifier: "CHA",      class:"CHA_TOTAL-MODIFIER", id: "Use_Magic_Device"         },
         {name: "Use Rope",                    modifier: "DEX",      class:"DEX_TOTAL-MODIFIER", id: "Use_Rope"                 },
     ];
-    const StatsModifier = 
-    [
-        {VALUE: "", Modifier: ""},
-        {VALUE: "", Modifier: ""},
-        {VALUE: "", Modifier: ""},
-        {VALUE: "", Modifier: ""},
-        {VALUE: "", Modifier: ""},
-        {VALUE: "", Modifier: ""}
-    ];
+    
     const hpbar = [
         {name: "TOTAL", class:"hp__value", type:"value"},
         {name: "HP EXTRA", class:"hp__extra",type:"input"},
@@ -101,7 +94,7 @@ window.onload = function(e){
         {name: "BASE", class:"ac__base ac__input",type:"base"},
         {name: "ARMOR <br> BONUS", class:"ac__bonus ac__input",type:"input"},
         {name: "SHIELD <br> BONUS", class:"ac__shield",type:"input"},
-        {name: "DEX <br> MODIFIER", class:"ac__dex",type:"input"},
+        {name: "DEX <br> MODIFIER", class:"ac__dex DEX_TOTAL-MODIFIER",type:"input"},
         {name: "SIZE <br> MODIFIER", class:"ac__size",type:"input"},
         {name: "NATURAL <br> ARMOR", class:"ac__natural",type:"input"},
         {name: "DEFLECTION <br> MODIFIER", class:"ac__deflection",type:"input"},
@@ -120,31 +113,31 @@ window.onload = function(e){
 
     ];
     const saveData = [
-    {SaveName:"FORTITUDE",class:"Box_black", type:"name", data: [
-        {name:"TOTAL", class:"save_for_total", type:"value"},
-        {name:"BASE <br> SAVE", class:"save_for_base", type:"input"},
-        {name:"ABILITY <br> MODIFIER", class:"save_for_modif", type:"input"},
-        {name:"MAGIC <br> MODIFIER", class:"save_for_magic", type:"input"},
-        {name:"MISC <br> MODIFIER", class:"save_for_misc", type:"input"},
-        {name:"TEMP <br> MODIFIER", class:"save_for_temp", type:"Lastinput"}]
+    {SaveName:"FORTITUDE",             id:"FORTITUDE_name",class:"Box_black", type:"name", data: [
+                {name:"TOTAL",                 id:"FORTITUDE_total",    class:"",            type:"value"},
+                {name:"BASE <br> SAVE",        id:"FORTITUDE_base",     class:"FORTITUDE",             type:"input"},
+                {name:"ABILITY <br> MODIFIER", id:"FORTITUDE_STA",      class:"FORTITUDE CON_TOTAL-MODIFIER",        type:"input"},
+                {name:"MAGIC <br> MODIFIER",   id:"FORTITUDE_magic",    class:"FORTITUDE",            type:"input"},
+                {name:"MISC <br> MODIFIER",    id:"FORTITUDE_misc",     class:"FORTITUDE",             type:"input"},
+                {name:"TEMP <br> MODIFIER",    id:"FORTITUDE_temp",     class:"FORTITUDE",             type:"Lastinput"}]
     },
 
-    {SaveName:"REFLEX",class:"Box_black", type:"name", data: [
-        {name:"TOTAL", class:"save_reflex_total", type:"value"},
-        {name:"BASE <br> SAVE", class:"save_reflex_base", type:"input"},
-        {name:"ABILITY <br> MODIFIER", class:"save_reflex_modif", type:"input"},
-        {name:"MAGIC <br> MODIFIER", class:"save_reflex_magic", type:"input"},
-        {name:"MISC <br> MODIFIER", class:"save_reflex_misc", type:"input"},
-        {name:"TEMP <br> MODIFIER", class:"save_reflex_temp", type:"Lastinput"}]
+    {SaveName:"REFLEX",             id:"REFLEX_name",        class:"Box_black", type:"name", data: [
+                {name:"TOTAL",                       id:"REFLEX_total",   class:"",           type:"value"},
+                {name:"BASE <br> SAVE",              id:"REFLEX_base",    class:"REFLEX",            type:"input"},
+                {name:"ABILITY <br> MODIFIER",       id:"REFLEX_STA",     class:"REFLEX DEX_TOTAL-MODIFIER",       type:"input"},
+                {name:"MAGIC <br> MODIFIER",         id:"REFLEX_magic",   class:"REFLEX",           type:"input"},
+                {name:"MISC <br> MODIFIER",          id:"REFLEX_misc",    class:"REFLEX",            type:"input"},
+                {name:"TEMP <br> MODIFIER",          id:"REFLEX_temp",    class:"REFLEX",            type:"Lastinput"}]
     },
 
-    {SaveName:"WILL",class:"Box_black", type:"name", data: [
-        {name:"TOTAL", class:"save_will_total", type:"value"},
-        {name:"BASE <br> SAVE", class:"save_will_base", type:"input"},
-        {name:"ABILITY <br> MODIFIER", class:"save_will_modif", type:"input"},
-        {name:"MAGIC <br> MODIFIER", class:"save_will_magic", type:"input"},
-        {name:"MISC <br> MODIFIER", class:"save_will_misc", type:"input"},
-        {name:"TEMP <br> MODIFIER", class:"save_will_temp", type:"Lastinput"}]
+    {SaveName:"WILL", id:"WILL_name",       class:"Box_black", type:"name", data: [
+        {name:"TOTAL",                  id:"WILL_total",     class: "",           type:"value"},
+        {name:"BASE <br> SAVE",         id:"WILL_base",      class:"WILL",            type:"input"},
+        {name:"ABILITY <br> MODIFIER",  id:"WILL_STA",       class:"WILL WILL_TOTAL-MODIFIER",        type:"input"},
+        {name:"MAGIC <br> MODIFIER",    id:"WILL_magic",     class:"WILL",           type:"input"},
+        {name:"MISC <br> MODIFIER",     id:"WILL_misc",      class:"WILL",            type:"input"},
+        {name:"TEMP <br> MODIFIER",     id:"WILL_temp",      class:"WILL",            type:"Lastinput"}]
     }
     ];
     const baseAttack = [
@@ -191,9 +184,7 @@ window.onload = function(e){
         {name:"SPECIAL PROPERTIES", class: "wp_special_properties", type:"input"}
     ];
 
-
-    
-    prepareCacheSave(skill);
+    var lv1Int;
     // MAP PAGE
     headerMap(headerNames,headerMenu);
     
@@ -208,8 +199,7 @@ window.onload = function(e){
     statsMap(abName);
 
     //FUNCTIONS
-    totalStatValues('cache',0,0);
-    totalrank();
+    totalrank(skill);
 
 
 
@@ -227,32 +217,13 @@ const headerMap = (headerNames,headerMenu) =>  {
             <div class="header__box">`
                 if(element.type == "number")
                 {
-                    if(localStorage[element.class] == undefined)
-                    {
-                        query += `
-                    <input type="${element.type}" onchange="levels(this)" type="number" id="${element.class}" value="0"  class="header__input"></input>`  
-                        
-                    } 
-                    else
-                    {
-                        query += `
-                        <input type="${element.type}" onchange="levels(this)" type="number" value="${localStorage[element.class]}" id="${element.class}" class="header__input"></input>`       
-                    }
-                    
+                    query += `
+                    <input type="${element.type}" onchange="levels(this)" type="number" id="${element.class}" value="0"  class="header__input"></input>`
                 }
                 else
                 {
-                    if(localStorage[element.class] == undefined)
-                    {
-                        query += `
-                    <input type="${element.type}" onchange="cacheSave(this,'header__input')" id="${element.class}"  class="header__input"></input>`   
-                    }
-                    else
-                    {
-                        query += `
-                    <input type="${element.type}" onchange="cacheSave(this,'header__input')" value="${localStorage[element.class]}" id="${element.class}"  class="header__input"></input>`   
-                    }
-                    
+                 query += `
+                 <input type="${element.type}" id="${element.class}" value=""  class="header__input"></input>`
                 }
                 query += `<div class="header__line"></div>
                 <div class="header__text flex-jc-l">
@@ -300,7 +271,7 @@ const statsMap = (data) =>{
     data.forEach(element => {
         query += `
         <li class="flex flex-column flex-ai-c">
-        <input type="number" onchange="statMaths(value,this)" value="${localStorage[`${element.STA}_value`]}" id="${element.STA}_value">
+        <input type="number" onchange="totals('STA',this)" value="0" id="${element.STA}_value">
         </li>`
     });
     
@@ -309,15 +280,9 @@ const statsMap = (data) =>{
 
     data.forEach(element => {
         query += 
-       // `
-       // <li class=" flex flex-column">
-       // <div  class="Box__value">
-       // <p id="${element.STA}_modifier">0</p>
-       // </div>
-       // </li>`
         `
         <li class="flex flex-column flex-ai-c Box__input">
-        <input type="number" value="0" id="${element.STA}_modifier">
+        <input type="number" onchange="totals('TOTAL-STA',this)" value="0" id="${element.STA}_modifier">
         </li>`
     });
 
@@ -327,7 +292,7 @@ const statsMap = (data) =>{
     data.forEach(element => {
         query += `
         <li class="flex flex-column flex-ai-c">
-        <input type="number" onchange="statMaths(value,this)" value="${localStorage[`${element.STA}_Tvalue`]}" id="${element.STA}_Tvalue">
+        <input type="number" onchange="totals('STA',this)" value="0" id="${element.STA}T_value">
         </li>`
     });
 
@@ -335,21 +300,14 @@ const statsMap = (data) =>{
     query = ``;
 
     data.forEach(element => {
-        query += 
-      //  `
-      //  <li class=" flex flex-column">
-      //  <div  class="Box__value">
-      //  <p id="${element.STA}_Tmodifier">0</p>
-      //  </div>
-      //  </li>`
+        query +=
       `
         <li class="flex flex-column flex-ai-c Box__input">
-        <input type="number" style="border:none" value="0" id="${element.STA}_Tmodifier">
+        <input type="number" style="border:none" onchange="totals('TOTAL-STA',this)" value="0" id="${element.STA}T_modifier">
         </li>`
     });
 
     StatTempModifier.innerHTML += query;
-   statMaths(0,data)
     query = ``;
 };
 const hpAcMap = (hpbar,acbar,acInit) =>{
@@ -384,9 +342,9 @@ const hpAcMap = (hpbar,acbar,acInit) =>{
         `
         if(element.type == "value"){
             query += `
-                    <div class="Box__value">
-                        <p></p>
-                    </div>     
+            <div class="Box__input">
+            <input id="${element.class}" class="" type="number">
+            </div>     
                 </li>
             </ul>
         </div>`  
@@ -422,18 +380,18 @@ const hpAcMap = (hpbar,acbar,acInit) =>{
         if(element.type == "value"){
             query += `
             
-                    <div class="Box__value">
-                        <p></p>
-                    </div>
+            <div class="Box__input">
+            <input id="${element.class}" class="" type="number">
+            </div> 
                     <p class="hp">${element.name}</p>     
                 </li>
             </ul>
         </div>`  
         } else if(element.type == "input"){
             query += `
-                    <div class="Box__input">
-                        <input type="text">
-                    </div>
+            <div class="Box__input">
+            <input id="${element.class}" class="${element.class}" type="number">
+            </div> 
                     <p class="hp">${element.name}</p>   
                 </li>
             </ul>
@@ -513,9 +471,9 @@ const hpAcMap = (hpbar,acbar,acInit) =>{
             <div class="${element.class}">
                 <ul class="flex flex-column">
                     <li class="flex flex-column">
-                    <div class="Box__value">
-                    <p></p>
-                </div>
+                    <div class="Box__input">
+                <input id="${element.class}" class="" type="number">
+                </div> 
                 <p class="hp">${element.name}</p>     
             </li>
         </ul>
@@ -576,11 +534,11 @@ const skillsMap = (data) =>{
                     <div class="flex flex-row">
                         <p>MAX RANKS <br> (CLASS/CROSS-CLASS)</p>
                         <div class="Box__value" style="margin-left:5px;">
-                            <p style="color:black;font-size:13px" onchange="" class="total_skillPoint">0</p>
+                            <p style="color:black;font-size:13px"  class="total_skillPoint">0</p>
                         </div>
                         <p>TOTAL<br> SKILLPOINTS</p>
                         <div class="Box__value" style="margin-left:5px;">
-                            <p style="color:black;font-size:13px" onchange="skillPointValidate(this)" class="total_skillpoint">0</p>
+                            <p style="color:black;font-size:13px" class="total_skillpoint">0</p>
                         </div>
                     </div>
                 </li>
@@ -621,7 +579,7 @@ const skillsMap = (data) =>{
                     <input type="number" onchange="" disabled  class="${element.class}" id="${element.id}_total_ranks" name="">
                     </div>
                         <p>=</p>
-                        <input type="number" disabled onchange="validateRank(this)"  class="${element.class}" id="${element.id}_${element.class}" name="">
+                        <input type="number" disabled class="${element.class}" id="${element.id}_${element.class}" name="">
                         <p>+</p>
                      <input type="number" onchange="rankMaths(this)" onkeydown="return false" step="0.5"  class="ranks" id="${element.id}_ranks" name="">
                         <p>+</p>
@@ -658,7 +616,7 @@ const savesMap = (data) =>{
                 element.data.forEach(subelement => {
                     query += 
                             `
-                            <div class="save ${subelement.class}">
+                            <div class="save">
                             <ul class="flex flex-column">
                                 <li class="flex flex-column">
                             `
@@ -668,9 +626,9 @@ const savesMap = (data) =>{
                                             query += `<p>${subelement.name}</p> `
                                             }
                                         query += `  
-                                                <div class="Box__value">
-                                                    <p></p>
-                                                </div>
+                                        <div class="Box__input">
+                                        <input id="${subelement.id}" onchange="totals('SAVES',this)" class="${subelement.class}" value="0" type="number">
+                                        </div>
                                             </li>
                                         </ul>
                                     </div>
@@ -684,7 +642,7 @@ const savesMap = (data) =>{
                                             }
                                         query += `
                                                 <div class="Box__input">
-                                                    <input type="text">
+                                                    <input class="${subelement.class}" onchange="totals('SAVE',this)" id="${subelement.id}" value="0" type="number">
                                                 </div>
                                             </li>
                                         </ul>
@@ -699,7 +657,7 @@ const savesMap = (data) =>{
                                             }
                                         query += `
                                                 <div class="Box__input">
-                                                    <input type="text">
+                                                    <input class="${subelement.class}" onchange="totals('SAVE',this)" id="${subelement.id}" value="0" type="number">
                                                 </div>
                                             </li>
                                         </ul>
@@ -868,102 +826,158 @@ const shieldMap = (data) =>
 
 //MATHS
 
-function statMaths(staValue, value){
-    try
+function totals(type,object){
+    switch (type) 
     {
-        if (value.length > 1) {
-            value.forEach(element =>
-            {
-                let modifier = document.querySelector(`#${element.STA + "_modifier"}`);
-                let Tmodifier = document.querySelector(`#${element.STA + "_Tmodifier"}`);
-                let value = document.querySelector(`#${element.STA + "_value"}`);
-                let Tvalue = document.querySelector(`#${element.STA + "_Tvalue"}`);
-                let stamodifier;
-                let Tstamodifier;
-                let Tcount = 0;
-                let count = 0;
-               
-                while(Tcount <= Tvalue.value)
-                { 
-                    if(Tcount == 0)
-                    {
-                        Tstamodifier = 0;
-                    }  
-                    else if(Tcount%2 == 0)
-                    {
-                        Tstamodifier++    
-                    }
-                    Tcount++
-                }
-            
-                while(count <= value.value)
-                {
-                    if(count == 0)
-                    {
-                        stamodifier = -5;
-                    }  
-                    else if(count%2 == 0)
-                    {
-                        stamodifier++    
-                    }
-                    count++
-                }
-                    modifier.value = stamodifier;
-                    Tmodifier.value = Tstamodifier;
-                    let sta = value.id.split("_");
-                    let staV =  modifier.value;
-                    let staTV = Tmodifier.value;
-                    totalStatValues(sta[0],staV,staTV)
-            });
-            
-        }
-        else
-        {
-            let modifier = document.querySelector(`#${value.id.replace("value","modifier")}`);
-            let stamodifier;
+        case 'STA':
+            let modifier = document.querySelector(`#${object.id.split('_')[0]}_modifier`);
             let count = 0;
-            if((value.id).includes("Tvalue"))
-            {
-                while(count <= staValue)
-                { 
-                    if(count == 0)
-                    {
-                        stamodifier = 0;
-                    }  else if(count%2 == 0){
-                        stamodifier++    
-                    }
-                    count++
-                }
-            }
-            else
-            {
-                while(count <= staValue)
-                {
-                    if(count == 0)
-                    {
-                        stamodifier = -5;
-                    }  else if(count%2 == 0){
-                        stamodifier++    
-                    }
-                    count++
-                }
-            }
-           
-    
-         modifier.value = stamodifier;
-         let sta = value.id.split("_");
-         let staV =  document.querySelector(`#${value.id.split("_")[0] + "_modifier"}`).value;
-         let staTV = document.querySelector(`#${value.id.split("_")[0] + "_Tmodifier"}`).value;
-         totalStatValues(sta[0],staV,staTV)
-         cacheSave(staValue,value.id);
-        }
 
-        
-    }
-    catch(e){
-        console.log(e);
+               while (count <= object.value)
+                {
+                    if (count == 0) 
+                    {
+                        if (object.id.includes('T_'))
+                        {
+                            modifier.value = 0;
+                            modifier.dispatchEvent(new Event('change'));   
+                        }
+                        else
+                        {
+                            modifier.value = -5;
+                            modifier.dispatchEvent(new Event('change'));
+                        }  
+                    }
+                    else if (count%2 == 0)
+                    {   
+                        modifier.value++;
+                        modifier.dispatchEvent(new Event('change'));
+                    }
+                     count++
+                }
+            
+            break;
+        case 'TOTAL-STA':
+                let staObjects;
+                let object2;
+                !object.id.includes('T_') ?  staObjects = document.querySelectorAll(`.${object.id.split('_')[0]}_TOTAL-MODIFIER`)
+                                            :staObjects = document.querySelectorAll(`.${object.id.split('T_')[0]}_TOTAL-MODIFIER`);
+                
+                object.id.includes('T_') ? object2 = document.querySelector(`#${object.id.replace('T_','_')}`)
+                                          :object2 = document.querySelector(`#${object.id.replace('_','T_')}`);
+                
+                staObjects.forEach(element => 
+                {
+                    element.value = (parseInt(object.value) + parseInt(object2.value));
+                    element.dispatchEvent(new Event('change'));
+                });
+            break;
+        case 'SAVE':
+                    let save = object.id.split('_')[0];
+                    let total = 0;
+                    let saveValues = document.querySelectorAll(`.${save}`);
+
+                    saveValues.forEach(element =>{
+                        total =  total + parseInt(element.value);
+                    });
+                    document.querySelector(`#${save}_total`).value = total;
+            break;
+        default:
+            break;
     }
 };
+//function statMaths(staValue, value){
+//    try
+//    {
+//        if (value.length > 1) {
+//            value.forEach(element =>
+//            {
+//                let modifier = document.querySelector(`#${element.STA + "_modifier"}`);
+//                let stamodifier;
+//                let Tstamodifier;
+//                let Tcount = 0;
+//                let count = 0;
+//               
+//                while(Tcount <= Tvalue.value)
+//                { 
+//                    if(Tcount == 0)
+//                    {
+//                        Tstamodifier = 0;
+//                    }  
+//                    else if(Tcount%2 == 0)
+//                    {
+//                        Tstamodifier++    
+//                    }
+//                    Tcount++
+//                }
+//            
+//                while(count <= value.value)
+//                {
+//                    if(count == 0)
+//                    {
+//                        stamodifier = -5;
+//                    }  
+//                    else if(count%2 == 0)
+//                    {
+//                        stamodifier++    
+//                    }
+//                    count++
+//                }
+//                    modifier.value = stamodifier;
+//                    Tmodifier.value = Tstamodifier;
+//                    let sta = value.id.split("_");
+//                    let staV =  modifier.value;
+//                    let staTV = Tmodifier.value;
+//                    totalStatValues(sta[0],staV,staTV)
+//            });
+//            
+//        }
+//        else
+//        {
+//            let modifier = document.querySelector(`#${value.id.replace("value","modifier")}`);
+//            let stamodifier;
+//            let count = 0;
+//            if((value.id).includes("Tvalue"))
+//            {
+//                while(count <= staValue)
+//                { 
+//                    if(count == 0)
+//                    {
+//                        stamodifier = 0;
+//                    }  else if(count%2 == 0){
+//                        stamodifier++    
+//                    }
+//                    count++
+//                }
+//            }
+//            else
+//            {
+//                while(count <= staValue)
+//                {
+//                    if(count == 0)
+//                    {
+//                        stamodifier = -5;
+//                    }  else if(count%2 == 0){
+//                        stamodifier++    
+//                    }
+//                    count++
+//                }
+//            }
+//           
+//    
+//         modifier.value = stamodifier;
+//         let sta = value.id.split("_");
+//         let staV =  document.querySelector(`#${value.id.split("_")[0] + "_modifier"}`).value;
+//         let staTV = document.querySelector(`#${value.id.split("_")[0] + "_Tmodifier"}`).value;
+//         totalStatValues(sta[0],staV,staTV);
+//        }
+//
+//        
+//    }
+//    catch(e){
+//        console.log(e);
+//    }
+//};
 function classSkillValidate(checkbox)
 {
     if (checkbox.checked == true) 
@@ -994,23 +1008,22 @@ function rankMaths(rank)
                 (totalrankskillM.value == "" ? totalrankskillM.value = 0 : parseInt(totalrankskillM.value)) + 
                 (rankskill.value == "" ? rankskill.value = 0 : parseInt(rankskill.value)) + 
                 (miscranks.value == "" ? miscranks.value = 0 : parseInt(miscranks.value)));
-        });
-    cacheSave(0,'ranks')    
+        }); 
 };
-function totalStatValues(sta,staV,staTV)
- {
-     
-        const staTotalValue = document.querySelectorAll(`.${sta + "_TOTAL-MODIFIER"}`);
-
-        staTotalValue.forEach(element => 
-        {
-        element.value = (parseInt(staV) + parseInt(staTV));
-        });    
-    
-     
-     
-     
-};
+//function totalStatValues(sta,staV,staTV)
+// {
+//     
+//        const staTotalValue = document.querySelectorAll(`.${sta + "_TOTAL-MODIFIER"}`);
+//
+//        staTotalValue.forEach(element => 
+//        {
+//        element.value = (parseInt(staV) + parseInt(staTV));
+//        });    
+//    
+//     
+//     
+//     
+//};
 function levels(level)
 {
     if (level.value == 1) {
@@ -1020,7 +1033,8 @@ function levels(level)
     feats();
     hitDice();
 }
-function totalskillPoint(level) {
+function totalskillPoint(level) 
+{
     
 const total_skillPoint = document.querySelector('.total_skillPoint');
     try 
@@ -1040,27 +1054,21 @@ const total_skillPoint = document.querySelector('.total_skillPoint');
 
 };
 function skillpoint() {
-    const levels = document.querySelector(".levels").value;
+    const levels = document.querySelector("#levels").value;
     const skillPoint = document.querySelector(".header_dropdown_skill");
 
     let query = ``;
     let index;
-    let skill_cache;
-    try {
-        skill_cache = localStorage["skillLV"].split('|');
-    } catch (error) {
-        localStorage["skillLV"] = '';
-    }
     
-    query += `<p> HUMAN <input class="human_skill" onchange="cacheSave(this,'human_skill')" type="checkbox" checked="${localStorage["human_skill"] == false  ? false : true}" ></p>`
+    query += `<p> HUMAN <input class="human_skill" type="checkbox"></p>`
     for ( index = 1 ; index <= levels; index++) {
         if (index == 1) {
             query += 
-            `<p class="skill_input${index}">LV ${index} <input class="skillLV${index}" onchange="cacheSave(this,'skillLV')" type="number" value="${skill_cache[(index - 1)]}"></p>`
+            `<p class="skill_input${index}">LV ${index} <input class="skillLV${index}" type="number"></p>`
         } else 
         {
             query += 
-        `<p class="skill_input${index}">LV ${index} <input class="skillLV${index}" onchange="cacheSave(this,'skillLV')" type="number" value="${skill_cache[(index - 1)]}"></p>`
+        `<p class="skill_input${index}">LV ${index} <input class="skillLV${index}" type="number"></p>`
         }
         
     }
@@ -1073,26 +1081,19 @@ function skillpoint() {
 };
 function feats(){
 
-    const levels = document.querySelector(".levels").value;
+    const levels = document.querySelector("#levels").value;
     const feats = document.querySelector(".header_dropdown_feats");
 
     let query = ``;
     let index;
-    let feats_cache;
-    try {
-        feats_cache = localStorage["feats"].split('|');
-    } catch (error) {
-        localStorage["feats"] = ''
-    }
-    
-   
+
     for ( index = 1 ; index <= levels; index++) {
         if (index%3 == 0) {
             query += 
-            `<p class="feats_input${index}">FEAT LV ${index} <input class="feats${index}" onchange="cacheSave(this,'feats')" type="text" value="${feats_cache[(index - 1)]}"></p>`;
+            `<p class="feats_input${index}">FEAT LV ${index} <input class="feats${index}" type="text"></p>`;
         } else if(index == 1){
             query +=
-            `<p class="feats_input${index}">FEAT LV ${index} <input class="feats${index}" onchange="cacheSave(this,'feats')" type="text" value="${feats_cache[(index - 1)]}"></p>`;
+            `<p class="feats_input${index}">FEAT LV ${index} <input class="feats${index}" type="text"></p>`;
         }
         
     }
@@ -1101,28 +1102,21 @@ function feats(){
 
 };
 function hitDice() {
-    const levels = document.querySelector(".levels").value;
+    const levels = document.querySelector("#levels").value;
     const hitDice = document.querySelector(".header_dropdown_hit_dice");
 
     let query = ``;
     let index;
-    let hitDice_cache;
-    try {
-        hitDice_cache = localStorage["hitDice"].split('|');
-    } catch (error) {
-        localStorage["hitDice"] = '';
-    }
-    
-    
+
     for ( index = 1 ; index <= levels; index++) {
         if (index == 1) {
             query += 
-            `<p class="hit_input${index}">HIT DICE LV ${index} <input class="hitDice${index}" onchange="cacheSave(this,'hitDice')" type="number" value="${hitDice_cache[(index - 1)]}"></p>`
+            `<p class="hit_input${index}">HIT DICE LV ${index} <input class="hitDice${index}" type="number"></p>`
         }
         else 
         {
             query += 
-        `<p class="hit_input${index}">HIT DICE LV ${index} <input class="hitDice${index}" onchange="cacheSave(this,'hitDice')" type="number" value="${hitDice_cache[(index - 1)]}"></p>`
+        `<p class="hit_input${index}">HIT DICE LV ${index} <input class="hitDice${index}" type="number"></p>`
         }
         
     }
@@ -1151,7 +1145,7 @@ function validateRank(rank)
 {
     const rankValidate = document.querySelector(`#${rank.id}`);
     const totalskillPoints = document.querySelector('.total_skillPoint');
-    const levels = document.querySelector('.levels');
+    const levels = document.querySelector('#levels');
 try {
     if (levels.value != 0) 
     {
@@ -1164,108 +1158,14 @@ try {
         rankValidate.value = 0;
         alert('No puedes subir rangos sin colocar lv de personaje');
     }
-    
-    
-    console.log(rankValidate);
 } catch (error) {
     console.log(error);
 }
    
 };
-function skillPointValidate(totalskillpoint)
+function totalrank(skill)
 {
- console.log(totalskillpoint);
-};
-function cacheSave(data,type_data){
-
-    const levels = document.querySelector("#levels").value;
-    
-    switch (type_data) {
-        case 'header__input':
-            localStorage["header__input"] = '';
-            const headerInput = document.querySelectorAll('.header__input');
-            headerInput.forEach(element => {
-                localStorage[`${element.id}`] = element.value;
-            });
-            break;
-//            const levels = document.querySelector(".levels").value;
-            for (let index = 1; index <= levels; index++) {
-            localStorage["feats"] += document.querySelector(`.feats${index}`).value + "|";
-            }
-            break;
-        case 'ranks':
-                const ranks = document.querySelectorAll('.ranks');
-                const ranksCheck = document.querySelectorAll('.classSkill');
-                ranks.forEach(element =>{
-                    localStorage[`${element.id}`] = element.value;
-                });
-                ranksCheck.forEach(element =>{
-                    localStorage[`${element.id}`] = element.checked;
-                });
-            break;
-        case 'skillLV':
-  //          const levels = document.querySelector(".levels").value;
-            localStorage["skillLV"] = '';
-            for (let index = 1; index <= levels; index++) {
-            localStorage["skillLV"] += document.querySelector(`.skillLV${index}`).value + "|";
-            }
-            break;
-        case 'hitDice':
-            localStorage["hitDice"] = '';
-            for (let index = 1; index <= levels; index++) {
-            localStorage["hitDice"] += document.querySelector(`.hitDice${index}`).value + "|";
-            }
-            break;    
-        case 'human_skill':
-            data.checked == false ? localStorage["human_skill"] = false : localStorage["human_skill"] = true;
-            break;
-        case 'STR_value':
-            localStorage[`${type_data}`] = data;
-            break;
-        case 'DEX_value':
-            localStorage[`${type_data}`] = data;
-            break;
-        case 'CON_value':
-            localStorage[`${type_data}`] = data;
-            break;
-        case 'INT_value':
-            localStorage[`${type_data}`] = data;
-            break;
-        case 'WIS_value':
-            localStorage[`${type_data}`] = data;
-            break;
-        case 'CHA_value':
-            localStorage[`${type_data}`] = data;
-            break;
-        case 'STR_Tvalue':
-            localStorage[`${type_data}`] = data;
-            break;
-        case 'DEX_Tvalue':
-            localStorage[`${type_data}`] = data;
-            break;
-        case 'CON_Tvalue':
-            localStorage[`${type_data}`] = data;
-            break;
-        case 'INT_Tvalue':
-            localStorage[`${type_data}`] = data;
-            break;
-        case 'WIS_Tvalue':
-            localStorage[`${type_data}`] = data;
-            break;
-        case 'CHA_Tvalue':
-            localStorage[`${type_data}`] = data;
-            break;
-            
-        default:
-            break;
-    }
-};
-function totalrank()
-{
-
-   let data = JSON.parse(localStorage["SKILLS"]);
-
-    data.forEach(element =>
+    skill.forEach(element =>
         {
             const totalrankskill = document.querySelector(`#${element.id}_total_ranks`);
             const totalrankskillM = document.querySelector(`#${element.id}_${element.class}`);
@@ -1278,26 +1178,5 @@ function totalrank()
                 (miscranks.value == "" ? miscranks.value = 0 : parseInt(miscranks.value)));
                 
         });
-}
-function prepareCacheSave(skill)
-{
-    localStorage["skillLV"];
-    localStorage["feats"];
-    localStorage["human_skill"];
-    localStorage["STR_value"];
-    localStorage["DEX_value"];
-    localStorage["CON_value"];
-    localStorage["INT_value"];
-    localStorage["WIS_value"];
-    localStorage["CHA_value"];
-    localStorage["STR_Tvalue"];
-    localStorage["DEX_Tvalue"];
-    localStorage["CON_Tvalue"];
-    localStorage["INT_Tvalue"];
-    localStorage["WIS_Tvalue"];
-    localStorage["CHA_Tvalue"];
-    localStorage["SKILLS"] = JSON.stringify(skill);
-    
-
-
 };
+
