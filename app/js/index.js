@@ -90,8 +90,8 @@ window.onload = function(e){
         {name: "SPEED", class:"hp__speed",type:"input"}
     ];
     const acbar = [
-        {name: "TOTAL",                         id:"AC_total",                    class:"AC ac__value ", type:"value"},
-        {name: "BASE",                          id:"AC_base",                     class:"AC ac__base ac__input",type:"base"},
+        {name: "TOTAL",                         id:"AC_total",                    class:"ac__value", type:"value"},
+        {name: "BASE",                          id:"AC_base",                     class:"AC AC ac__base ac__input",type:"base"},
         {name: "ARMOR <br> BONUS",              id:"AC_armor",                    class:"AC ac__bonus ac__input",type:"input"},
         {name: "SHIELD <br> BONUS",             id:"AC_shield",                   class:"AC ac__shield",type:"input"},
         {name: "DEX <br> MODIFIER",             id:"AC_dex",                      class:"AC ac__dex DEX_TOTAL-MODIFIER",type:"input"},
@@ -102,14 +102,14 @@ window.onload = function(e){
         {name: "DAMAGE REDUCTION",              id:"AC_reduction",                class:"AC ac__reduction",type:"dmg"},
     ];
     const acInit = [
-        {name: "<h1>TOUCH</h1><p>ARMOR CLASS</p>", class:"",type:"name"},
-        {name: "", class:"ac__touch",type:"input"},
-        {name: "<h1>FLAT-FOOTED</h1><p>ARMOR CLASS</p>", class:"ac__flatName",type:"name"},
-        {name: "", class:"ac__flat",type:"input"},
-        {name: "<h1>INICIATIVE</h1><p>MODIFIER</p>", class:" init init__inicitiveName",type:["name","init"]},
-        {name: "TOTAL", class:" init init__inicitiveValue", type:["value","init"]},
-        {name: "DEX <br> MODIFIER", class:" init init__dex DEX_TOTAL-MODIFIER",type:["input","init"]},
-        {name: "MISC <br> MODIFIER", class:" init init__misc",type:["lastinput","init"]},
+        {name: "<h1>TOUCH</h1><p>ARMOR CLASS</p>",             id:"",                     class:"",type:"name"},
+        {name: "",                                             id:"",                     class:"ac__touch",type:"input"},
+        {name: "<h1>FLAT-FOOTED</h1><p>ARMOR CLASS</p>",       id:"",                     class:"ac__flatName",type:"name"},
+        {name: "",                                             id:"",                     class:"ac__flat",type:"input"},
+        {name: "<h1>INICIATIVE</h1><p>MODIFIER</p>",           id:"",                     class:" init init__inicitiveName",type:["name","init"]},
+        {name: "TOTAL",                                        id:"",                     class:" init init__inicitiveValue", type:["value","init"]},
+        {name: "DEX <br> MODIFIER",                            id:"",                     class:" init init__dex DEX_TOTAL-MODIFIER",type:["input","init"]},
+        {name: "MISC <br> MODIFIER",                           id:"",                     class:" init init__misc",type:["lastinput","init"]},
 
     ];
     const saveData = [
@@ -360,7 +360,7 @@ const hpAcMap = (hpbar,acbar,acInit) =>{
     HpSection.innerHTML += query;
     //BARRA AC
     query = `
-            <div class="ac__name">
+            <div id="AC_name">
                 <ul class="flex">
                     <li class="Box__black">
                         <h1>AC</h1>

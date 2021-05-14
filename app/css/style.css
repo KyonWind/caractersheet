@@ -827,18 +827,6 @@ h2 {
   height: 25px;
 }
 
-.HpAndArmor .ac__name p:first-child {
-  height: 20px;
-  text-align: center;
-  margin-top: 3px;
-}
-
-.HpAndArmor .ac__name ul {
-  margin-top: 2px;
-  margin-bottom: 2px;
-  padding: 0;
-}
-
 .HpAndArmor .ac__input ul {
   padding: 0;
 }
@@ -852,37 +840,6 @@ h2 {
   text-align: center;
 }
 
-.HpAndArmor .ac__base ul {
-  padding: 0;
-}
-
-.HpAndArmor .ac__base ul li {
-  margin-top: 5px;
-  margin-left: 5px;
-}
-
-.HpAndArmor .ac__base ul li p {
-  font-size: 15px;
-  text-align: center;
-}
-
-.HpAndArmor .ac__reduction ul {
-  padding: 0;
-}
-
-.HpAndArmor .ac__reduction ul li {
-  margin-top: 5px;
-  margin-left: 5px;
-}
-
-.HpAndArmor .ac__reduction ul li div {
-  width: 80px;
-}
-
-.HpAndArmor .ac__reduction ul li input {
-  width: 80px;
-}
-
 .HpAndArmor .ac__plus {
   margin-left: 5px;
   margin-top: 5px;
@@ -892,13 +849,56 @@ h2 {
   font-size: 15px;
 }
 
-.HpAndArmor .ac__flatName ul {
+.HpAndArmor #AC_name p:first-child {
+  height: 20px;
+  text-align: center;
+  margin-top: 3px;
+}
+
+.HpAndArmor #AC_name ul {
+  margin-top: 2px;
+  margin-bottom: 2px;
+  padding: 0;
+}
+
+.HpAndArmor #AC_base ul {
+  padding: 0;
+}
+
+.HpAndArmor #AC_base ul li {
+  margin-top: 5px;
+  margin-left: 5px;
+}
+
+.HpAndArmor #AC_base ul li p {
+  font-size: 15px;
+  text-align: center;
+}
+
+.HpAndArmor #AC_reduction ul {
+  padding: 0;
+}
+
+.HpAndArmor #AC_reduction ul li {
+  margin-top: 5px;
+  margin-left: 5px;
+}
+
+.HpAndArmor #AC_reduction ul li div {
+  width: 80px;
+}
+
+.HpAndArmor #AC_reduction ul li input {
+  width: 80px;
+}
+
+.HpAndArmor #AC_flatName ul {
   width: -webkit-fit-content;
   width: -moz-fit-content;
   width: fit-content;
 }
 
-.HpAndArmor .ac__flatName ul li {
+.HpAndArmor #AC_flatName ul li {
   width: -webkit-fit-content;
   width: -moz-fit-content;
   width: fit-content;
