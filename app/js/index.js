@@ -1,5 +1,5 @@
 window.onload = function(e){
-    //MOCK UP DATA
+    //MOCK UP DATA BEGIN
     const headerNames = 
     [
     {name:"CHARACTER NAME", type: "text", class:"character_name"},
@@ -36,13 +36,13 @@ window.onload = function(e){
     ];
     const skill = 
     [
-        {name: "Appraise",                    modifier: "INT",      class:"INT_TOTAL-MODIFIER", id: "Appraise"                },
-        {name: "Balance",                     modifier: "DEX",      class:"DEX_TOTAL-MODIFIER", id: "Balance"                 },
-        {name: "Bluff",                       modifier: "CHA",      class:"CHA_TOTAL-MODIFIER", id: "Bluff"                   },
-        {name: "Climb",                       modifier: "STR*",     class:"STR_TOTAL-MODIFIER", id: "Climb"                   },
-        {name: "Concentration",               modifier: "CON",      class:"CON_TOTAL-MODIFIER", id: "Concentration"           },
-        {name: "Craft(_______________)",      modifier: "INT",      class:"INT_TOTAL-MODIFIER", id: "Craft1"                  },
-        {name: "Craft(_______________)",      modifier: "INT",      class:"INT_TOTAL-MODIFIER", id: "Craft2"                  },
+        {name: "Appraise",                    modifier: "INT",      class:"INT_TOTAL-MODIFIER", id: "Appraise"                 },
+        {name: "Balance",                     modifier: "DEX",      class:"DEX_TOTAL-MODIFIER", id: "Balance"                  },
+        {name: "Bluff",                       modifier: "CHA",      class:"CHA_TOTAL-MODIFIER", id: "Bluff"                    },
+        {name: "Climb",                       modifier: "STR*",     class:"STR_TOTAL-MODIFIER", id: "Climb"                    },
+        {name: "Concentration",               modifier: "CON",      class:"CON_TOTAL-MODIFIER", id: "Concentration"            },
+        {name: "Craft(_______________)",      modifier: "INT",      class:"INT_TOTAL-MODIFIER", id: "Craft1"                   },
+        {name: "Craft(_______________)",      modifier: "INT",      class:"INT_TOTAL-MODIFIER", id: "Craft2"                   },
         {name: "Craft(_______________)",      modifier: "INT",      class:"INT_TOTAL-MODIFIER", id: "Craft3"                   },
         {name: "Decipher Script",             modifier: "INT",      class:"INT_TOTAL-MODIFIER", id: "Decipher_Script"          },
         {name: "Diplomacy",                   modifier: "CHA",      class:"CHA_TOTAL-MODIFIER", id: "Diplomacy"                },
@@ -182,6 +182,8 @@ window.onload = function(e){
         {name:"WEIGHT", class: "wp_weight", type:"input"},
         {name:"SPECIAL PROPERTIES", class: "wp_special_properties", type:"input"}
     ];
+
+    //MOCK UP DATA END
 
     var lv1Int;
     // MAP PAGE

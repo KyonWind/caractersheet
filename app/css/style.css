@@ -85,10 +85,6 @@ html {
           box-sizing: inherit;
 }
 
-.debug {
-  border: 1px solid red;
-}
-
 .flex-auto {
   -webkit-box-flex: 1;
       -ms-flex: auto;
