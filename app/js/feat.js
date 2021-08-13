@@ -1,5 +1,5 @@
 window.onload = function(e){
-    //MOCK UP DATA
+    //MOCK UP DATA BEGIN
     const headerNames = 
     ["CHARACTER NAME",
     "PLAYER",
@@ -185,6 +185,8 @@ window.onload = function(e){
         {name:"SPECIAL PROPERTIES", class: "wp_special_properties", type:"input"}
     ];
     
+    //MOCK UP DATA END
+
     headerMap(headerNames);
     statsMap(abName);
     hpAcMap(hpbar,acbar,acInit);

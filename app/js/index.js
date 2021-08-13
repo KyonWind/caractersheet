@@ -23,7 +23,7 @@ window.onload = function(e){
         {name:"SKILL",                       class:"header_skill",            dropdown:"header_dropdown_skill"},
         {name:"FEATS",                       class:"header_feats",            dropdown:"header_dropdown_feats"},
         {name:"HIT DICE",                       class:"header_hit_dice",            dropdown:"header_dropdown_hit_dice"},
-        {name:"CHARACTER",                       class:"header_character",            dropdown:"header_dropdown_CHARACTER"}
+        {name:"CHARACTER",                       class:"header_character",            dropdown:"header_dropdown_characters"}
     ];
     const abName = 
     [
@@ -185,7 +185,7 @@ window.onload = function(e){
 
     //MOCK UP DATA END
 
-    var lv1Int;
+    
     // MAP PAGE
     headerMap(headerNames,headerMenu);
     
@@ -198,15 +198,19 @@ window.onload = function(e){
     armorMap(armor);
     shieldMap(shield);
     statsMap(abName);
+    character();
 
     //FUNCTIONS
     totalrank(skill);
 
 
 
-
     
 };
+
+var lv1Int;
+var characterData;
+var characters = [];
 
 const headerMap = (headerNames,headerMenu) =>  {
         const header = document.querySelector(".header");
@@ -224,7 +228,7 @@ const headerMap = (headerNames,headerMenu) =>  {
                 else
                 {
                  query += `
-                 <input type="${element.type}" id="${element.class}" value=""  class="header__input"></input>`
+                 <input type="${element.type}" id="${element.class}" class="header__input"></input>`
                 }
                 query += `<div class="header__line"></div>
                 <div class="header__text flex-jc-l">
@@ -245,6 +249,12 @@ const headerMap = (headerNames,headerMenu) =>  {
             </li>
             `
         });
+        query += `
+            <li class="debug save_button">
+            <button onclick="openModal()">Save</button>
+            </div>  
+            </li>
+            `
         query += `</ul>`
 
         skillheader.innerHTML = query;
@@ -320,9 +330,9 @@ const hpAcMap = (hpbar,acbar,acInit) =>{
     query = `
     <div class="hp__name">
          <div class="HpType flex flex-row">
-             <input type="radio" name="hpType">
+             <input type="radio" name="hpType" id="hpType_prod">
              <p>PROD</p>
-                 <input type="radio" name="hpType">
+                 <input type="radio" name="hpType" id="hpType_full">
              <p>FULL</p>
          </div>
          <ul class="flex flex-column">
@@ -403,7 +413,7 @@ const hpAcMap = (hpbar,acbar,acInit) =>{
         } else if(element.type == "dmg"){
             query += `
                     <div class="Box__input">
-                        <input type="text">
+                        <input type="text" id="dmg_reduction">
                     </div>
                     <p class="hp">${element.name}</p>   
                 </li>
@@ -444,7 +454,7 @@ const hpAcMap = (hpbar,acbar,acInit) =>{
             <ul class="flex flex-column">
                 <li class="flex flex-row">
                     <div class="Box__input">
-                        <input type="number">
+                        <input id="${element.class}" type="number">
                     </div>
                 </li>
             </ul>
@@ -473,7 +483,7 @@ const hpAcMap = (hpbar,acbar,acInit) =>{
                 <ul class="flex flex-column">
                     <li class="flex flex-column">
                     <div class="Box__input">
-                <input id="${element.class}" class="" type="number">
+                <input id="${element.class}" type="number">
                 </div> 
                 <p class="hp">${element.name}</p>     
             </li>
@@ -493,7 +503,7 @@ const hpAcMap = (hpbar,acbar,acInit) =>{
                     <ul class="flex flex-column">
                         <li class="flex flex-column">
                             <div class="Box__input">
-                                <input class="${element.class}" type="number">
+                                <input id="${element.class}" class="${element.class}" type="number">
                             </div>
                             <p class="hp">${element.name}</p>
                         </li>
@@ -511,7 +521,7 @@ const hpAcMap = (hpbar,acbar,acInit) =>{
                     <ul class="flex flex-column">
                         <li class="flex flex-column">
                             <div class="Box__input">
-                                <input class="${element.class}" type="number">
+                                <input id="${element.class}" class="${element.class}" type="number">
                             </div>
                             <p class="hp">${element.name}</p>
                         </li>
@@ -777,7 +787,7 @@ const weaponMap = (data) =>{
             `
             <li class="flex flex-column weapon__box">
                     <p>${element.name}</p>
-                    <input class=${element.class}__${count} type="text">
+                    <input class=${element.class}__${count} id="${element.class}" type="text">
                 </li>
             `;
         });
@@ -798,7 +808,7 @@ const armorMap = (data) =>
         `
         <li class="flex flex-column armor__box">
                 <p>${element.name}</p>
-                <input class=${element.class} type="text">
+                <input class=${element.class} id=${element.class} type="text">
             </li>
         `;
     });
@@ -816,7 +826,7 @@ const shieldMap = (data) =>
         `
         <li class="flex flex-column shield__box">
                 <p>${element.name}</p>
-                <input class=${element.class} type="text">
+                <input class=${element.class} id=${element.class} type="text">
             </li>
         `;
     });
@@ -1066,15 +1076,15 @@ function skillpoint() {
     let query = ``;
     let index;
     
-    query += `<p> HUMAN <input class="human_skill" type="checkbox"></p>`
+    query += `<p> HUMAN <input class="human_skill" id=${element.class} type="checkbox"></p>`
     for ( index = 1 ; index <= levels; index++) {
         if (index == 1) {
             query += 
-            `<p class="skill_input${index}">LV ${index} <input class="skillLV${index}" type="number"></p>`
+            `<p class="skill_input${index}">LV ${index} <input class="skillLV${index}" id=${element.class} type="number"></p>`
         } else 
         {
             query += 
-        `<p class="skill_input${index}">LV ${index} <input class="skillLV${index}" type="number"></p>`
+        `<p class="skill_input${index}">LV ${index} <input class="skillLV${index}" id=${element.class} type="number"></p>`
         }
         
     }
@@ -1117,12 +1127,12 @@ function hitDice() {
     for ( index = 1 ; index <= levels; index++) {
         if (index == 1) {
             query += 
-            `<p class="hit_input${index}">HIT DICE LV ${index} <input class="hitDice${index}" type="number"></p>`
+            `<p class="hit_input${index}">HIT DICE LV ${index} <input class="hitDice${index}" id="hitDice${index}" type="number"></p>`
         }
         else 
         {
             query += 
-        `<p class="hit_input${index}">HIT DICE LV ${index} <input class="hitDice${index}" type="number"></p>`
+        `<p class="hit_input${index}">HIT DICE LV ${index} <input class="hitDice${index}" id="hitDice${index}" type="number"></p>`
         }
         
     }
@@ -1133,6 +1143,27 @@ function hitDice() {
 
 
 };
+function character(){
+    try {
+         characters = JSON.parse( localStorage["characters"]);
+         const character = document.querySelector(".header_dropdown_characters");
+         let query  = ``;
+         characters.forEach(element => {
+
+            query += 
+            `<p class="flex flex-jc-s flex-ai-sb character_${element.CharacterName}">${element.CharacterName} <button onclick="loadCharacter()">load</button onclick="saveCharacter()"><button>save</button></p>`;
+             
+         });
+         
+         character.innerHTML += query;
+
+
+
+    }
+    catch(err){
+        console.log(err);
+    }
+}
 function validateRanks(totalskillPoint) {
     const rankValidate = document.querySelectorAll('.ranks');
 
@@ -1185,4 +1216,43 @@ function totalrank(skill)
                 
         });
 };
+function saveCharacter(){
+    
+     characterData = document.querySelectorAll('input');
+    
+    console.log(characterData);
+    console.log('saved');
+    let character = [];
+    characterData.forEach(element =>{
+       
+            character.push({
+                "id": element.id,
+                "value": element.value})
+                
+            
+        
+    })
+    characters.push({"CharacterName":character[347].value,"data":character});
+    console.log(characters);
+    localStorage["characters"] = JSON.stringify(characters);
+    character();
+    closeModal();
+    
+    
+    
+    
+}
+
+
+//modal
+
+function openModal(){
+    let body = document.querySelector('.modal');
+    body.classList.remove("modal_hidden");
+}
+
+function closeModal(){
+    let body = document.querySelector('.modal');
+    body.classList.add("modal_hidden");
+}
 

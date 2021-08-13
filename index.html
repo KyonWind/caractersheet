@@ -85,12 +85,21 @@
         </section>
 
         <div class="ArmorAndIniciative debug flex flex-row-l"></div> 
-        <div class="flex skill__container grid debug"></div>
-
-        
-            
-                
+        <div class="flex skill__container grid debug"></div> 
     </main>
-
+    <div class="modal modal_hidden">
+        <div class="modal_content flex flex-jc-c flex-column-t">
+            <div class="modal_title">
+                <h3>Salvar Personaje</h3>
+            </div>
+            <div class="modal_body flex flex-jc-c flex-ai-c">
+                <input id="characterSavedName" type="text" placeholder="introduce Nombre del Personaje"/>
+            </div>
+            <div class="modal_footer">
+                <button onclick="closeModal()">Cancelar</botton>
+                <button onclick="saveCharacter()">Salvar</botton>
+            </div>
+        </div>
+    </div>
 </body>
 </html>
