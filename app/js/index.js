@@ -103,13 +103,13 @@ window.onload = function(e){
     ];
     const acInit = [
         {name: "<h1>TOUCH</h1><p>ARMOR CLASS</p>",             id:"",                     class:"",type:"name"},
-        {name: "",                                             id:"",                     class:"ac__touch",type:"input"},
-        {name: "<h1>FLAT-FOOTED</h1><p>ARMOR CLASS</p>",       id:"",                     class:"ac__flatName",type:"name"},
-        {name: "",                                             id:"",                     class:"ac__flat",type:"input"},
-        {name: "<h1>INICIATIVE</h1><p>MODIFIER</p>",           id:"",                     class:" init init__inicitiveName",type:["name","init"]},
-        {name: "TOTAL",                                        id:"",                     class:" init init__inicitiveValue", type:["value","init"]},
-        {name: "DEX <br> MODIFIER",                            id:"",                     class:" init init__dex DEX_TOTAL-MODIFIER",type:["input","init"]},
-        {name: "MISC <br> MODIFIER",                           id:"",                     class:" init init__misc",type:["lastinput","init"]},
+        {name: "",                                             id:"ac__touch",                     class:"ac__touch",type:"input"},
+        {name: "<h1>FLAT-FOOTED</h1><p>ARMOR CLASS</p>",       id:"ac__flatName",                     class:"ac__flatName",type:"name"},
+        {name: "",                                             id:"ac__flat",                     class:"ac__flat",type:"input"},
+        {name: "<h1>INICIATIVE</h1><p>MODIFIER</p>",           id:"init__inicitiveName",                     class:"init init__inicitiveName",type:["name","init"]},
+        {name: "TOTAL",                                        id:"init__inicitiveValue",                     class:"init init__inicitiveValue", type:["value","init"]},
+        {name: "DEX <br> MODIFIER",                            id:"init__dex",                     class:"init init__dex DEX_TOTAL-MODIFIER",type:["input","init"]},
+        {name: "MISC <br> MODIFIER",                           id:"init__misc",                     class:"init init__misc",type:["lastinput","init"]},
 
     ];
     const saveData = [
@@ -246,14 +246,14 @@ const headerMap = (headerNames,headerMenu) =>  {
             ${element.name}`
             if(element.dropdown == "header_dropdown_skill" ){
                 query += `<div class="${element.dropdown}">
-                <p> HUMAN <input class="human_skill" id="HumanSkillPoint" type="checkbox"></p>
+                <p> HUMAN <input class="human_skill" id="HumanSkillPoint" onchange="enabledHuman()" type="checkbox"></p>
                 </div>  
                 </li>
                 `
             }else if(element.dropdown == "header_dropdown_feats"){
                 query += `<div class="${element.dropdown}">
                 <button onClick="addNewFeat()">Add Feat</button>
-                <p class="feats_input_human">HUMAN <input id="feat_human" onchange="enabledHuman()" disabled type="text"></p>
+                <p class="feats_input_human">HUMAN <input id="feat_human" disabled type="text"></p>
                 </div>
                 <div class="${element.dropdown}_aditional">
                 </div>
@@ -472,7 +472,7 @@ const hpAcMap = (hpbar,acbar,acInit) =>{
             <ul class="flex flex-column">
                 <li class="flex flex-row">
                     <div class="Box__input">
-                        <input id="${element.class}" type="number">
+                        <input id="${element.id}" type="number">
                     </div>
                 </li>
             </ul>
@@ -501,7 +501,7 @@ const hpAcMap = (hpbar,acbar,acInit) =>{
                 <ul class="flex flex-column">
                     <li class="flex flex-column">
                     <div class="Box__input">
-                <input id="${element.class}" type="number">
+                <input id="${element.id}" type="number">
                 </div> 
                 <p class="hp">${element.name}</p>     
             </li>
@@ -521,7 +521,7 @@ const hpAcMap = (hpbar,acbar,acInit) =>{
                     <ul class="flex flex-column">
                         <li class="flex flex-column">
                             <div class="Box__input">
-                                <input id="${element.class}" class="${element.class}" type="number">
+                                <input id="${element.id}" class="${element.class}" type="number">
                             </div>
                             <p class="hp">${element.name}</p>
                         </li>
@@ -539,7 +539,7 @@ const hpAcMap = (hpbar,acbar,acInit) =>{
                     <ul class="flex flex-column">
                         <li class="flex flex-column">
                             <div class="Box__input">
-                                <input id="${element.class}" class="${element.class}" type="number">
+                                <input id="${element.id}" class="${element.class}" type="number">
                             </div>
                             <p class="hp">${element.name}</p>
                         </li>
@@ -1005,20 +1005,19 @@ function levels(level)
             localStorage["INT_for_skill"] = JSON.stringify(intArray)
         }
     }    
-    maxSkillPoint(level);
-    feats();
-    hitDice();
+    maxSkillPoint(level.value);
+    feats(level.value);
+    hitDice(level.value);
 }
 function maxSkillPoint(level) 
 {
-    
-const total_skillPoint = document.querySelector('.max_skillPoint');
+const maxSkillPoint = document.querySelector('.max_skillPoint');
     try 
     {
-        let levels = level.value;
-        total_skillPoint.innerText = (parseInt(levels) + 3) + '/' + ((parseInt(levels) + 3) / 2);    
-        validateRanks(total_skillPoint);
-        skillpoint();
+        let levels = level
+        maxSkillPoint.innerText = (parseInt(levels) + 3) + '/' + ((parseInt(levels) + 3) / 2);    
+        validateRanks(maxSkillPoint);
+        skillpoint(levels);
     } 
     catch (error)
     {
@@ -1039,7 +1038,7 @@ function totalSkillPoint(skillLV){
     let int_per_lv = JSON.parse(localStorage["INT_for_skill"]);
 
     int_per_lv.forEach(element =>{ 
-        if(element.lv == skillLV.classList[0].slice(skillLV.classList[0].length - 1)){
+        if(element.lv == skillLV.classList[0].slice(skillLV.classList[0].length -1)){
             element.Sp = parseInt(skillLV.value);
         }
     })
@@ -1048,7 +1047,7 @@ function totalSkillPoint(skillLV){
 
     for (let index = 0; index+1 <= level; index++ ){
 
-        if(index+1 == 1)
+        if(level == 1)
         {
             human
             ?point += ((parseInt(int_per_lv[index].Int) + int_per_lv[index].Sp)* 4) + 4   
@@ -1066,31 +1065,31 @@ function totalSkillPoint(skillLV){
     totalPoints.innerHTML = point;
 
 };
-function skillpoint() {
-    const levels = document.querySelector("#levels").value;
+function skillpoint(level) {
     let skillPoint = document.querySelector(".header_dropdown_skill");
     let prevLV = skillPoint.childElementCount;
     let index = 0;
 
-    if(prevLV == levels)
+    if(prevLV == level)
     {
-        for ( index = prevLV; index == levels; index++) {
+        for ( index = prevLV; index == level; index++) {
                
                let p = document.createElement('p');
                let input = document.createElement('input');
-               input.setAttribute(`class`,`skillLV${levels}`);
-               input.setAttribute(`id`,`skillLV${levels}`);
+               input.setAttribute(`class`,`skillLV${level}`);
+               input.setAttribute(`id`,`skillLV${level}`);
                input.setAttribute(`type`,`number`);
+               input.setAttribute(`value`,0);
                input.setAttribute(`onchange`,`totalSkillPoint(this)`);
-               p.setAttribute(`class`,`skill_input${levels}`);
-               p.innerHTML = `LV ${levels}  `;
+               p.setAttribute(`class`,`skill_input${level}`);
+               p.innerHTML = `LV ${level}  `;
                p.appendChild(input);
                skillPoint.appendChild(p);
         }
         
     } else
     {
-        for ( index = (prevLV-1); index > levels; index--) {
+        for ( index = (prevLV-1); index > level; index--) {
           
             skillPoint.children[prevLV-1].remove();
             
@@ -1098,37 +1097,39 @@ function skillpoint() {
     }
 };
 
-function feats(){
+function feats(level){
 
-    const levels = document.querySelector("#levels").value;
+    
     let hitDice = document.querySelector(".header_dropdown_hit_dice");
     let feats = document.querySelector(".header_dropdown_feats");
     let prevLV = hitDice.childElementCount;
     let query = feats.innerHTML;
     let index = 0;
 
-    if(prevLV < levels)
+    if(prevLV < level)
     {
-        if(levels == 1){
+        if(level == 1){
             let p = document.createElement('p');
             let input = document.createElement('input');
-            input.setAttribute(`class`,`feats_input${levels}`);
-            input.setAttribute(`id`,`feats${levels}`);
+            input.setAttribute(`class`,`feats_input${level}`);
+            input.setAttribute(`id`,`feats${level}`);
             input.setAttribute(`type`,`text`);
-            p.setAttribute(`class`,`skill_input${levels}`);
-            p.innerHTML = `LV ${levels}  `;
+            input.setAttribute(`value`,"");
+            p.setAttribute(`class`,`skill_input${level}`);
+            
+            p.innerHTML = `LV ${level}  `;
             p.appendChild(input);
             feats.appendChild(p);
         }else{
-            for ( index = prevLV; index < levels; index++) {
-                if (levels%3 == 0) {
+            for ( index = prevLV; index < level; index++) {
+                if (level%3 == 0) {
                     let p = document.createElement('p');
                     let input = document.createElement('input');
-                    input.setAttribute(`class`,`feats_input${levels}`);
-                    input.setAttribute(`id`,`feats${levels}`);
+                    input.setAttribute(`class`,`feats_input${level}`);
+                    input.setAttribute(`id`,`feats${level}`);
                     input.setAttribute(`type`,`text`);
-                    p.setAttribute(`class`,`skill_input${levels}`);
-                    p.innerHTML = `LV ${levels}  `;
+                    p.setAttribute(`class`,`skill_input${level}`);
+                    p.innerHTML = `LV ${level}  `;
                     p.appendChild(input);
                     feats.appendChild(p);
                 }
@@ -1138,9 +1139,9 @@ function feats(){
     }
     else 
     {
-        for (index = 1 ; index <= levels; index++) {
+        for (index = 1 ; index <= level; index++) {
             if(feats.children[index] != undefined){
-                if(feats.children[index].children[0].id.slice(feats.children[index].children[0].id.length-1) > levels){
+                if(feats.children[index].children[0].id.slice(feats.children[index].children[0].id.length-1) > level){
                  if (feats.children[index] != null) {
                         feats.children[index].remove();
                     }
@@ -1155,30 +1156,29 @@ function feats(){
     }
 
 };
-function hitDice() {
-    const levels = document.querySelector("#levels").value;
+function hitDice(level) {
     let hitDice = document.querySelector(".header_dropdown_hit_dice");
     let prevLV = hitDice.childElementCount+1;
-    let query = hitDice.innerHTML;
     let index = 0;
 
-    if(prevLV == levels)
+    if(prevLV == level)
     {
-        for ( index = prevLV; index == levels; index++) {
+        for ( index = prevLV; index == level; index++) {
             let p = document.createElement('p');
             let input = document.createElement('input');
-            input.setAttribute(`class`,`hitDice${levels}`);
-            input.setAttribute(`id`,`hitDice${levels}`);
+            input.setAttribute(`class`,`hitDice${level}`);
+            input.setAttribute(`id`,`hitDice${level}`);
             input.setAttribute(`type`,`number`);
-            p.setAttribute(`class`,`hit_input${levels}`);
-            p.innerHTML = `LV ${levels}  `;
+            input.setAttribute(`value`,0);
+            p.setAttribute(`class`,`hit_input${level}`);
+            p.innerHTML = `LV ${level}  `;
             p.appendChild(input);
             hitDice.appendChild(p);
         }
     }
     else 
     {
-        for ( index = (prevLV-1); index > levels; index--) {
+        for ( index = (prevLV-1); index > level; index--) {
       
             hitDice.children[prevLV-2].remove();
             
@@ -1269,15 +1269,22 @@ function totalrank(skill)
 function saveNewCharacter(){
     
      characterData = document.querySelectorAll('input');
+     let characterName = document.querySelector('#characterSavedName').value;
+     let characterLV = document.querySelector('#levels').value;
+     
     
     console.log(characterData);
     console.log('saved');
     let newCharacter = [];
     characterData.forEach(element =>{
-        newCharacter.push({
-            "id": element.id,
-            "value": element.value
-        });
+        if(element.id != "")
+        {
+            newCharacter.push({
+                "id": element.id,
+                "value": element.value
+            });
+        }
+        
 
     });
     try {
@@ -1287,7 +1294,7 @@ function saveNewCharacter(){
     } catch (error) {
         console.log(error);
     }
-    characters.push({"CharacterName":newCharacter[newCharacter.length-1].value,"data":newCharacter});
+    characters.push({"CharacterName":characterName,"data":newCharacter, "level":characterLV});
     console.log(characters);
     localStorage["characters"] = JSON.stringify(characters);
     character();
@@ -1302,16 +1309,29 @@ function loadCharacter(character){
     let characterSaved = JSON.parse(localStorage['characters']);
     characterSaved.forEach(element =>{
         if(element.CharacterName == character){
-            element.data.forEach(CharacterProp => {
-                try {
-                    CharacterProp.id != undefined
-                    ?document.querySelector(`#${CharacterProp.id}`).value = CharacterProp.value
-                    :localStorage["INT_for_skill"] = CharacterProp.INT_for_skill;
-                } catch (error) {
-                    console.log(error);
-                }
-                
-            })
+
+          //  let promise = new promise((resolve,error)=>{
+                loadHitDice(element.level);
+                loadFeats(element.level);
+                loadSkillpoint(element.level);
+            //    resolve = "ok";
+            //})
+            //.then(()=>{
+                element.data.forEach(CharacterProp => {
+                    try {
+                        CharacterProp.id != undefined
+                        ?document.querySelector(`#${CharacterProp.id}`).value = CharacterProp.value
+                        :CharacterProp.INT_for_skill != undefined
+                        ? localStorage["INT_for_skill"] = CharacterProp.INT_for_skill
+                        :false
+                    } catch (error) {
+                        console.log(error + CharacterProp.id);
+                    }
+                    
+                })
+            //});
+
+            
         }
     })
 
@@ -1320,6 +1340,7 @@ function saveCharacter(character){
 
    let characterData = document.querySelectorAll('input');
     let characterSaved = JSON.parse(localStorage['characters']);
+    let characterLV = document.querySelector('#levels').value;
     
     console.log(characterData);
     let newDataCharacter = [];
@@ -1334,6 +1355,7 @@ function saveCharacter(character){
     characterSaved.forEach(element =>{
         if(element.CharacterName == character){
             element.data = newDataCharacter;
+            element.level = characterLV;
         }
     })
     localStorage["characters"] = JSON.stringify(characterSaved);
@@ -1351,4 +1373,75 @@ function closeModal(){
     let body = document.querySelector('.modal');
     body.classList.add("modal_hidden");
 }
+
+//end modal
+
+//load function
+
+function loadFeats(level){
+
+    let feats = document.querySelector(".header_dropdown_feats");
+    let index = 0;
+
+  
+    for ( index = 1; index <= level; index++) {
+
+        let p = document.createElement('p');
+        let input = document.createElement('input');
+        input.setAttribute(`class`,`feats_input${index}`);
+        input.setAttribute(`id`,`feats${index}`);
+        input.setAttribute(`type`,`text`);
+        input.setAttribute(`value`,"");
+        p.setAttribute(`class`,`skill_input${index}`);
+        
+        p.innerHTML = `LV ${index}  `;
+        p.appendChild(input);
+        feats.appendChild(p);
+    }
+    
+    
+
+};
+function loadHitDice(level) {
+    let hitDice = document.querySelector(".header_dropdown_hit_dice");
+    let index = 0;
+
+        for ( index = 1; index <= level; index++) {
+            let p = document.createElement('p');
+            let input = document.createElement('input');
+            input.setAttribute(`class`,`hitDice${index}`);
+            input.setAttribute(`id`,`hitDice${index}`);
+            input.setAttribute(`type`,`number`);
+            input.setAttribute(`value`,0);
+            p.setAttribute(`class`,`hit_input${index}`);
+            p.innerHTML = `LV ${index}  `;
+            p.appendChild(input);
+            hitDice.appendChild(p);
+        }
+    
+    
+
+};
+function loadSkillpoint(level) {
+    let skillPoint = document.querySelector(".header_dropdown_skill");
+    let index = 0;
+
+   
+        for ( index = 1; index <= level; index++) {
+               
+               let p = document.createElement('p');
+               let input = document.createElement('input');
+               input.setAttribute(`class`,`skillLV${index}`);
+               input.setAttribute(`id`,`skillLV${index}`);
+               input.setAttribute(`type`,`number`);
+               input.setAttribute(`value`,0);
+               input.setAttribute(`onchange`,`totalSkillPoint(this)`);
+               p.setAttribute(`class`,`skill_input${index}`);
+               p.innerHTML = `LV ${index}  `;
+               p.appendChild(input);
+               skillPoint.appendChild(p);
+        }
+        
+    
+};
 
