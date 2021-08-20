@@ -243,11 +243,29 @@ const headerMap = (headerNames,headerMenu) =>  {
         headerMenu.forEach(element => {
             query += `
             <li class="debug ${element.class}">
-            ${element.name}
-            <div class="${element.dropdown}">
-            </div>  
-            </li>
-            `
+            ${element.name}`
+            if(element.dropdown == "header_dropdown_skill" ){
+                query += `<div class="${element.dropdown}">
+                <p> HUMAN <input class="human_skill" id="HumanSkillPoint" type="checkbox"></p>
+                </div>  
+                </li>
+                `
+            }else if(element.dropdown == "header_dropdown_feats"){
+                query += `<div class="${element.dropdown}">
+                <button onClick="addNewFeat()">Add Feat</button>
+                <p class="feats_input_human">HUMAN <input id="feat_human" onchange="enabledHuman()" disabled type="text"></p>
+                </div>
+                <div class="${element.dropdown}_aditional">
+                </div>
+                </li>
+                `
+            }else{
+                query += `<div class="${element.dropdown}">
+                </div>  
+                </li>
+                `
+            }
+            
         });
         query += `
             <li class="debug save_button">
@@ -545,7 +563,7 @@ const skillsMap = (data) =>{
                     <div class="flex flex-row">
                         <p>MAX RANKS <br> (CLASS/CROSS-CLASS)</p>
                         <div class="Box__value" style="margin-left:5px;">
-                            <p style="color:black;font-size:13px"  class="total_skillPoint">0</p>
+                            <p style="color:black;font-size:13px"  class="max_skillPoint">0</p>
                         </div>
                         <p>TOTAL<br> SKILLPOINTS</p>
                         <div class="Box__value" style="margin-left:5px;">
@@ -902,98 +920,7 @@ function totals(type,object){
             break;
     }
 };
-//function statMaths(staValue, value){
-//    try
-//    {
-//        if (value.length > 1) {
-//            value.forEach(element =>
-//            {
-//                let modifier = document.querySelector(`#${element.STA + "_modifier"}`);
-//                let stamodifier;
-//                let Tstamodifier;
-//                let Tcount = 0;
-//                let count = 0;
-//               
-//                while(Tcount <= Tvalue.value)
-//                { 
-//                    if(Tcount == 0)
-//                    {
-//                        Tstamodifier = 0;
-//                    }  
-//                    else if(Tcount%2 == 0)
-//                    {
-//                        Tstamodifier++    
-//                    }
-//                    Tcount++
-//                }
-//            
-//                while(count <= value.value)
-//                {
-//                    if(count == 0)
-//                    {
-//                        stamodifier = -5;
-//                    }  
-//                    else if(count%2 == 0)
-//                    {
-//                        stamodifier++    
-//                    }
-//                    count++
-//                }
-//                    modifier.value = stamodifier;
-//                    Tmodifier.value = Tstamodifier;
-//                    let sta = value.id.split("_");
-//                    let staV =  modifier.value;
-//                    let staTV = Tmodifier.value;
-//                    totalStatValues(sta[0],staV,staTV)
-//            });
-//            
-//        }
-//        else
-//        {
-//            let modifier = document.querySelector(`#${value.id.replace("value","modifier")}`);
-//            let stamodifier;
-//            let count = 0;
-//            if((value.id).includes("Tvalue"))
-//            {
-//                while(count <= staValue)
-//                { 
-//                    if(count == 0)
-//                    {
-//                        stamodifier = 0;
-//                    }  else if(count%2 == 0){
-//                        stamodifier++    
-//                    }
-//                    count++
-//                }
-//            }
-//            else
-//            {
-//                while(count <= staValue)
-//                {
-//                    if(count == 0)
-//                    {
-//                        stamodifier = -5;
-//                    }  else if(count%2 == 0){
-//                        stamodifier++    
-//                    }
-//                    count++
-//                }
-//            }
-//           
-//    
-//         modifier.value = stamodifier;
-//         let sta = value.id.split("_");
-//         let staV =  document.querySelector(`#${value.id.split("_")[0] + "_modifier"}`).value;
-//         let staTV = document.querySelector(`#${value.id.split("_")[0] + "_Tmodifier"}`).value;
-//         totalStatValues(sta[0],staV,staTV);
-//        }
-//
-//        
-//    }
-//    catch(e){
-//        console.log(e);
-//    }
-//};
+
 function classSkillValidate(checkbox)
 {
     if (checkbox.checked == true) 
@@ -1026,33 +953,66 @@ function rankMaths(rank)
                 (miscranks.value == "" ? miscranks.value = 0 : parseInt(miscranks.value)));
         }); 
 };
-//function totalStatValues(sta,staV,staTV)
-// {
-//     
-//        const staTotalValue = document.querySelectorAll(`.${sta + "_TOTAL-MODIFIER"}`);
-//
-//        staTotalValue.forEach(element => 
-//        {
-//        element.value = (parseInt(staV) + parseInt(staTV));
-//        });    
-//    
-//     
-//     
-//     
-//};
+
 function levels(level)
 {
+    let intArray = [];
     if (level.value == 1) {
-        localStorage["INT_modifier_lv1"] = document.querySelector('#INT_modifier');
-    }
-    totalskillPoint(level);
+            if(document.querySelector('#INTE_value').value != 0 &&
+            document.querySelector('#STR_value').value != 0 &&
+            document.querySelector('#DEX_value').value != 0 &&
+            document.querySelector('#CON_value').value != 0 &&
+            document.querySelector('#WIS_value').value != 0 &&
+            document.querySelector('#CHA_value').value != 0 
+            ){
+                
+                let lvInt = {
+                    lv:level.value,
+                    Int:document.querySelector('#INTE_modifier').value,
+                    Sp:0
+                }
+                intArray.push(lvInt);
+                localStorage["INT_for_skill"] = JSON.stringify(intArray);
+            }else{
+                alert('Coloca Primero los Status antes de subir de Nivel');
+                document.querySelector(`#levels`).value = 0;
+            }
+    } 
+    else
+    {
+        let lvInt = {
+            lv:level.value,
+            Int:document.querySelector('#INTE_modifier').value,
+            Sp: 0
+        }
+    
+        intArray = JSON.parse(localStorage["INT_for_skill"]);
+        let count = 0
+        intArray.forEach(element => {
+            if(element.lv == lvInt.lv)
+            {
+                element.Int = lvInt.Int;
+                count++
+            }
+        })
+        if(count == 0)
+        {
+            intArray.push(lvInt)
+            localStorage["INT_for_skill"] = JSON.stringify(intArray)
+        }
+        else
+        {
+            localStorage["INT_for_skill"] = JSON.stringify(intArray)
+        }
+    }    
+    maxSkillPoint(level);
     feats();
     hitDice();
 }
-function totalskillPoint(level) 
+function maxSkillPoint(level) 
 {
     
-const total_skillPoint = document.querySelector('.total_skillPoint');
+const total_skillPoint = document.querySelector('.max_skillPoint');
     try 
     {
         let levels = level.value;
@@ -1069,75 +1029,165 @@ const total_skillPoint = document.querySelector('.total_skillPoint');
 
 
 };
-function skillpoint() {
-    const levels = document.querySelector("#levels").value;
-    const skillPoint = document.querySelector(".header_dropdown_skill");
+function totalSkillPoint(skillLV){
+    totalPoints = document.querySelector(".total_skillpoint");
+    let point = 0;
+    level = document.querySelector("#levels").value;
+    let human = document.querySelector("#HumanSkillPoint").checked;
+    let LVpoint = skillLV.classList[0];
+    LVpoint = LVpoint.slice(LVpoint.length-1);
+    let int_per_lv = JSON.parse(localStorage["INT_for_skill"]);
 
-    let query = ``;
-    let index;
-    
-    query += `<p> HUMAN <input class="human_skill" id=${element.class} type="checkbox"></p>`
-    for ( index = 1 ; index <= levels; index++) {
-        if (index == 1) {
-            query += 
-            `<p class="skill_input${index}">LV ${index} <input class="skillLV${index}" id=${element.class} type="number"></p>`
-        } else 
+    int_per_lv.forEach(element =>{ 
+        if(element.lv == skillLV.classList[0].slice(skillLV.classList[0].length - 1)){
+            element.Sp = parseInt(skillLV.value);
+        }
+    })
+
+    localStorage["INT_for_skill"] = JSON.stringify(int_per_lv);
+
+    for (let index = 0; index+1 <= level; index++ ){
+
+        if(index+1 == 1)
         {
-            query += 
-        `<p class="skill_input${index}">LV ${index} <input class="skillLV${index}" id=${element.class} type="number"></p>`
+            human
+            ?point += ((parseInt(int_per_lv[index].Int) + int_per_lv[index].Sp)* 4) + 4   
+            :point += ((parseInt(int_per_lv[index].Int) + int_per_lv[index].Sp)* 4)
+        }
+        else{
+            human
+            ?point += ((parseInt(int_per_lv[index].Int) + int_per_lv[index].Sp) + 1)   
+            :point += (parseInt(int_per_lv[index].Int) + int_per_lv[index].Sp)
         }
         
     }
 
-    skillPoint.innerHTML = query;
 
-
-
+    totalPoints.innerHTML = point;
 
 };
+function skillpoint() {
+    const levels = document.querySelector("#levels").value;
+    let skillPoint = document.querySelector(".header_dropdown_skill");
+    let prevLV = skillPoint.childElementCount;
+    let index = 0;
+
+    if(prevLV == levels)
+    {
+        for ( index = prevLV; index == levels; index++) {
+               
+               let p = document.createElement('p');
+               let input = document.createElement('input');
+               input.setAttribute(`class`,`skillLV${levels}`);
+               input.setAttribute(`id`,`skillLV${levels}`);
+               input.setAttribute(`type`,`number`);
+               input.setAttribute(`onchange`,`totalSkillPoint(this)`);
+               p.setAttribute(`class`,`skill_input${levels}`);
+               p.innerHTML = `LV ${levels}  `;
+               p.appendChild(input);
+               skillPoint.appendChild(p);
+        }
+        
+    } else
+    {
+        for ( index = (prevLV-1); index > levels; index--) {
+          
+            skillPoint.children[prevLV-1].remove();
+            
+        }
+    }
+};
+
 function feats(){
 
     const levels = document.querySelector("#levels").value;
-    const feats = document.querySelector(".header_dropdown_feats");
+    let hitDice = document.querySelector(".header_dropdown_hit_dice");
+    let feats = document.querySelector(".header_dropdown_feats");
+    let prevLV = hitDice.childElementCount;
+    let query = feats.innerHTML;
+    let index = 0;
 
-    let query = ``;
-    let index;
-
-    for ( index = 1 ; index <= levels; index++) {
-        if (index%3 == 0) {
-            query += 
-            `<p class="feats_input${index}">FEAT LV ${index} <input class="feats${index}" type="text"></p>`;
-        } else if(index == 1){
-            query +=
-            `<p class="feats_input${index}">FEAT LV ${index} <input class="feats${index}" type="text"></p>`;
+    if(prevLV < levels)
+    {
+        if(levels == 1){
+            let p = document.createElement('p');
+            let input = document.createElement('input');
+            input.setAttribute(`class`,`feats_input${levels}`);
+            input.setAttribute(`id`,`feats${levels}`);
+            input.setAttribute(`type`,`text`);
+            p.setAttribute(`class`,`skill_input${levels}`);
+            p.innerHTML = `LV ${levels}  `;
+            p.appendChild(input);
+            feats.appendChild(p);
+        }else{
+            for ( index = prevLV; index < levels; index++) {
+                if (levels%3 == 0) {
+                    let p = document.createElement('p');
+                    let input = document.createElement('input');
+                    input.setAttribute(`class`,`feats_input${levels}`);
+                    input.setAttribute(`id`,`feats${levels}`);
+                    input.setAttribute(`type`,`text`);
+                    p.setAttribute(`class`,`skill_input${levels}`);
+                    p.innerHTML = `LV ${levels}  `;
+                    p.appendChild(input);
+                    feats.appendChild(p);
+                }
+                
+            }    
         }
+    }
+    else 
+    {
+        for (index = 1 ; index <= levels; index++) {
+            if(feats.children[index] != undefined){
+                if(feats.children[index].children[0].id.slice(feats.children[index].children[0].id.length-1) > levels){
+                 if (feats.children[index] != null) {
+                        feats.children[index].remove();
+                    }
+            }
+            } 
+            
+
+        }
+
+           
         
     }
-
-    feats.innerHTML = query;
 
 };
 function hitDice() {
     const levels = document.querySelector("#levels").value;
-    const hitDice = document.querySelector(".header_dropdown_hit_dice");
+    let hitDice = document.querySelector(".header_dropdown_hit_dice");
+    let prevLV = hitDice.childElementCount+1;
+    let query = hitDice.innerHTML;
+    let index = 0;
 
-    let query = ``;
-    let index;
-
-    for ( index = 1 ; index <= levels; index++) {
-        if (index == 1) {
-            query += 
-            `<p class="hit_input${index}">HIT DICE LV ${index} <input class="hitDice${index}" id="hitDice${index}" type="number"></p>`
+    if(prevLV == levels)
+    {
+        for ( index = prevLV; index == levels; index++) {
+            let p = document.createElement('p');
+            let input = document.createElement('input');
+            input.setAttribute(`class`,`hitDice${levels}`);
+            input.setAttribute(`id`,`hitDice${levels}`);
+            input.setAttribute(`type`,`number`);
+            p.setAttribute(`class`,`hit_input${levels}`);
+            p.innerHTML = `LV ${levels}  `;
+            p.appendChild(input);
+            hitDice.appendChild(p);
         }
-        else 
-        {
-            query += 
-        `<p class="hit_input${index}">HIT DICE LV ${index} <input class="hitDice${index}" id="hitDice${index}" type="number"></p>`
-        }
-        
     }
+    else 
+    {
+        for ( index = (prevLV-1); index > levels; index--) {
+      
+            hitDice.children[prevLV-2].remove();
+            
+        }
+    }
+        
+    
 
-    hitDice.innerHTML = query;
+    
 
 
 
@@ -1151,7 +1201,7 @@ function character(){
          characters.forEach(element => {
 
             query += 
-            `<p class="flex flex-jc-s flex-ai-sb character_${element.CharacterName}">${element.CharacterName} <button onclick="loadCharacter()">load</button onclick="saveCharacter()"><button>save</button></p>`;
+            `<p class="flex flex-jc-s flex-ai-sb character_${element.CharacterName}">${element.CharacterName} <button onclick="loadCharacter('${element.CharacterName}')">load</button><button onclick="saveCharacter('${element.CharacterName}')"">save</button></p>`;
              
          });
          
@@ -1216,23 +1266,28 @@ function totalrank(skill)
                 
         });
 };
-function saveCharacter(){
+function saveNewCharacter(){
     
      characterData = document.querySelectorAll('input');
     
     console.log(characterData);
     console.log('saved');
-    let character = [];
+    let newCharacter = [];
     characterData.forEach(element =>{
-       
-            character.push({
-                "id": element.id,
-                "value": element.value})
-                
-            
-        
-    })
-    characters.push({"CharacterName":character[347].value,"data":character});
+        newCharacter.push({
+            "id": element.id,
+            "value": element.value
+        });
+
+    });
+    try {
+        newCharacter.push({
+            "INT_for_skill": localStorage["INT_for_skill"]
+        });
+    } catch (error) {
+        console.log(error);
+    }
+    characters.push({"CharacterName":newCharacter[newCharacter.length-1].value,"data":newCharacter});
     console.log(characters);
     localStorage["characters"] = JSON.stringify(characters);
     character();
@@ -1241,6 +1296,47 @@ function saveCharacter(){
     
     
     
+}
+function loadCharacter(character){
+
+    let characterSaved = JSON.parse(localStorage['characters']);
+    characterSaved.forEach(element =>{
+        if(element.CharacterName == character){
+            element.data.forEach(CharacterProp => {
+                try {
+                    CharacterProp.id != undefined
+                    ?document.querySelector(`#${CharacterProp.id}`).value = CharacterProp.value
+                    :localStorage["INT_for_skill"] = CharacterProp.INT_for_skill;
+                } catch (error) {
+                    console.log(error);
+                }
+                
+            })
+        }
+    })
+
+}
+function saveCharacter(character){
+
+   let characterData = document.querySelectorAll('input');
+    let characterSaved = JSON.parse(localStorage['characters']);
+    
+    console.log(characterData);
+    let newDataCharacter = [];
+    characterData.forEach(element =>{
+        newDataCharacter.push({
+            "id": element.id,
+            "value": element.value
+        })
+    });
+
+    
+    characterSaved.forEach(element =>{
+        if(element.CharacterName == character){
+            element.data = newDataCharacter;
+        }
+    })
+    localStorage["characters"] = JSON.stringify(characterSaved);
 }
 
 
