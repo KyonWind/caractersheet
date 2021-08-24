@@ -203,8 +203,6 @@ window.onload = function(e){
     //FUNCTIONS
     totalrank(skill);
 
-
-
     
 };
 
@@ -246,7 +244,7 @@ const headerMap = (headerNames,headerMenu) =>  {
             ${element.name}`
             if(element.dropdown == "header_dropdown_skill" ){
                 query += `<div class="${element.dropdown}">
-                <p> HUMAN <input class="human_skill" id="HumanSkillPoint" onchange="enabledHuman()" type="checkbox"></p>
+                <p> HUMAN <input class="human_skill" id="HumanSkillPoint" onchange="enabledHuman(this)" type="checkbox"></p>
                 </div>  
                 </li>
                 `
@@ -936,22 +934,46 @@ function classSkillValidate(checkbox)
 };
 function rankMaths(rank)
 {
-    let data = JSON.parse(localStorage["SKILLS"]);
-    data = data.filter(element => element.id == rank.id.split('_')[0]);
 
-    data.forEach(element =>
-        {
-            const totalrankskill = document.querySelector(`#${element.id}_total_ranks`);
-            const totalrankskillM = document.querySelector(`#${element.id}_${element.class}`);
-            const rankskill = document.querySelector(`#${element.id}_ranks`);
-            const miscranks = document.querySelector(`#${element.id}_misc_ranks`);
+   let dataRank = [{
+        lv: parseInt(document.querySelector('#levels').value),
+        rank:[{
+            id:rank.id,
+            crossClass: !document.querySelector(`#${rank.id.replace('ranks','check')}`).checked,
+            value: rank.value
+        }]
+    }];
 
-            
-            totalrankskill.value = (
-                (totalrankskillM.value == "" ? totalrankskillM.value = 0 : parseInt(totalrankskillM.value)) + 
-                (rankskill.value == "" ? rankskill.value = 0 : parseInt(rankskill.value)) + 
-                (miscranks.value == "" ? miscranks.value = 0 : parseInt(miscranks.value)));
-        }); 
+    try {
+        let skillRanks = JSON.parse(localStorage["skillRanks"]);
+        let newLv = true;
+        skillRanks.forEach(element =>{
+
+            if(element.lv == dataRank[0].lv)
+            {
+                let newrank = true;
+                element.rank.forEach(rank =>{
+                    if (rank.id == dataRank[0].rank[0].id) {
+                        rank = dataRank[0].rank[0];
+                        newElement = false
+                    }
+                })
+                newrank ? element.rank.push(dataRank[0].rank[0]) :false
+                newLv = false
+            }
+
+        });
+        newLv ? skillRanks.push(dataRank[0]):false
+        localStorage["skillRanks"] = JSON.stringify(skillRanks);
+        
+    } catch (error) {
+        localStorage["skillRanks"] = JSON.stringify(dataRank);
+    }
+    
+
+
+    
+
 };
 
 function levels(level)
@@ -1033,30 +1055,35 @@ function totalSkillPoint(skillLV){
     let point = 0;
     level = document.querySelector("#levels").value;
     let human = document.querySelector("#HumanSkillPoint").checked;
-    let LVpoint = skillLV.classList[0];
-    LVpoint = LVpoint.slice(LVpoint.length-1);
+
+   // LVpoint = LVpoint.slice(LVpoint.length-1);
     let int_per_lv = JSON.parse(localStorage["INT_for_skill"]);
-
-    int_per_lv.forEach(element =>{ 
+    if(skillLV)
+    {
+        //let LVpoint = skillLV.classList[0];
+        int_per_lv.forEach(element =>{ 
         if(element.lv == skillLV.classList[0].slice(skillLV.classList[0].length -1)){
-            element.Sp = parseInt(skillLV.value);
-        }
-    })
+        element.Sp = parseInt(skillLV.value);
+        localStorage["INT_for_skill"] = JSON.stringify(int_per_lv);
+            }
+        });
+    }
+    
 
-    localStorage["INT_for_skill"] = JSON.stringify(int_per_lv);
+    
 
-    for (let index = 0; index+1 <= level; index++ ){
+    for (let index = 1; index <= level; index++ ){
 
-        if(level == 1)
+        if(index == 1)
         {
             human
-            ?point += ((parseInt(int_per_lv[index].Int) + int_per_lv[index].Sp)* 4) + 4   
-            :point += ((parseInt(int_per_lv[index].Int) + int_per_lv[index].Sp)* 4)
+            ?point += ((parseInt(int_per_lv[index-1].Int) + int_per_lv[index-1].Sp)* 4) + 4   
+            :point += ((parseInt(int_per_lv[index-1].Int) + int_per_lv[index-1].Sp)* 4)
         }
         else{
             human
-            ?point += ((parseInt(int_per_lv[index].Int) + int_per_lv[index].Sp) + 1)   
-            :point += (parseInt(int_per_lv[index].Int) + int_per_lv[index].Sp)
+            ?point += ((parseInt(int_per_lv[index-1].Int) + int_per_lv[index-1].Sp) + 1)   
+            :point += (parseInt(int_per_lv[index-1].Int) + int_per_lv[index-1].Sp)
         }
         
     }
@@ -1309,27 +1336,22 @@ function loadCharacter(character){
     let characterSaved = JSON.parse(localStorage['characters']);
     characterSaved.forEach(element =>{
         if(element.CharacterName == character){
-
-          //  let promise = new promise((resolve,error)=>{
-                loadHitDice(element.level);
-                loadFeats(element.level);
-                loadSkillpoint(element.level);
-            //    resolve = "ok";
-            //})
-            //.then(()=>{
-                element.data.forEach(CharacterProp => {
-                    try {
+            loadHitDice(element.level);
+            loadFeats(element.level);
+            loadSkillpoint(element.level);
+            element.data.forEach(CharacterProp => {
+                try {
                         CharacterProp.id != undefined
                         ?document.querySelector(`#${CharacterProp.id}`).value = CharacterProp.value
                         :CharacterProp.INT_for_skill != undefined
                         ? localStorage["INT_for_skill"] = CharacterProp.INT_for_skill
                         :false
-                    } catch (error) {
+                } catch (error) {
                         console.log(error + CharacterProp.id);
-                    }
-                    
-                })
-            //});
+                }
+            });
+            
+            totalSkillPoint(false);
 
             
         }
@@ -1444,4 +1466,16 @@ function loadSkillpoint(level) {
         
     
 };
+
+//Human
+
+function enabledHuman(ishuman){
+    if(ishuman.checked){
+        document.querySelector("#feat_human").removeAttribute("disabled");
+    } else{
+        document.querySelector("#feat_human").addAttribute = "disabled";
+    }
+}
+
+
 
