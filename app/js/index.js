@@ -221,7 +221,7 @@ const headerMap = (headerNames,headerMenu) =>  {
                 if(element.type == "number")
                 {
                     query += `
-                    <input type="${element.type}" onchange="levels(this)" type="number" id="${element.class}" value="0"  class="header__input"></input>`
+                    <input type="${element.type}" onchange="levels(this)" type="number" min="0" id="${element.class}" value="0"  class="header__input"></input>`
                 }
                 else
                 {
@@ -298,7 +298,7 @@ const statsMap = (data) =>{
     data.forEach(element => {
         query += `
         <li class="flex flex-column flex-ai-c">
-        <input type="number" onchange="totals('STA',this)" value="0" id="${element.STA}_value">
+        <input type="number" min="0" onchange="totals('STA',this)" value="0" id="${element.STA}_value">
         </li>`
     });
     
@@ -319,7 +319,7 @@ const statsMap = (data) =>{
     data.forEach(element => {
         query += `
         <li class="flex flex-column flex-ai-c">
-        <input type="number" onchange="totals('STA',this)" value="0" id="${element.STA}T_value">
+        <input type="number"  onchange="totals('STA',this)" value="0" id="${element.STA}T_value">
         </li>`
     });
 
@@ -370,7 +370,7 @@ const hpAcMap = (hpbar,acbar,acInit) =>{
         if(element.type == "value"){
             query += `
             <div class="Box__input">
-            <input id="${element.id}" class="${element.class}" value="0" type="number">
+            <input id="${element.id}" class="${element.class}" value="0" type="number" min="0">
             </div>     
                 </li>
             </ul>
@@ -378,7 +378,7 @@ const hpAcMap = (hpbar,acbar,acInit) =>{
         } else{
             query += `
                     <div class="Box__input">
-                        <input id="${element.id}" class="${element.class}" value="0" type="number">
+                        <input id="${element.id}" class="${element.class}" value="0" type="number" min="0">
                     </div>   
                 </li>
             </ul>
@@ -408,7 +408,7 @@ const hpAcMap = (hpbar,acbar,acInit) =>{
             query += `
             
             <div class="Box__input">
-            <input onchange="totals('AC',this)" id="${element.id}" class="${element.class}" value="0" type="number">
+            <input onchange="totals('AC',this)" id="${element.id}" class="${element.class}" value="0" type="number" min="0">
             </div> 
                     <p class="hp">${element.name}</p>     
                 </li>
@@ -417,7 +417,7 @@ const hpAcMap = (hpbar,acbar,acInit) =>{
         } else if(element.type == "input"){
             query += `
             <div class="Box__input">
-            <input onchange="totals('AC',this)" id="${element.id}" class="${element.class}" value="0" type="number">
+            <input onchange="totals('AC',this)" id="${element.id}" class="${element.class}" value="0" type="number" min="0">
             </div> 
                     <p class="hp">${element.name}</p>   
                 </li>
@@ -470,7 +470,7 @@ const hpAcMap = (hpbar,acbar,acInit) =>{
             <ul class="flex flex-column">
                 <li class="flex flex-row">
                     <div class="Box__input">
-                        <input id="${element.id}" type="number">
+                        <input id="${element.id}" type="number" min="0">
                     </div>
                 </li>
             </ul>
@@ -499,7 +499,7 @@ const hpAcMap = (hpbar,acbar,acInit) =>{
                 <ul class="flex flex-column">
                     <li class="flex flex-column">
                     <div class="Box__input">
-                <input id="${element.id}" type="number">
+                <input id="${element.id}" type="number" min="0">
                 </div> 
                 <p class="hp">${element.name}</p>     
             </li>
@@ -519,7 +519,7 @@ const hpAcMap = (hpbar,acbar,acInit) =>{
                     <ul class="flex flex-column">
                         <li class="flex flex-column">
                             <div class="Box__input">
-                                <input id="${element.id}" class="${element.class}" type="number">
+                                <input id="${element.id}" class="${element.class}" type="number" min="0">
                             </div>
                             <p class="hp">${element.name}</p>
                         </li>
@@ -537,7 +537,7 @@ const hpAcMap = (hpbar,acbar,acInit) =>{
                     <ul class="flex flex-column">
                         <li class="flex flex-column">
                             <div class="Box__input">
-                                <input id="${element.id}" class="${element.class}" type="number">
+                                <input id="${element.id}" class="${element.class}" type="number" min="0">
                             </div>
                             <p class="hp">${element.name}</p>
                         </li>
@@ -608,9 +608,9 @@ const skillsMap = (data) =>{
                         <p>=</p>
                         <input type="number" disabled class="${element.class}" id="${element.id}_${element.class}" name="">
                         <p>+</p>
-                     <input type="number" onchange="rankMaths(this)" onkeydown="return false" step="0.5"  class="ranks" id="${element.id}_ranks" name="">
+                     <input type="number" min="0" onchange="addRank(this)" onkeydown="return false" step="0.5"  class="ranks" id="${element.id}_ranks" name="">
                         <p>+</p>
-                    <input type="number" onchange="rankMaths(this)" id="${element.id}_misc_ranks" name="">
+                    <input type="number" id="${element.id}_misc" name="">
                 </li>
         `;
     });
@@ -654,7 +654,7 @@ const savesMap = (data) =>{
                                             }
                                         query += `  
                                         <div class="Box__input">
-                                        <input id="${subelement.id}" onchange="totals('SAVES',this)" class="${subelement.class}" value="0" type="number">
+                                        <input id="${subelement.id}" onchange="totals('SAVES',this)" class="${subelement.class}" value="0" type="number" min="0">
                                         </div>
                                             </li>
                                         </ul>
@@ -669,7 +669,7 @@ const savesMap = (data) =>{
                                             }
                                         query += `
                                                 <div class="Box__input">
-                                                    <input class="${subelement.class}" onchange="totals('SAVE',this)" id="${subelement.id}" value="0" type="number">
+                                                    <input class="${subelement.class}" onchange="totals('SAVE',this)" id="${subelement.id}" value="0" type="number" min="0">
                                                 </div>
                                             </li>
                                         </ul>
@@ -684,7 +684,7 @@ const savesMap = (data) =>{
                                             }
                                         query += `
                                                 <div class="Box__input">
-                                                    <input class="${subelement.class}" onchange="totals('SAVE',this)" id="${subelement.id}" value="0" type="number">
+                                                    <input class="${subelement.class}" onchange="totals('SAVE',this)" id="${subelement.id}" value="0" type="number" min="0">
                                                 </div>
                                             </li>
                                         </ul>
@@ -732,7 +732,7 @@ const AttackMap = (data) =>{
                 <ul class="flex flex-column">
                     <li class="flex flex-column">
                         <div class="Box__input">
-                            <input onchange="totals('AB',this)" id="${element.id}" class="${element.class}" value="0" type="number">
+                            <input onchange="totals('AB',this)" id="${element.id}" class="${element.class}" value="0" type="number" min="0">
                         </div>
                     </li>
                 </ul>
@@ -766,7 +766,7 @@ const grappleMap = (data) =>{
                 <ul class="flex flex-column">
                     <li class="flex flex-column">
                         <div class="Box__input">
-                            <input onchange="totals('GRAPPLE',this)" value="0" id="${element.id}" class="${element.class}" type="number">
+                            <input onchange="totals('GRAPPLE',this)" value="0" id="${element.id}" class="${element.class}" type="number" min="0">
                         </div>
                         <p class="hp">${element.name}</p>  
                     </li>
@@ -779,7 +779,7 @@ const grappleMap = (data) =>{
                 <ul class="flex flex-column">
                     <li class="flex flex-column">
                     <div class="Box__input">
-                    <input onchange="totals('GRAPPLE',this)"  type="number" value="0" id="${element.id}" class="${element.class}" name="">
+                    <input onchange="totals('GRAPPLE',this)"  type="number" min="0" value="0" id="${element.id}" class="${element.class}" name="">
                     </div>
                     <p>${element.name}</p>     
                 </li>
@@ -923,58 +923,98 @@ function classSkillValidate(checkbox)
 {
     if (checkbox.checked == true) 
     {
-        let input = document.querySelector(`#${checkbox.id.split('_')[0]}_ranks`);
+        let input = document.querySelector(`#${checkbox.id.replace('check','ranks')}`);
         input.step = 1;
     }
     else
     {
-        let input = document.querySelector(`#${checkbox.id.split('_')[0]}_ranks`);
+        let input = document.querySelector(`#${checkbox.id.replace('check','ranks')}`);
         input.step = 0.5;
     }
 };
-function rankMaths(rank)
+function addRank(rank)
 {
+    let lv = parseInt(document.querySelector('#levels').value)
 
-   let dataRank = [{
-        lv: parseInt(document.querySelector('#levels').value),
-        rank:[{
-            id:rank.id,
-            crossClass: !document.querySelector(`#${rank.id.replace('ranks','check')}`).checked,
-            value: rank.value
-        }]
-    }];
+    if (lv != 0) {
+        
+        let dataRank = [{
+            lv: parseInt(document.querySelector('#levels').value),
+            rank:[{
+                id:rank.id,
+                crossClass: rank.id.includes('ranks')
+                ?!document.querySelector(`#${rank.id.replace('ranks','check')}`).checked
+                :!document.querySelector(`#${rank.id.replace('misc','check')}`).checked,
+                value: rank.value
+            }]
+        }];
+    
+        try {
+            let skillRanks = JSON.parse(localStorage["skillRanks"]);
+            let newLv = true;
+            skillRanks.forEach(element =>{
+    
+                if(element.lv == dataRank[0].lv)
+                {
+                    let newrank = true;
+                    element.rank.forEach(rank =>{
+                        if (rank.id == dataRank[0].rank[0].id) {
+                            rank.crossClass = dataRank[0].rank[0].crossClass;
+                            rank.value = dataRank[0].rank[0].value;
+                            newrank = false;
+                        }
+                    })
+                    newrank ? element.rank.push(dataRank[0].rank[0]) :false
+                    newLv = false
+                }
+    
+            });
+            newLv ? skillRanks.push(dataRank[0]):false
+            localStorage["skillRanks"] = JSON.stringify(skillRanks);
+          
+            
+        } catch (error) {
+            localStorage["skillRanks"] = JSON.stringify(dataRank);
+        }
+        rankMaths();
+
+    } else {
+        alert("no puedes agregar rango siendo lv 0");
+        rank.value = 0;
+    }
+    
+   
+
+
+};
+
+function rankMaths(){
 
     try {
         let skillRanks = JSON.parse(localStorage["skillRanks"]);
-        let newLv = true;
-        skillRanks.forEach(element =>{
+        totalSkillPoint();
+        let displayPoint = document.querySelector(".total_skillpoint");
+        let points = parseInt(document.querySelector(".total_skillpoint").innerHTML);
 
-            if(element.lv == dataRank[0].lv)
-            {
-                let newrank = true;
-                element.rank.forEach(rank =>{
-                    if (rank.id == dataRank[0].rank[0].id) {
-                        rank = dataRank[0].rank[0];
-                        newElement = false
-                    }
-                })
-                newrank ? element.rank.push(dataRank[0].rank[0]) :false
-                newLv = false
+            //Resta de total
+    skillRanks.forEach(level =>{
+        level.rank.forEach(rank => {
+            if(rank.crossClass){
+                points = points - (rank.value * 2 )
+            } else {
+                points = points - rank.value
             }
-
         });
-        newLv ? skillRanks.push(dataRank[0]):false
-        localStorage["skillRanks"] = JSON.stringify(skillRanks);
-        
+    });
+    displayPoint.innerHTML = points;
     } catch (error) {
-        localStorage["skillRanks"] = JSON.stringify(dataRank);
+        console.log(error)
     }
     
-
-
     
+}
 
-};
+  
 
 function levels(level)
 {
@@ -1067,6 +1107,7 @@ function totalSkillPoint(skillLV){
         localStorage["INT_for_skill"] = JSON.stringify(int_per_lv);
             }
         });
+        //skillLV.dispatchEvent(new Event('change'));
     }
     
 
@@ -1284,7 +1325,7 @@ function totalrank(skill)
             const totalrankskill = document.querySelector(`#${element.id}_total_ranks`);
             const totalrankskillM = document.querySelector(`#${element.id}_${element.class}`);
             const rankskill = document.querySelector(`#${element.id}_ranks`);
-            const miscranks = document.querySelector(`#${element.id}_misc_ranks`);
+            const miscranks = document.querySelector(`#${element.id}_misc`);
 
             totalrankskill.value = (
                 (totalrankskillM.value == "" ? totalrankskillM.value = 0 : parseInt(totalrankskillM.value)) + 
@@ -1304,12 +1345,21 @@ function saveNewCharacter(){
     console.log('saved');
     let newCharacter = [];
     characterData.forEach(element =>{
+
         if(element.id != "")
         {
-            newCharacter.push({
-                "id": element.id,
-                "value": element.value
-            });
+            if (element.value !== "on") {
+                newCharacter.push({
+                    "id": element.id,
+                    "value": element.value
+                });
+            } else {
+                newCharacter.push({
+                    "id": element.id,
+                    "checked": element.checked
+                });
+            }
+            
         }
         
 
@@ -1318,6 +1368,13 @@ function saveNewCharacter(){
         newCharacter.push({
             "INT_for_skill": localStorage["INT_for_skill"]
         });
+    } catch (error) {
+        console.log(error);
+    }
+    try {
+        newCharacter.push({
+            "skillRanks": localStorage["skillRanks"]
+        })
     } catch (error) {
         console.log(error);
     }
@@ -1341,11 +1398,22 @@ function loadCharacter(character){
             loadSkillpoint(element.level);
             element.data.forEach(CharacterProp => {
                 try {
+
+                    if (CharacterProp.checked) {
+
+                        document.querySelector(`#${CharacterProp.id}`).checked = CharacterProp.checked
+                        
+                    } else {
+
                         CharacterProp.id != undefined
                         ?document.querySelector(`#${CharacterProp.id}`).value = CharacterProp.value
                         :CharacterProp.INT_for_skill != undefined
                         ? localStorage["INT_for_skill"] = CharacterProp.INT_for_skill
+                        :CharacterProp.skillRanks != undefined
+                        ? localStorage["skillRanks"] = CharacterProp.skillRanks
                         :false
+                    }
+                       
                 } catch (error) {
                         console.log(error + CharacterProp.id);
                 }
@@ -1367,12 +1435,37 @@ function saveCharacter(character){
     console.log(characterData);
     let newDataCharacter = [];
     characterData.forEach(element =>{
-        newDataCharacter.push({
-            "id": element.id,
-            "value": element.value
-        })
-    });
 
+        if(element.id != "")
+        {
+            if (element.value !== "on") {
+                newDataCharacter.push({
+                    "id": element.id,
+                    "value": element.value
+                });
+            } else {
+                newDataCharacter.push({
+                    "id": element.id,
+                    "checked": element.checked
+                });
+            }
+            
+        }
+    });
+    try {
+        newDataCharacter.push({
+            "INT_for_skill": localStorage["INT_for_skill"]
+        });
+    } catch (error) {
+        console.log(error);
+    }
+    try {
+        newDataCharacter.push({
+            "skillRanks": localStorage["skillRanks"]
+        })
+    } catch (error) {
+        console.log(error);
+    }
     
     characterSaved.forEach(element =>{
         if(element.CharacterName == character){
@@ -1463,7 +1556,7 @@ function loadSkillpoint(level) {
                p.appendChild(input);
                skillPoint.appendChild(p);
         }
-        
+        rankMaths();    
     
 };
 
@@ -1475,6 +1568,7 @@ function enabledHuman(ishuman){
     } else{
         document.querySelector("#feat_human").addAttribute = "disabled";
     }
+    totalSkillPoint();
 }
 
 
