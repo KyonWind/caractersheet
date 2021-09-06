@@ -36,31 +36,31 @@ window.onload = function(e){
     ];
     const skill = 
     [
-        {name: "Appraise",                    modifier: "INT",      class:"INT_TOTAL-MODIFIER", id: "Appraise"                 },
+        {name: "Appraise",                    modifier: "INT",      class:"INTE_TOTAL-MODIFIER", id: "Appraise"                 },
         {name: "Balance",                     modifier: "DEX",      class:"DEX_TOTAL-MODIFIER", id: "Balance"                  },
         {name: "Bluff",                       modifier: "CHA",      class:"CHA_TOTAL-MODIFIER", id: "Bluff"                    },
         {name: "Climb",                       modifier: "STR*",     class:"STR_TOTAL-MODIFIER", id: "Climb"                    },
         {name: "Concentration",               modifier: "CON",      class:"CON_TOTAL-MODIFIER", id: "Concentration"            },
-        {name: "Craft(_______________)",      modifier: "INT",      class:"INT_TOTAL-MODIFIER", id: "Craft1"                   },
-        {name: "Craft(_______________)",      modifier: "INT",      class:"INT_TOTAL-MODIFIER", id: "Craft2"                   },
-        {name: "Craft(_______________)",      modifier: "INT",      class:"INT_TOTAL-MODIFIER", id: "Craft3"                   },
-        {name: "Decipher Script",             modifier: "INT",      class:"INT_TOTAL-MODIFIER", id: "Decipher_Script"          },
+        {name: "Craft(_______________)",      modifier: "INT",      class:"INTE_TOTAL-MODIFIER", id: "Craft1"                   },
+        {name: "Craft(_______________)",      modifier: "INT",      class:"INTE_TOTAL-MODIFIER", id: "Craft2"                   },
+        {name: "Craft(_______________)",      modifier: "INT",      class:"INTE_TOTAL-MODIFIER", id: "Craft3"                   },
+        {name: "Decipher Script",             modifier: "INT",      class:"INTE_TOTAL-MODIFIER", id: "Decipher_Script"          },
         {name: "Diplomacy",                   modifier: "CHA",      class:"CHA_TOTAL-MODIFIER", id: "Diplomacy"                },
-        {name: "Disable Device",              modifier: "INT",      class:"INT_TOTAL-MODIFIER", id: "Disable_Device"           },
+        {name: "Disable Device",              modifier: "INT",      class:"INTE_TOTAL-MODIFIER", id: "Disable_Device"           },
         {name: "Disguise",                    modifier: "CHA",      class:"CHA_TOTAL-MODIFIER", id: "Disguise"                 },
         {name: "Escape Artist",               modifier: "DEX*",     class:"DEX_TOTAL-MODIFIER", id: "Escape_Artist"            },
-        {name: "Forgery",                     modifier: "INT",      class:"INT_TOTAL-MODIFIER", id: "Forgery"                  },
+        {name: "Forgery",                     modifier: "INT",      class:"INTE_TOTAL-MODIFIER", id: "Forgery"                  },
         {name: "Gather Information",          modifier: "CHA",      class:"CHA_TOTAL-MODIFIER", id: "Gather_Information"       },
         {name: "Handle Animal",               modifier: "CHA",      class:"CHA_TOTAL-MODIFIER", id: "Handle_Animal"            },
         {name: "Heal",                        modifier: "WIS",      class:"WIS_TOTAL-MODIFIER", id: "Heal"                     },
         {name: "Hide",                        modifier: "DEX*",     class:"DEX_TOTAL-MODIFIER", id: "Hide"                     },
         {name: "Intimidate",                  modifier: "CHA",      class:"CHA_TOTAL-MODIFIER", id: "Intimidate"               },
         {name: "Jump",                        modifier: "STR*",     class:"STR_TOTAL-MODIFIER", id: "Jump"                     },
-        {name: "Knowledge (Arcana)",          modifier: "INT",      class:"INT_TOTAL-MODIFIER", id: "Knowledge1"               },
-        {name: "Knowledge (Natural)",         modifier: "INT",      class:"INT_TOTAL-MODIFIER", id: "Knowledge2"               },
-        {name: "Knowledge (Dungeon)",         modifier: "INT",      class:"INT_TOTAL-MODIFIER", id: "Knowledge3"               },
-        {name: "Knowledge (Religion)",        modifier: "INT",      class:"INT_TOTAL-MODIFIER", id: "Knowledge4"               },
-        {name: "Knowledge (Nobleza)",         modifier: "INT",      class:"INT_TOTAL-MODIFIER", id: "Knowledge5"               },
+        {name: "Knowledge (Arcana)",          modifier: "INT",      class:"INTE_TOTAL-MODIFIER", id: "Knowledge1"               },
+        {name: "Knowledge (Natural)",         modifier: "INT",      class:"INTE_TOTAL-MODIFIER", id: "Knowledge2"               },
+        {name: "Knowledge (Dungeon)",         modifier: "INT",      class:"INTE_TOTAL-MODIFIER", id: "Knowledge3"               },
+        {name: "Knowledge (Religion)",        modifier: "INT",      class:"INTE_TOTAL-MODIFIER", id: "Knowledge4"               },
+        {name: "Knowledge (Nobleza)",         modifier: "INT",      class:"INTE_TOTAL-MODIFIER", id: "Knowledge5"               },
         {name: "Listen",                      modifier: "WIS",      class:"WIS_TOTAL-MODIFIER", id: "Listen"                   },
         {name: "Move Silently",               modifier: "DEX*",     class:"DEX_TOTAL-MODIFIER", id: "Move_Silently"            },
         {name: "Open Lock",                   modifier: "DEX",      class:"DEX_TOTAL-MODIFIER", id: "Open_Lock"                },
@@ -70,10 +70,10 @@ window.onload = function(e){
         {name: "Profession (___________)",    modifier: "WIS",      class:"WIS_TOTAL-MODIFIER", id: "Profession1"              },
         {name: "Profession (___________)",    modifier: "WIS",      class:"WIS_TOTAL-MODIFIER", id: "Profession2"              },
         {name: "Ride",                        modifier: "DEX",      class:"DEX_TOTAL-MODIFIER", id: "Ride"                     },
-        {name: "Search",                      modifier: "INT",      class:"INT_TOTAL-MODIFIER", id: "Search"                   },
+        {name: "Search",                      modifier: "INT",      class:"INTE_TOTAL-MODIFIER", id: "Search"                   },
         {name: "Sense Motive",                modifier: "WIS",      class:"WIS_TOTAL-MODIFIER", id: "Sense_Motive"             },
         {name: "Sleight of Hand ",            modifier: "DEX*",     class:"DEX_TOTAL-MODIFIER", id: "Sleight_of_Hand"          },
-        {name: "Spellcraft ",                 modifier: "INT",      class:"INT_TOTAL-MODIFIER", id: "Spellcraft"               },
+        {name: "Spellcraft ",                 modifier: "INT",      class:"INTE_TOTAL-MODIFIER", id: "Spellcraft"               },
         {name: "Spot",                        modifier: "WIS",      class:"WIS_TOTAL-MODIFIER", id: "Spot"                     },
         {name: "Survival",                    modifier: "WIS",      class:"WIS_TOTAL-MODIFIER", id: "Survival"                 },
         {name: "Swim",                        modifier: "STR",      class:"STR_TOTAL-MODIFIER", id: "Swim"                     },
@@ -106,8 +106,8 @@ window.onload = function(e){
         {name: "",                                             id:"ac__touch",                     class:"ac__touch",type:"input"},
         {name: "<h1>FLAT-FOOTED</h1><p>ARMOR CLASS</p>",       id:"ac__flatName",                     class:"ac__flatName",type:"name"},
         {name: "",                                             id:"ac__flat",                     class:"ac__flat",type:"input"},
-        {name: "<h1>INICIATIVE</h1><p>MODIFIER</p>",           id:"init__inicitiveName",                     class:"init init__inicitiveName",type:["name","init"]},
-        {name: "TOTAL",                                        id:"init__inicitiveValue",                     class:"init init__inicitiveValue", type:["value","init"]},
+        {name: "<h1>INICIATIVE</h1><p>MODIFIER</p>",           id:"init__inicitiveName",                     class:"init__inicitiveName",type:["name","init"]},
+        {name: "TOTAL",                                        id:"init__total",                     class:"init__total", type:["value","init"]},
         {name: "DEX <br> MODIFIER",                            id:"init__dex",                     class:"init init__dex DEX_TOTAL-MODIFIER",type:["input","init"]},
         {name: "MISC <br> MODIFIER",                           id:"init__misc",                     class:"init init__misc",type:["lastinput","init"]},
 
@@ -514,12 +514,12 @@ const hpAcMap = (hpbar,acbar,acInit) =>{
             else if(element.type[0] == "input")
             {
                 query += `
-                <div class="${element.class}">
+                <div>
                     
                     <ul class="flex flex-column">
                         <li class="flex flex-column">
                             <div class="Box__input">
-                                <input id="${element.id}" class="${element.class}" type="number" min="0">
+                                <input id="${element.id}" onchange="totals('INIT',this)" class="${element.class}" type="number" min="0">
                             </div>
                             <p class="hp">${element.name}</p>
                         </li>
@@ -532,12 +532,12 @@ const hpAcMap = (hpbar,acbar,acInit) =>{
             }
             else{
                 query += `
-                <div class="${element.class}">
+                <div>
                     
                     <ul class="flex flex-column">
                         <li class="flex flex-column">
                             <div class="Box__input">
-                                <input id="${element.id}" class="${element.class}" type="number" min="0">
+                                <input id="${element.id}" onchange="totals('INIT',this)" class="${element.class}" type="number" value="0" min="0">
                             </div>
                             <p class="hp">${element.name}</p>
                         </li>
@@ -905,17 +905,59 @@ function totals(type,object){
                 element.dispatchEvent(new Event('change'));
                     });
             break;
-        default:
-                let total;
-                type.includes('AC') ? total = 10 
-                                     :total = 0;
+        case 'AC':
+                let ac;
+                let t_ac = 10;
+                let f_ac = 10;
+                type.includes('AC') ? ac = 10 
+                                     :ac = 0;
                 let saveValues = document.querySelectorAll(`.${object.id.split('_')[0]}`);
 
                 saveValues.forEach(element =>{
-                    total =  total + parseInt(element.value);
+                    if(element.id !== 'ac__touch' &&
+                       element.id !== 'ac__flat'){
+                    ac =  ac + parseInt(element.value);
+                    }
+                    if(element.id == 'AC_dex' ||
+                       element.id == 'AC_size'||
+                       element.id == 'AC_deflection'||
+                       element.id == 'AC_misc') 
+                    {
+                        t_ac = t_ac + parseInt(element.value);
+                    }
+                    if(element.id == 'AC_armor' ||
+                       element.id == 'AC_size'||
+                       element.id == 'AC_shield'||
+                       element.id == 'AC_natural'||
+                       element.id == 'AC_deflection'||
+                       element.id == 'AC_misc')
+                    {
+                        f_ac = f_ac + parseInt(element.value);
+                    }
+
+
+
+
                 });
-                document.querySelector(`#${object.id.split('_')[0]}_total`).value = total;
+                document.querySelector(`#AC_total`).value = ac;
+                document.querySelector(`#ac__touch`).value = t_ac;
+                document.querySelector(`#ac__flat`).value = f_ac;
             break;
+        case 'INIT':
+            let init = 0;
+            let inits = document.querySelectorAll(`.init`);
+
+            inits.forEach(element => {
+
+                init += parseInt(element.value);
+
+            });
+
+            document.querySelector(`#init__total`).value = init;
+
+            break;
+            default:
+            break;    
     }
 };
 
