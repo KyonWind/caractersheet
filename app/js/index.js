@@ -252,9 +252,10 @@ const headerMap = (headerNames,headerMenu) =>  {
                 query += `<div class="${element.dropdown}">
                 <button onClick="addNewFeat()">Add Feat</button>
                 <p class="feats_input_human">HUMAN <input id="feat_human" disabled type="text"></p>
-                </div>
                 <div class="${element.dropdown}_aditional">
                 </div>
+                </div>
+                
                 </li>
                 `
             }else{
@@ -470,7 +471,7 @@ const hpAcMap = (hpbar,acbar,acInit) =>{
             <ul class="flex flex-column">
                 <li class="flex flex-row">
                     <div class="Box__input">
-                        <input id="${element.id}" type="number" min="0">
+                        <input disabled id="${element.id}" type="number" min="0">
                     </div>
                 </li>
             </ul>
@@ -499,7 +500,7 @@ const hpAcMap = (hpbar,acbar,acInit) =>{
                 <ul class="flex flex-column">
                     <li class="flex flex-column">
                     <div class="Box__input">
-                <input id="${element.id}" type="number" min="0">
+                <input id="${element.id}" disabled type="number" min="0">
                 </div> 
                 <p class="hp">${element.name}</p>     
             </li>
@@ -550,7 +551,7 @@ const hpAcMap = (hpbar,acbar,acInit) =>{
     });
     InicSection.innerHTML += query;
 };
-const skillsMap = (data) =>{
+const skillsMap = (data) =>{ 
     const skill_container = document.querySelector('.skill__container');
     let query = `
     <div class="skill flex debug">
@@ -559,13 +560,21 @@ const skillsMap = (data) =>{
                 <li class="flex flex-row-l Box__black">
                     <h1>SKILLS</h1>
                     <div class="flex flex-row">
+                    <p>SKILL TRICKS <br> POINTS</p>
+                        <div style="margin-left:5px;">
+                            <input type="number" onchange="totalSkillPoint()" style="width:35px" value=0  id="skillTrick_skillPoint"/>
+                        </div>
+                    <p>EXTRA SP</p>
+                        <div style="margin-left:5px;">
+                            <input type="number" onchange="totalSkillPoint()" style="width:40px" value=0  id="extra_skillPoint"/>
+                        </div>
                         <p>MAX RANKS <br> (CLASS/CROSS-CLASS)</p>
-                        <div class="Box__value" style="margin-left:5px;">
-                            <p style="color:black;font-size:13px"  class="max_skillPoint">0</p>
+                        <div style="margin-left:5px;">
+                            <input disabled value="0" style="width:40px"   class="max_skillPoint"/>
                         </div>
                         <p>TOTAL<br> SKILLPOINTS</p>
-                        <div class="Box__value" style="margin-left:5px;">
-                            <p style="color:black;font-size:13px" class="total_skillpoint">0</p>
+                        <div style="margin-left:5px;">
+                            <input disabled style="width:40px"  class="total_skillpoint"/>
                         </div>
                     </div>
                 </li>
@@ -1036,19 +1045,21 @@ function rankMaths(){
         let skillRanks = JSON.parse(localStorage["skillRanks"]);
         totalSkillPoint();
         let displayPoint = document.querySelector(".total_skillpoint");
-        let points = parseInt(document.querySelector(".total_skillpoint").innerHTML);
+        let points = parseInt(document.querySelector(".total_skillpoint").value);
 
             //Resta de total
-    skillRanks.forEach(level =>{
-        level.rank.forEach(rank => {
-            if(rank.crossClass){
-                points = points - (rank.value * 2 )
-            } else {
-                points = points - rank.value
-            }
+        skillRanks.forEach(level =>{
+            level.rank.forEach(rank => {
+                if(rank.crossClass){
+                    points = points - (rank.value * 2 )
+                } else {
+                    points = points - rank.value
+                }
+            });
+
+            displayPoint.value = points;
+
         });
-    });
-    displayPoint.innerHTML = points;
     } catch (error) {
         console.log(error)
     }
@@ -1119,7 +1130,7 @@ const maxSkillPoint = document.querySelector('.max_skillPoint');
     try 
     {
         let levels = level
-        maxSkillPoint.innerText = (parseInt(levels) + 3) + '/' + ((parseInt(levels) + 3) / 2);    
+        maxSkillPoint.value = (parseInt(levels) + 3) + '/' + ((parseInt(levels) + 3) / 2);    
         validateRanks(maxSkillPoint);
         skillpoint(levels);
     } 
@@ -1134,6 +1145,8 @@ const maxSkillPoint = document.querySelector('.max_skillPoint');
 };
 function totalSkillPoint(skillLV){
     totalPoints = document.querySelector(".total_skillpoint");
+    let ExtraPoint = document.querySelector("#extra_skillPoint").value;
+    let skilltrick = document.querySelector("#skillTrick_skillPoint").value;
     let point = 0;
     level = document.querySelector("#levels").value;
     let human = document.querySelector("#HumanSkillPoint").checked;
@@ -1172,7 +1185,7 @@ function totalSkillPoint(skillLV){
     }
 
 
-    totalPoints.innerHTML = point;
+    totalPoints.value = point + (ExtraPoint - skilltrick);
 
 };
 function skillpoint(level) {
@@ -1207,6 +1220,23 @@ function skillpoint(level) {
     }
 };
 
+function addNewFeat(){
+
+    let feats = document.querySelector(".header_dropdown_feats_aditional");
+    
+    
+
+        let container = document.createElement('div');
+        let input = document.createElement('input');
+        input.setAttribute(`id`,`feats_aditional_${feats.children.length+1}`);
+        input.setAttribute(`type`,`text`);
+        input.setAttribute(`value`,"");
+        container.appendChild(input);
+        feats.appendChild(container);
+    
+
+}
+
 function feats(level){
 
     
@@ -1225,7 +1255,6 @@ function feats(level){
             input.setAttribute(`id`,`feats${level}`);
             input.setAttribute(`type`,`text`);
             input.setAttribute(`value`,"");
-            p.setAttribute(`class`,`skill_input${level}`);
             
             p.innerHTML = `LV ${level}  `;
             p.appendChild(input);
@@ -1238,7 +1267,6 @@ function feats(level){
                     input.setAttribute(`class`,`feats_input${level}`);
                     input.setAttribute(`id`,`feats${level}`);
                     input.setAttribute(`type`,`text`);
-                    p.setAttribute(`class`,`skill_input${level}`);
                     p.innerHTML = `LV ${level}  `;
                     p.appendChild(input);
                     feats.appendChild(p);
@@ -1448,12 +1476,15 @@ function loadCharacter(character){
                     } else {
 
                         CharacterProp.id != undefined
-                        ?document.querySelector(`#${CharacterProp.id}`).value = CharacterProp.value
+                        ?CharacterProp.id.includes("feats_aditional")
+                            ?loadAditionalFeat(CharacterProp)
+                            :document.querySelector(`#${CharacterProp.id}`).value = CharacterProp.value
                         :CharacterProp.INT_for_skill != undefined
                         ? localStorage["INT_for_skill"] = CharacterProp.INT_for_skill
                         :CharacterProp.skillRanks != undefined
                         ? localStorage["skillRanks"] = CharacterProp.skillRanks
                         :false
+                        
                     }
                        
                 } catch (error) {
@@ -1557,8 +1588,20 @@ function loadFeats(level){
     }
     
     
+    
 
 };
+function loadAditionalFeat(featValue){
+    let feats = document.querySelector(".header_dropdown_feats_aditional");
+
+    let container = document.createElement('div');
+    let input = document.createElement('input');
+    input.setAttribute(`id`,featValue.id);
+    input.setAttribute(`type`,`text`);
+    input.setAttribute(`value`,featValue.value);
+    container.appendChild(input);
+    feats.appendChild(container);
+}
 function loadHitDice(level) {
     let hitDice = document.querySelector(".header_dropdown_hit_dice");
     let index = 0;

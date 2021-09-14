@@ -544,7 +544,7 @@ h2 {
   display: none;
   position: absolute;
   background-color: #f9f9f9;
-  min-width: 160px;
+  min-width: 300px;
   -webkit-box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
           box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
   z-index: 1;
@@ -561,21 +561,18 @@ h2 {
 
 .header_dropdown_feats_aditional {
   display: none;
-  position: absolute;
   background-color: #f9f9f9;
-  min-width: 160px;
-  -webkit-box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
-          box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
   z-index: 1;
 }
 
-.header_dropdown_feats_aditional p {
+.header_dropdown_feats_aditional div {
   padding: 10px;
   font-size: 15px;
 }
 
-.header_dropdown_feats_aditional p input {
-  width: 100px;
+.header_dropdown_feats_aditional div input {
+  width: 280px;
+  margin-left: 5px;
 }
 
 .header_dropdown_characters {
