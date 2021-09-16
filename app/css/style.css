@@ -509,6 +509,10 @@ h2 {
   display: block;
 }
 
+.header_special_abilities:hover .header_dropdown_special_abilities {
+  display: block;
+}
+
 .header_feats:hover .header_dropdown_feats_aditional {
   display: block;
 }
@@ -557,6 +561,26 @@ h2 {
 
 .header_dropdown_feats p input {
   width: 100px;
+}
+
+.header_dropdown_special_abilities {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 300px;
+  -webkit-box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+          box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+}
+
+.header_dropdown_special_abilities div {
+  padding: 10px;
+  font-size: 15px;
+}
+
+.header_dropdown_special_abilities div input {
+  width: 280px;
+  margin-left: 5px;
 }
 
 .header_dropdown_feats_aditional {
