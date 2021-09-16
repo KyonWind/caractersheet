@@ -1622,6 +1622,18 @@ class Characters{
              const character = document.querySelector(".header_dropdown_characters");
              let query  = ``;
              characters.forEach(element => {
+
+                  let p = document.createElement('p');
+                    let input = document.createElement('input');
+                    input.setAttribute(`class`,`feats_input${index}`);
+                    input.setAttribute(`id`,`feats${index}`);
+                    input.setAttribute(`type`,`text`);
+                    input.setAttribute(`value`,"");
+                    p.setAttribute(`class`,`skill_input${index}`);
+                    
+                    p.innerHTML = `LV ${index}  `;
+                    p.appendChild(input);
+                    feats.appendChild(p);
     
                 query += 
                 `<p class="flex flex-jc-s flex-ai-sb character_${element.CharacterName}">${element.CharacterName} <button onclick="loadCharacter('${element.CharacterName}')">load</button><button onclick="saveCharacter('${element.CharacterName}')"">save</button></p>`;
@@ -1640,43 +1652,45 @@ class Characters{
 
     loadCharacter(character){
 
-        let characterSaved = JSON.parse(localStorage['characters']);
+         let characterSaved = JSON.parse(localStorage['characters']);
         characterSaved.forEach(element =>{
-            if(element.CharacterName == character){
-                loadHitDice(element.level);
-                loadFeats(element.level);
-                loadSkillpoint(element.level);
-                element.data.forEach(CharacterProp => {
-                    try {
-    
-                        if (CharacterProp.checked) {
-    
-                            document.querySelector(`#${CharacterProp.id}`).checked = CharacterProp.checked
-                            
-                        } else {
-    
-                            CharacterProp.id != undefined
-                            ?CharacterProp.id.includes("feats_aditional")
-                                ?loadAditionalFeat(CharacterProp)
-                                :document.querySelector(`#${CharacterProp.id}`).value = CharacterProp.value
-                            :CharacterProp.INT_for_skill != undefined
-                            ? localStorage["INT_for_skill"] = CharacterProp.INT_for_skill
-                            :CharacterProp.skillRanks != undefined
-                            ? localStorage["skillRanks"] = CharacterProp.skillRanks
-                            :false
-                            
-                        }
-                           
-                    } catch (error) {
-                            console.log(error + CharacterProp.id);
+        if(element.CharacterName == character){
+            loadHitDice(element.level);
+            loadFeats(element.level);
+            loadSkillpoint(element.level);
+            element.data.forEach(CharacterProp => {
+                try {
+
+                    if (CharacterProp.checked) {
+
+                        document.querySelector(`#${CharacterProp.id}`).checked = CharacterProp.checked
+                        
+                    } else {
+
+                        CharacterProp.id != undefined
+                        ?CharacterProp.id.includes("feats_aditional")
+                            ?loadAditionalFeat(CharacterProp)
+                            :CharacterProp.id.includes("special_abilities")
+                            ?loadSpecialAbility(CharacterProp)
+                            :document.querySelector(`#${CharacterProp.id}`).value = CharacterProp.value
+                        :CharacterProp.INT_for_skill != undefined
+                        ? localStorage["INT_for_skill"] = CharacterProp.INT_for_skill
+                        :CharacterProp.skillRanks != undefined
+                        ? localStorage["skillRanks"] = CharacterProp.skillRanks
+                        :false
+                        
                     }
-                });
-            }
-        });
-        totalSkillPoint(false);
-        classSkillsValidate();
-        rankMaths();
-        maxSkillPoint();
+                       
+                } catch (error) {
+                        console.log(error + CharacterProp.id);
+                }
+            });
+        }
+    });
+    totalSkillPoint(false);
+    classSkillsValidate();
+    rankMaths();
+    maxSkillPoint();
     }
 
 
