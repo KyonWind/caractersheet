@@ -137,7 +137,7 @@ const data = {
         {SaveName:"WILL", id:"WILL_name",       class:"Box_black", type:"name", data: [
             {name:"TOTAL",                  id:"WILL_total",     class: "",           type:"value"},
             {name:"BASE <br> SAVE",         id:"WILL_base",      class:"WILL",            type:"input"},
-            {name:"ABILITY <br> MODIFIER",  id:"WILL_STA",       class:"WILL WILL_TOTAL-MODIFIER",        type:"input"},
+            {name:"ABILITY <br> MODIFIER",  id:"WILL_STA",       class:"WILL WIS_TOTAL-MODIFIER",        type:"input"},
             {name:"MAGIC <br> MODIFIER",    id:"WILL_magic",     class:"WILL",           type:"input"},
             {name:"MISC <br> MODIFIER",     id:"WILL_misc",      class:"WILL",            type:"input"},
             {name:"TEMP <br> MODIFIER",     id:"WILL_temp",      class:"WILL",            type:"Lastinput"}]

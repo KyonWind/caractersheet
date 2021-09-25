@@ -1,11 +1,16 @@
 window.onload = ()=>{
     let body = new Body();
     let character = new Characters();
+    window.jsPDF = window.jspdf.jsPDF
+    feats(1);
+    hitDice(1);
+    skillpoint(1);
 };
 
 var lv1Int;
 var characterData;
 var characters = [];
+
 
 //MATHS
 
@@ -112,7 +117,7 @@ function totals(type,object){
             document.querySelector(`#init__total`).value = init;
 
             break;
-            case 'SAVE':
+        case 'SAVE':
             let save = document.querySelectorAll(`.${object.id.split(`_`)[0]}`);
             let total_save = 0;
             
@@ -253,7 +258,7 @@ function levels(level)
 {
     let intArray = [];
     let hpArray = [];
-    if (level.value == 1) {
+    if (level.value == 2) {
             if(document.querySelector('#INTE_value').value != 0 &&
             document.querySelector('#STR_value').value != 0 &&
             document.querySelector('#DEX_value').value != 0 &&
@@ -278,7 +283,7 @@ function levels(level)
                 localStorage["HP_lv"] = JSON.stringify(hpArray);
             }else{
                 alert('Coloca Primero los Status antes de subir de Nivel');
-                document.querySelector(`#levels`).value = 0;
+                document.querySelector(`#levels`).value = 1;
             }
     } 
     else
@@ -400,37 +405,143 @@ function totalSkillPoint(skillLV){
 
 };
 function skillpoint(level) {
+    let hitDice = document.querySelector(".header_dropdown_hit_dice");
     let skillPoint = document.querySelector(".header_dropdown_skill");
-    let prevLV = skillPoint.childElementCount;
+    let prevLV = hitDice.childElementCount;
     let index = 0;
 
-    if(prevLV == level)
+    if(prevLV <= level)
     {
-        for ( index = prevLV; index == level; index++) {
+        for (index = 1; index <= level; index++) {
+            if(!document.querySelector(`#skillLV${index}`))
+            {
                
                let p = document.createElement('p');
                let input = document.createElement('input');
-               input.setAttribute(`class`,`skillLV${level}`);
-               input.setAttribute(`id`,`skillLV${level}`);
+               input.setAttribute(`class`,`skillLV${index}`);
+               input.setAttribute(`id`,`skillLV${index}`);
                input.setAttribute(`type`,`number`);
                input.setAttribute(`value`,0);
                input.setAttribute(`onchange`,`totalSkillPoint(this)`);
-               p.setAttribute(`class`,`skill_input${level}`);
-               p.innerHTML = `LV ${level}  `;
+               p.setAttribute(`class`,`skill_input${index}`);
+               p.innerHTML = `LV ${index}  `;
                p.appendChild(input);
                skillPoint.appendChild(p);
+            }
         }
         
     } else
     {
-        for ( index = (prevLV-1); index > level; index--) {
+        for ( index = (prevLV); index > level; index--) {
           
-            skillPoint.children[prevLV-1].remove();
+            skillPoint.children[index].remove();
             
         }
     }
 };
+function feats(level){
 
+    
+    let hitDice = document.querySelector(".header_dropdown_hit_dice");
+    let feats = document.querySelector(".header_dropdown_feats");
+    let prevLV = hitDice.childElementCount;
+    let index = 0;
+
+    if(prevLV < level)
+    {
+        if(level == 1){
+            if(!document.querySelector(`#feats1`))
+            {
+                let p = document.createElement('p');
+                let input = document.createElement('input');
+                input.setAttribute(`class`,`feats_input${level}`);
+                input.setAttribute(`id`,`feats${level}`);
+                input.setAttribute(`type`,`text`);
+                input.setAttribute(`value`,"");
+                
+                p.innerHTML = `LV ${level}  `;
+                p.appendChild(input);
+                feats.appendChild(p);
+            }
+        }else{
+            for ( index = 1; index <= level; index++) {
+                if (index%3 == 0) {
+                    if(!document.querySelector(`#feats${index}`))
+                    {    
+                        let p = document.createElement('p');
+                        let input = document.createElement('input');
+                        input.setAttribute(`class`,`feats_input${index}`);
+                        input.setAttribute(`id`,`feats${index}`);
+                        input.setAttribute(`type`,`text`);
+                        p.innerHTML = `LV ${index}  `;
+                        p.appendChild(input);
+                        feats.appendChild(p);
+                    }
+                }
+                
+            }    
+        }
+    }
+    else 
+    {
+        for (index = (prevLV); index >= level; index--) {
+            if(index%3 == 0)
+            {
+                if(feats.children[feats.children.length-1].children[0].id.slice(5) > level){
+                    
+                    feats.children[feats.children.length-1].remove();
+                     
+                } 
+            }
+
+        }
+
+           
+        
+    }
+
+};
+function hitDice(level) {
+    let hitDice = document.querySelector(".header_dropdown_hit_dice");
+    let prevLV = hitDice.childElementCount;
+    let index = 0;
+
+    if(prevLV < level)
+    {
+        for ( index = 1; index <= level; index++) {
+            if(!document.querySelector(`#hitDice${index}`))
+            {
+                let p = document.createElement('p');
+                let input = document.createElement('input');
+                input.setAttribute(`class`,`hitDice${index}`);
+                input.setAttribute(`id`,`hitDice${index}`);
+                input.setAttribute(`type`,`number`);
+                input.setAttribute(`value`,0);
+                input.setAttribute(`onchange`,`totalHP(this)`);
+                p.setAttribute(`class`,`hit_input${index}`);
+                p.innerHTML = `LV ${index}  `;
+                p.appendChild(input);
+                hitDice.appendChild(p);
+            }
+        }
+    }
+    else 
+    {
+        for ( index = (prevLV); index > level; index--) {
+      
+            hitDice.children[index-1].remove();
+            
+        }
+    }
+        
+    
+
+    
+
+
+
+
+};
 function addNewFeat(){
 
     let feats = document.querySelector(".header_dropdown_feats_aditional");
@@ -443,7 +554,8 @@ function addNewFeat(){
     feats.appendChild(container);
     
 
-}
+};
+
 
 function addSpecialAbility(){
 
@@ -459,101 +571,7 @@ function addSpecialAbility(){
 
 }
 
-function feats(level){
 
-    
-    let hitDice = document.querySelector(".header_dropdown_hit_dice");
-    let feats = document.querySelector(".header_dropdown_feats");
-    let prevLV = hitDice.childElementCount;
-    let query = feats.innerHTML;
-    let index = 0;
-
-    if(prevLV < level)
-    {
-        if(level == 1){
-            let p = document.createElement('p');
-            let input = document.createElement('input');
-            input.setAttribute(`class`,`feats_input${level}`);
-            input.setAttribute(`id`,`feats${level}`);
-            input.setAttribute(`type`,`text`);
-            input.setAttribute(`value`,"");
-            
-            p.innerHTML = `LV ${level}  `;
-            p.appendChild(input);
-            feats.appendChild(p);
-        }else{
-            for ( index = prevLV; index < level; index++) {
-                if (level%3 == 0) {
-                    let p = document.createElement('p');
-                    let input = document.createElement('input');
-                    input.setAttribute(`class`,`feats_input${level}`);
-                    input.setAttribute(`id`,`feats${level}`);
-                    input.setAttribute(`type`,`text`);
-                    p.innerHTML = `LV ${level}  `;
-                    p.appendChild(input);
-                    feats.appendChild(p);
-                }
-                
-            }    
-        }
-    }
-    else 
-    {
-        for (index = 1 ; index <= level; index++) {
-            if(feats.children[index] != undefined){
-                if(feats.children[index].children[0].id.slice(feats.children[index].children[0].id.length-1) > level){
-                 if (feats.children[index] != null) {
-                        feats.children[index].remove();
-                    }
-            }
-            } 
-            
-
-        }
-
-           
-        
-    }
-
-};
-function hitDice(level) {
-    let hitDice = document.querySelector(".header_dropdown_hit_dice");
-    let prevLV = hitDice.childElementCount+1;
-    let index = 0;
-
-    if(prevLV == level)
-    {
-        for ( index = prevLV; index == level; index++) {
-            let p = document.createElement('p');
-            let input = document.createElement('input');
-            input.setAttribute(`class`,`hitDice${level}`);
-            input.setAttribute(`id`,`hitDice${level}`);
-            input.setAttribute(`type`,`number`);
-            input.setAttribute(`value`,0);
-            input.setAttribute(`onchange`,`totalHP(this)`);
-            p.setAttribute(`class`,`hit_input${level}`);
-            p.innerHTML = `LV ${level}  `;
-            p.appendChild(input);
-            hitDice.appendChild(p);
-        }
-    }
-    else 
-    {
-        for ( index = (prevLV-1); index > level; index--) {
-      
-            hitDice.children[prevLV-2].remove();
-            
-        }
-    }
-        
-    
-
-    
-
-
-
-
-};
 
 function totalHP(hpLV){
     let hp = document.querySelector(`#hp__value`);
@@ -925,6 +943,14 @@ function enabledHuman(ishuman){
     totalSkillPoint();
 }
 
+function convertToPDF(){
+    const pdf = new jsPDF()
+
+    pdf.text("hello Kyon",1,1);
+    pdf.save("yourpdf.pdf");
+
+}
+
 
 
 //CLASES MODE
@@ -960,7 +986,7 @@ class Body{
                 if(element.type == "number")
                 {
                     query += `
-                    <input type="${element.type}" onchange="levels(this)" type="number" min="0" id="${element.class}" value="0"  class="header__input"></input>`
+                    <input type="${element.type}" onchange="levels(this)" type="number" min="1" id="${element.class}" value="1"  class="header__input"></input>`
                 }
                 else
                 {
@@ -989,9 +1015,9 @@ class Body{
                 `
             }else if(element.dropdown == "header_dropdown_feats"){
                 query += `<div class="${element.dropdown}">
+                <div class="${element.dropdown}_aditional">
                 <button onClick="addNewFeat()">Add Feat</button>
                 <p class="feats_input_human">HUMAN <input id="feat_human" disabled type="text"></p>
-                <div class="${element.dropdown}_aditional">
                 </div>
                 </div>
                 
@@ -1018,6 +1044,7 @@ class Body{
         query += `
             <li class="debug save_button">
             <button onclick="openModal()">Save</button>
+            <button onclick="convertToPDF()">Convertir a PDF</button>
             </div>  
             </li>
             `
