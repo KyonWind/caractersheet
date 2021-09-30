@@ -168,6 +168,7 @@ function classSkillsValidate()
     });
     
 };
+
 function addRank(rank)
 {
     let lv = parseInt(document.querySelector('#levels').value)
@@ -252,13 +253,11 @@ function rankMaths(){
     
 }
 
-  
-
 function levels(level)
 {
     let intArray = [];
     let hpArray = [];
-    if (level.value == 2) {
+    if (level.value > 1) {
             if(document.querySelector('#INTE_value').value != 0 &&
             document.querySelector('#STR_value').value != 0 &&
             document.querySelector('#DEX_value').value != 0 &&
@@ -340,6 +339,7 @@ function levels(level)
     feats(level.value);
     hitDice(level.value);
 }
+
 function maxSkillPoint() 
 {
 const maxSkillPoint = document.querySelector('.max_skillPoint');
@@ -360,6 +360,7 @@ const maxSkillPoint = document.querySelector('.max_skillPoint');
 
 
 };
+
 function totalSkillPoint(skillLV){
     totalPoints = document.querySelector(".total_skillpoint");
     let ExtraPoint = document.querySelector("#extra_skillPoint").value;
@@ -555,8 +556,6 @@ function addNewFeat(){
     
 
 };
-
-
 function addSpecialAbility(){
 
     let ability = document.querySelector(".header_dropdown_special_abilities");
@@ -570,9 +569,6 @@ function addSpecialAbility(){
     
 
 }
-
-
-
 function totalHP(hpLV){
     let hp = document.querySelector(`#hp__value`);
     let con = document.querySelector(".CON_TOTAL-MODIFIER");
@@ -943,11 +939,24 @@ function enabledHuman(ishuman){
     totalSkillPoint();
 }
 
-function convertToPDF(){
-    const pdf = new jsPDF()
+ function convertToPDF(){
 
-    pdf.text("hello Kyon",1,1);
-    pdf.save("yourpdf.pdf");
+    document.querySelector('.headerMenu').style.display = "none"; 
+    document.querySelector('.header__logo').style.display = "none"; 
+    document.querySelector('body').style.margin = 0;
+    html2canvas(document.querySelector('body'),{
+        scale: 3,
+        allowTaint:true
+    }).then(canvas=>{
+        canvas = canvas.toDataURL('image/png')
+        const pdf = new jsPDF("p", "mm", "a4");
+        pdf.addImage(canvas, 'PNG', 0, 0, 262 , 297)
+        pdf.save();
+    })
+
+    document.querySelector('.headerMenu').style.display = "block"; 
+    document.querySelector('.header__logo').style.display = "block"; 
+    document.querySelector('body').style.margin = "auto";
 
 }
 
@@ -1651,19 +1660,24 @@ class Characters{
              characters.forEach(element => {
 
                   let p = document.createElement('p');
-                    let input = document.createElement('input');
-                    input.setAttribute(`class`,`feats_input${index}`);
-                    input.setAttribute(`id`,`feats${index}`);
-                    input.setAttribute(`type`,`text`);
-                    input.setAttribute(`value`,"");
-                    p.setAttribute(`class`,`skill_input${index}`);
+                    let Savebutton = document.createElement('button');
+                    let Loadbutton = document.createElement('button');
+                    Savebutton.setAttribute(`onclick`,`saveCharacter('${element.CharacterName}')`);
+                    Savebutton.textContent = "save";
+                    Loadbutton.setAttribute(`onclick`,`loadCharacter('${element.CharacterName}')`);
+                    Loadbutton.setAttribute(`class`,`ml-5 mr-5`);
+                    Loadbutton.textContent = "load";
                     
-                    p.innerHTML = `LV ${index}  `;
-                    p.appendChild(input);
-                    feats.appendChild(p);
+                    p.setAttribute(`class`,`flex flex-jc-s flex-ai-sb character_${element.CharacterName}`);
+                    p.innerHTML = `${element.CharacterName}`;
+                    p.appendChild(Loadbutton);
+                    p.appendChild(Savebutton);
+                    character.appendChild(p);
     
-                query += 
-                `<p class="flex flex-jc-s flex-ai-sb character_${element.CharacterName}">${element.CharacterName} <button onclick="loadCharacter('${element.CharacterName}')">load</button><button onclick="saveCharacter('${element.CharacterName}')"">save</button></p>`;
+                /* query += 
+                `<p class="flex flex-jc-s flex-ai-sb character_${element.CharacterName}">
+                ${element.CharacterName} <button onclick="loadCharacter('${element.CharacterName}')">load
+                </button><button onclick="saveCharacter('${element.CharacterName}')"">save</button></p>`; */
                  
              });
              

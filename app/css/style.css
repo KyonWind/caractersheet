@@ -361,6 +361,14 @@ button:hover, .button:hover {
   background: white;
 }
 
+.ml-5 {
+  margin-left: 5px;
+}
+
+.mr-5 {
+  margin-right: 5px;
+}
+
 .modal {
   position: fixed;
   /* Stay in place */
